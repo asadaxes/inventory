@@ -35,7 +35,7 @@
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Category</label>
+                                <label>Sub Category</label>
                                 <select class="select" name="sub_cat_id" id="sub_cat">
                                     <option>Select</option>
                                     @foreach($categories as $category)

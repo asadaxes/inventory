@@ -13,6 +13,10 @@
 <!-- Slimscroll JS -->
 <script src="{{asset('/')}}admin/assets/js/jquery.slimscroll.min.js"></script>
 
+<!-- Owl JS -->
+<script src="{{asset('/')}}admin/assets/plugins/owlcarousel/owl.carousel.min.js"></script>
+
+
 <!-- Datatable JS -->
 <script src="{{asset('/')}}admin/assets/js/jquery.dataTables.min.js"></script>
 <script src="{{asset('/')}}admin/assets/js/dataTables.bootstrap4.min.js"></script>

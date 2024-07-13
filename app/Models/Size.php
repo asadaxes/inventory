@@ -9,12 +9,29 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Size extends Model
 {
     use HasFactory;
-    use Searchable;
+//    use Searchable;
 
     protected $fillable = ['name', 'bname', 'symbol', 'status'];
 
     protected $searchableFields = ['*'];
 
+    protected static $size;
+
+    public static function createOrUpdateSize ($request, $id = null)
+    {
+        if (isset($id))
+        {
+            self::$size = Size::find($id);
+        } else {
+            self::$size = new Size();
+        }
+        self::$size->name                       = $request->name ?? '';
+        self::$size->bname                       = $request->bname ?? '';
+        self::$size->symbol                       = $request->symbol ?? '';
+        self::$size->status                     = $request->status ?? '';
+        self::$size->save();
+        return self::$size;
+    }
     public function products()
     {
         return $this->hasMany(Product::class);

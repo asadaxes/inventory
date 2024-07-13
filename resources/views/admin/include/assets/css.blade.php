@@ -6,6 +6,9 @@
 <!-- Summernote CSS -->
 <link rel="stylesheet" href="{{asset('/')}}admin/assets/plugins/summernote/summernote-bs4.min.css">
 
+<!-- Owl Carousel CSS -->
+<link rel="stylesheet" href="{{asset('/')}}admin/assets/plugins/owlcarousel/owl.carousel.min.css">
+
 
 <!-- Datetimepicker CSS -->
 <link rel="stylesheet" href="{{asset('/')}}admin/assets/css/bootstrap-datetimepicker.min.css">

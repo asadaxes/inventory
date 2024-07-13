@@ -23,6 +23,7 @@ return new class extends Migration {
             $table->string('discount_type')->nullable();
             $table->decimal('discount')->nullable();
             $table->text('description')->nullable();
+            $table->tinyInteger('status')->nullable();
             $table->unsignedBigInteger('brand_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('size_id')->nullable();

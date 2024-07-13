@@ -13,6 +13,10 @@ use App\Http\Controllers\Admin\Product\CategoryController;
 use App\Http\Controllers\Admin\Product\SubCategoryController;
 use App\Http\Controllers\Admin\Product\ChildCategoryController;
 use App\Http\Controllers\Admin\Product\ProductController;
+use App\Http\Controllers\Admin\Product\ColorController;
+use App\Http\Controllers\Admin\Product\SizeController;
+use App\Http\Controllers\Admin\Product\UnitController;
+use App\Http\Controllers\Admin\Product\ManufactureController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -76,6 +80,21 @@ Route::group(['middleware' => ['admin_access']], function() {
 
     //sub category
     Route::resource('child_category',ChildCategoryController::class);
+
+    // product
+    Route::resource('product', ProductController::class);
+
+    // color
+    Route::resource('color', ColorController::class);
+
+    // size
+    Route::resource('size', SizeController::class);
+
+    // unit
+    Route::resource('unit', UnitController::class);
+
+    // manufacture
+    Route::resource('manufacture', ManufactureController::class);
 
 
 });

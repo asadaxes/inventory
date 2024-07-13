@@ -47,41 +47,41 @@
                     </div>
                 </div>
                 <!-- /Filter -->
-                <div class="card" id="filter_inputs">
-                    <div class="card-body pb-0">
-                        <div class="row">
-                            <div class="col-lg-2 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <select class="select">
-                                        <option>Choose Category</option>
-                                        <option>Computers</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <select class="select">
-                                        <option>Choose Sub Category</option>
-                                        <option>Fruits</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <select class="select">
-                                        <option>Choose Sub Brand</option>
-                                        <option>Iphone</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-1 col-sm-6 col-12 ms-auto">
-                                <div class="form-group">
-                                    <a class="btn btn-filters ms-auto"><img src="{{asset('/')}}admin/assets/img/icons/search-whites.svg" alt="img"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="card" id="filter_inputs">--}}
+{{--                    <div class="card-body pb-0">--}}
+{{--                        <div class="row">--}}
+{{--                            <div class="col-lg-2 col-sm-6 col-12">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <select class="select">--}}
+{{--                                        <option>Choose Category</option>--}}
+{{--                                        <option>Computers</option>--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-2 col-sm-6 col-12">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <select class="select">--}}
+{{--                                        <option>Choose Sub Category</option>--}}
+{{--                                        <option>Fruits</option>--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-2 col-sm-6 col-12">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <select class="select">--}}
+{{--                                        <option>Choose Sub Brand</option>--}}
+{{--                                        <option>Iphone</option>--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-lg-1 col-sm-6 col-12 ms-auto">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <a class="btn btn-filters ms-auto"><img src="{{asset('/')}}admin/assets/img/icons/search-whites.svg" alt="img"></a>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <!-- /Filter -->
                 <div class="table-responsive">
                     <table class="table  datanew">
@@ -120,7 +120,7 @@
                                     <a href="javascript:void(0);">Fruits</a>
                                 </td>
                                 <td>{{$child_cat->name}}</td>
-{{--                                <td>{{$child_cat->subCategory->category->name}}</td>--}}
+                                <td>{{$child_cat->subCategory->category->name}}</td>
                                 <td>{{$child_cat->subCategory->name}}</td>
                                 <td>SUB-CA-00{{$child_cat->child_code}}</td>
                                 <td>{{$child_cat->description}}</td>
