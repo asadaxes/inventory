@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>manufacture</label>
+                                <label>Manufacture</label>
                                 <select class="select" name="manufacture_id" >
                                     <option>Choose Manufacture</option>
                                     @foreach($manufacturers as $manufacture)
@@ -42,7 +42,7 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Category</label>
-                                <select class="select" name="category_id" >
+                                <select class="select" name="category_id" id="category_id" >
                                     <option>Choose Category</option>
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}" >{{$category->name}}</option>
@@ -63,9 +63,9 @@
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>child_category</label>
+                                <label>Child Category</label>
                                 <select class="select" name="child_category_id" >
-                                    <option>Choose child_category</option>
+                                    <option>Choose Child Category</option>
                                     @foreach($childCategories as $childcategory)
                                         <option value="{{$childcategory->id}}" >{{$childcategory->name}}</option>
                                     @endforeach
@@ -96,9 +96,9 @@
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>size</label>
+                                <label>Size</label>
                                 <select class="select" name="size_id">
-                                    <option>Choose size</option>
+                                    <option>Choose Size</option>
                                     @foreach($sizes as $size)
                                         <option value="{{$size->id}}" >{{$size->name}}</option>
                                     @endforeach
@@ -107,9 +107,9 @@
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>color</label>
+                                <label>Color</label>
                                 <select class="select" name="color_id">
-                                    <option>Choose color</option>
+                                    <option>Choose Color</option>
                                     @foreach($colors as $color)
                                         <option value="{{$color->id}}" >{{$color->name}}</option>
                                     @endforeach
@@ -162,7 +162,7 @@
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>discount</label>
+                                <label>Discount</label>
                                 <input type="text" name="discount">
                             </div>
                         </div>
