@@ -101,4 +101,8 @@
         });
     });
 </script>
-@yield('custom-script')
+
+<script>
+    var base_url = window.location.origin;
+</script>
+@yield('js')

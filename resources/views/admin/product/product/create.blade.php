@@ -53,22 +53,22 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Sub Category</label>
-                                <select class="select" name="sub_category_id" >
+                                <select class="select" name="sub_category_id" id="sub_category" >
                                     <option>Choose Sub Category</option>
-                                    @foreach($subCategories as $subcategory)
-                                        <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
-                                    @endforeach
+{{--                                    @foreach($subCategories as $subcategory)--}}
+{{--                                        <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>--}}
+{{--                                    @endforeach--}}
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Child Category</label>
-                                <select class="select" name="child_category_id" >
+                                <select class="select" name="child_category_id" id="child_category" >
                                     <option>Choose Child Category</option>
-                                    @foreach($childCategories as $childcategory)
-                                        <option value="{{$childcategory->id}}" >{{$childcategory->name}}</option>
-                                    @endforeach
+{{--                                    @foreach($childCategories as $childcategory)--}}
+{{--                                        <option value="{{$childcategory->id}}" >{{$childcategory->name}}</option>--}}
+{{--                                    @endforeach--}}
                                 </select>
                             </div>
                         </div>
@@ -210,4 +210,10 @@
         </div>
         <!-- /add -->
     </div>
+
+    @include('admin.product.product.category_subcat_child_js')
+@endsection
+
+@section('js')
+
 @endsection

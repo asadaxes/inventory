@@ -150,6 +150,3 @@
     </div>
 @endsection
 
-@section('custom-script')
-{{--    @include('admin.include.plugin.datatable')--}}
-@endsection

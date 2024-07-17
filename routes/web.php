@@ -17,6 +17,8 @@ use App\Http\Controllers\Admin\Product\ColorController;
 use App\Http\Controllers\Admin\Product\SizeController;
 use App\Http\Controllers\Admin\Product\UnitController;
 use App\Http\Controllers\Admin\Product\ManufactureController;
+use App\Http\Controllers\Admin\People\CustomerController;
+use App\Http\Controllers\Admin\People\SupplierController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,11 +30,11 @@ use App\Http\Controllers\Admin\Product\ManufactureController;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Route::get('/', function () {
+    return redirect(route('dashboard'));
+});
+
+Route::get('/dashboard', function () {
     return view('admin.dashboard.home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -80,9 +82,17 @@ Route::group(['middleware' => ['admin_access']], function() {
 
     //sub category
     Route::resource('child_category',ChildCategoryController::class);
-
+//================================================ Product module start=================================================
     // product
     Route::resource('product', ProductController::class);
+
+    Route::get('get_sub_cat/{id}',[ProductController::class,'get_sub_cat'])->name('get_sub_cat');
+    Route::get('get_child_cat/{id}',[ProductController::class,'get_child_cat'])->name('get_child_cat');
+    Route::get('get_product/{id}',[ProductController::class,'get_product'])->name('get_product');
+
+    Route::get('select_product',[ProductController::class,'select_product'])->name('select_product');
+    Route::delete('delete_select_product/{id}',[ProductController::class,'delete_select_product'])->name('delete_select_product');
+    Route::get('pro_qty_change/{id}',[ProductController::class,'pro_qty_change'])->name('pro_qty_change');
 
     // color
     Route::resource('color', ColorController::class);
@@ -95,6 +105,15 @@ Route::group(['middleware' => ['admin_access']], function() {
 
     // manufacture
     Route::resource('manufacture', ManufactureController::class);
+
+//================================================ Product module end===================================================
+
+//================================================ People module start=================================================
+    //Customer
+    Route::resource('customers',CustomerController::class);
+    //Supplier
+    Route::resource('suppliers',SupplierController::class);
+//================================================ People module end===================================================
 
 
 });

@@ -25,7 +25,7 @@
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Category</label>
-                                <select class="select" name="cat_id" id="category">
+                                <select class="select" name="cat_id" id="category_id">
                                     <option>Select</option>
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
@@ -36,11 +36,9 @@
                         <div class="col-lg-4 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Sub Category</label>
-                                <select class="select" name="sub_cat_id" id="sub_cat">
+                                <select class="select" name="sub_cat_id" id="sub_category">
                                     <option>Select</option>
-                                    @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
-                                    @endforeach
+
                                 </select>
                             </div>
                         </div>
@@ -96,4 +94,30 @@
         </div>
         <!-- /add -->
     </div>
+
+    @include('admin.product.product.category_subcat_child_js')
+@endsection
+
+@section('js')
+{{--    <script>--}}
+{{--        $(document).ready(function (){--}}
+{{--            $("#category_id").on('change',function (){--}}
+{{--                var id=$("#category_id").val();--}}
+{{--                $.ajax({--}}
+{{--                    url:base_url+"/get_sub_cat/"+id,--}}
+{{--                    type:'get',--}}
+{{--                    dataType:'json',--}}
+{{--                    success:function (data){--}}
+{{--                        option = '';--}}
+{{--                        $.each(data.data, function(i,data)--}}
+{{--                        {--}}
+{{--                            // console.log(i);--}}
+{{--                            option +='<option value="'+data.id+'">'+data.name+'</option>';--}}
+{{--                        });--}}
+{{--                        $("#sub_category").empty().html(option);--}}
+{{--                    }--}}
+{{--                });--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
 @endsection

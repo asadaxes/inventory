@@ -95,9 +95,6 @@
                 @can('product management')
                     <li class="submenu-open">
                         <h6 class="submenu-hdr">Products</h6>
-                        {{--                        <a href="javascript:void(0);" class="{{request()->is('company*')  ?'active subdrop':''}}"><i data-feather="smartphone"></i>--}}
-                        {{--                            <span>Company Management</span><span class="menu-arrow"></span>--}}
-                        {{--                        </a>--}}
                         <ul>
                             <li class="submenu slide {{request()->is('brand*') || request()->is('category*')|| request()->is('sub_category*') || request()->is('child_category*')|| request()->is('color*')|| request()->is('size*') || request()->is('unit*') || request()->is('manufacture*') || request()->is('product*')  ?'is-expanded':''}}">
                                 {{--                                @can('role management')--}}
@@ -108,6 +105,7 @@
                                     @can('view product')
                                     <li><a href="{{ route('product.index') }}" class="{{request()->is('product*') ? 'active':''}}"><i data-feather="box"></i><span>Products</span></a></li>
                                     @endcan
+                                    <li><a href="{{ route('select_product') }}" class="{{request()->is('product*') ? 'active':''}}"><i data-feather="box"></i><span>select_product</span></a></li>
 {{--                                    <li><a href="{{ route('product.create') }}"><i data-feather="plus-square"></i><span>Create Product</span></a></li>--}}
                                     {{--                                        <li><a href="categorylist.html"><i data-feather="codepen"></i><span>Category</span></a></li>--}}
                                     @can('view brand')
@@ -134,14 +132,49 @@
                                     @can('view manufacture')
                                         <li><a class="{{request()->is('manufacture*') ? 'active':''}}" href="{{route('manufacture.index')}}"><i data-feather="cpu"></i><span>Manufacture</span></a></li>
                                     @endcan
-                                    <li><a href="barcode.html"><i data-feather="align-justify"></i><span>Print Barcode</span></a></li>
-                                    <li><a href="importproduct.html"><i data-feather="minimize-2"></i><span>Import Products</span></a></li>
+{{--                                    <li><a href="barcode.html"><i data-feather="align-justify"></i><span>Print Barcode</span></a></li>--}}
+{{--                                    <li><a href="importproduct.html"><i data-feather="minimize-2"></i><span>Import Products</span></a></li>--}}
                                 </ul>
                                 {{-- @endcan --}}
                             </li>
                         </ul>
                     </li>
                 @endcan
+
+                @can('product management')
+                    <li class="submenu-open">
+{{--                        <h6 class="submenu-hdr">Peoples</h6>--}}
+                        <ul>
+                            <li class="submenu slide {{request()->is('suppliers*') || request()->is('customers*')  ?'is-expanded':''}}">
+                                <a href="javascript:void(0);" class="{{request()->is('customers*') || request()->is('suppliers*') ?'active subdrop':''}}"><i data-feather="users"></i></i>
+                                    <span>Peoples</span><span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    @can('view product')
+                                        <li><a href="{{ route('customers.index') }}" class="{{request()->is('customers*') ? 'active':''}}"><i data-feather="user"></i><span>Customers</span></a></li>
+                                    @endcan
+                                    {{--                                    <li><a href="{{ route('product.create') }}"><i data-feather="plus-square"></i><span>Create Product</span></a></li>--}}
+                                    {{--                                        <li><a href="categorylist.html"><i data-feather="codepen"></i><span>Category</span></a></li>--}}
+                                    @can('view brand')
+                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="users"></i><span>Suppliers</span></a></li>
+                                    @endcan
+                                </ul>
+                                {{-- @endcan --}}
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
+
+{{--                <li class="submenu-open">--}}
+{{--                    <h6 class="submenu-hdr">Peoples</h6>--}}
+{{--                    <ul>--}}
+{{--                        <li><a href="customerlist.html"><i data-feather="user"></i><span>Customers</span></a></li>--}}
+{{--                        <li><a href="supplierlist.html"><i data-feather="users"></i><span>Suppliers</span></a></li>--}}
+{{--                        <li><a href="userlist.html"><i data-feather="user-check"></i><span>Users</span></a></li>--}}
+{{--                        <li><a href="storelist.html"><i data-feather="home"></i><span>Stores</span></a></li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+
 
                @can('')
                     <li class="submenu-open">
