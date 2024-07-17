@@ -1564,8 +1564,9 @@
                         dataType:'json',
                         success:function (success){
                             // $('#test_load').load();
-                            total_item++;
+                            // total_item++;
                             $('#total_item').val(success.amount.total_item);
+                            $('#total_taka').val(success.amount.total_taka);
                             var list='';
                             $.each(success.data,function (key,val){
                                 // i++;
@@ -1649,8 +1650,43 @@
                 data:{
                     'qty':id_val,
                 },
-                success:function (){
-
+                success:function (success){
+                    // $('#test_load').load();
+                    // total_item++;
+                    $('#total_item').val(success.amount.total_item);
+                    $('#total_taka').val(success.amount.total_taka);
+                    var list='';
+                    $.each(success.data,function (key,val){
+                        // i++;
+                        list +='<ul class="product-lists" id="ul'+ val.product_id +'" >'+
+                            '<li>'+
+                            '<div class="productimg">'+
+                            '<div class="productimgs">'+
+                            '<img src="'+ val.product_image +'"  alt="img">'+
+                            '</div>'+
+                            '<div class="productcontet">'+
+                            '<h4>'+val.product_name+
+                            '<a href="javascript:void(0);" class="ms-2" data-bs-toggle="modal" data-bs-target="#edit"><img src="{{asset('/')}}admin/assets/img/icons/edit-5.svg" alt="img"></a>'+
+                            '</h4>'+
+                            '<div class="productlinkset">'+
+                            // '<h5>PT001</h5>'+
+                            '</div>'+
+                            '<div class="increment-decrement">'+
+                            '<div class="input-groups">'+
+                            '<input type="text" class="form-control w-50 quantity-field" value="'+val.product_qty+'" data-id="'+ val.product_id +'" aria-describedby="emailHelp" placeholder="quntaty">'+
+                            // '<input type="button" value="-"  class="button-min  button">'+
+                            // '<input type="text" name="child"  value="'+val.product_qty+'" class="quantity-field product_qty" id="product_qty">'+
+                            // '<input type="button" value="+"  class="button-pls  button ">'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>'+
+                            '</li>'+
+                            '<li>'+val.product_price+'</li>'+
+                            '<li><a class="delete_confirm btn_remove " id="'+ val.product_id +'" href="javascript:void(0);"><img src="{{asset('/')}}admin/assets/img/icons/delete-2.svg" alt="img"></a></li>'+
+                            '</ul>'
+                    });
+                    $("#dy_product").empty().append(list);
                 }
             });
         })
