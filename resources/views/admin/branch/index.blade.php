@@ -171,6 +171,6 @@
 
 @endsection
 
-@section('custom-script')
+@section('js')
 
 @endsection

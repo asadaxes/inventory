@@ -11,8 +11,9 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('/')}}admin/assets/img/favicon.png">
-@include('admin.include.assets.css');
-    @notifyCss
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@include('admin.include.assets.css')
+{{--    @notifyCss--}}
 </head>
 
 <body>

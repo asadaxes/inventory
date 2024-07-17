@@ -520,6 +520,6 @@
 
 @endsection
 
-@section('custom-script')
+@section('js')
 {{--    @include('admin.include.plugin.datatable')--}}
 @endsection

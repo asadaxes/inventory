@@ -126,6 +126,6 @@
 {{--</x-app-web-layout>--}}
 @endsection
 
-@section('custom-script')
+@section('js')
     <script src="{{ url('admin/assets/js/checkbox.js') }}"></script>
 @endsection
