@@ -67,7 +67,7 @@ class ProductController extends Controller
         $product_data= session()->get('purches_item');
         $amount_data= session()->get('amount_data');
 
-        return $amount_data;
+//        return $amount_data;
         return response(['data'=>$product_data,'amount'=>$amount_data]);
     }
     public function delete_select_product(string $id)
@@ -99,7 +99,7 @@ class ProductController extends Controller
 
         $product_data= session()->get('purches_item');
         $amount_data= session()->get('amount_data');
-        return $amountdata;
+//        return $amountdata;
         return response(['data'=>$product_data,'amount'=>$amount_data]);
 
     }
