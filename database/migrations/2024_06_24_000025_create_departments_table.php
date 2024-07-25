@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->longText('description')->nullable();
-
+            $table->tinyInteger('status')->nullable();
             $table->timestamps();
         });
     }

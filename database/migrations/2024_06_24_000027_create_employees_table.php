@@ -24,13 +24,12 @@ return new class extends Migration {
             $table->string('dob')->nullable();
             $table->string('joining_date')->nullable();
             $table->string('salary')->nullable();
-            $table->string('status')->nullable();
             $table->string('image')->nullable();
             $table->longText('address')->nullable();
             $table->longText('per_address')->nullable();
             $table->unsignedBigInteger('company_id')->nullable();
             $table->unsignedBigInteger('branch_id')->nullable();
-
+            $table->tinyInteger('status')->nullable();
             $table->timestamps();
         });
     }

@@ -19,6 +19,9 @@ use App\Http\Controllers\Admin\Product\UnitController;
 use App\Http\Controllers\Admin\Product\ManufactureController;
 use App\Http\Controllers\Admin\People\CustomerController;
 use App\Http\Controllers\Admin\People\SupplierController;
+use App\Http\Controllers\Admin\Employee\DepartmentController;
+use App\Http\Controllers\Admin\Employee\DesignationController;
+use App\Http\Controllers\Admin\Employee\EmployeeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -114,6 +117,15 @@ Route::group(['middleware' => ['admin_access']], function() {
     //Supplier
     Route::resource('suppliers',SupplierController::class);
 //================================================ People module end===================================================
+
+//================================================ Employee module start=================================================
+    //department
+    Route::resource('department',DepartmentController::class);
+    //designation
+    Route::resource('designation',DesignationController::class);
+    //employee
+    Route::resource('employee',EmployeeController::class);
+//================================================ Employee module end===================================================
 
 
 });
