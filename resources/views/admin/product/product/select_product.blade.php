@@ -1,11 +1,11 @@
 @extends('admin.master')
 
-@section('title','Manufacture')
+@section('title','purches')
 
 @section('content')
     <div class="content">
         <div class="row">
-            <div class="col-lg-8 col-sm-12 tabs_wrapper" >
+            <div class="col-lg-6 col-sm-12 " >
                 <div class="page-header ">
                     <div class="page-title">
                         <h4>Categories</h4>
@@ -76,7 +76,7 @@
                 </ul>
                 <div class="tabs_container" >
                     <div  class="tab_content active" data-tab="fruits">
-                        <div class="row ">
+                        <div class="row " >
                             @foreach($products as $product)
                                 <div class="col-lg-3 col-sm-6 d-flex ">
                                     <div class="productset flex-fill " id="product_id{{$product->id}}" data-title="{{$product->id}}" >
@@ -95,103 +95,7 @@
                                     </div>
                                 </div>
                             @endforeach
-                            <div class="col-lg-3 col-sm-6 d-flex ">
-                                <div class="productset flex-fill " id="product_id0" data-title="1" >
-                                    <div class="productsetimg">
-                                        <img src="{{asset('/')}}admin/assets/img/product/product29.jpg" alt="img" >
-                                        <h6>Qty: 5.00</h6>
-                                        <div class="check-product">
-                                            <i class="fa fa-check"></i>
-                                        </div>
-                                    </div>
-                                    <div class="productsetcontent">
-                                        <h5 >Fruits</h5>
-                                        <h4>Orange</h4>
-                                        <h6>150.00</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 d-flex ">
-                                <div class="productset flex-fill " id="product_id1" data-title="2" >
-                                    <div class="productsetimg">
-                                        <img src="{{asset('/')}}admin/assets/img/product/product29.jpg" alt="img" >
-                                        <h6>Qty: 5.00</h6>
-                                        <div class="check-product">
-                                            <i class="fa fa-check"></i>
-                                        </div>
-                                    </div>
-                                    <div class="productsetcontent">
-                                        <h5 >Fruits</h5>
-                                        <h4>Orange</h4>
-                                        <h6>150.00</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 d-flex ">
-                                <div class="productset flex-fill">
-                                    <div class="productsetimg">
-                                        <img src="{{asset('/')}}admin/assets/img/product/product31.jpg" alt="img">
-                                        <h6>Qty: 1.00</h6>
-                                        <div class="check-product">
-                                            <i class="fa fa-check"></i>
-                                        </div>
-                                    </div>
-                                    <div class="productsetcontent">
-                                        <h5>Fruits</h5>
-                                        <h4>Strawberry</h4>
-                                        <h6>15.00</h6>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-lg-3 col-sm-6 d-flex ">
-                                <div class="productset flex-fill">
-                                    <div class="productsetimg">
-                                        <img src="{{asset('/')}}admin/assets/img/product/product35.jpg" alt="img">
-                                        <h6>Qty: 5.00</h6>
-                                        <div class="check-product">
-                                            <i class="fa fa-check"></i>
-                                        </div>
-                                    </div>
-                                    <div class="productsetcontent">
-                                        <h5>Fruits</h5>
-                                        <h4>Banana</h4>
-                                        <h6>150.00</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 d-flex ">
-                                <div class="productset flex-fill">
-                                    <div class="productsetimg">
-                                        <img src="{{asset('/')}}admin/assets/img/product/product37.jpg" alt="img">
-                                        <h6>Qty: 5.00</h6>
-                                        <div class="check-product">
-                                            <i class="fa fa-check"></i>
-                                        </div>
-                                    </div>
-                                    <div class="productsetcontent">
-                                        <h5>Fruits</h5>
-                                        <h4>Limon</h4>
-                                        <h6>1500.00</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 d-flex ">
-                                <div class="productset flex-fill">
-                                    <div class="productsetimg">
-                                        <img src="{{asset('/')}}admin/assets/img/product/product54.jpg" alt="img">
-                                        <h6>Qty: 5.00</h6>
-                                        <div class="check-product">
-                                            <i class="fa fa-check"></i>
-                                        </div>
-                                    </div>
-                                    <div class="productsetcontent">
-                                        <h5>Fruits</h5>
-                                        <h4>Apple</h4>
-                                        <h6>1500.00</h6>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="tab_content" data-tab="headphone">
@@ -547,61 +451,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab_content" data-tab="headphone1">
-                        <div class="row ">
-                            <div class="col-lg-3 col-sm-6 d-flex ">
-                                <div class="productset flex-fill">
-                                    <div class="productsetimg">
-                                        <img src="{{asset('/')}}admin/assets/img/product/product44.jpg" alt="img">
-                                        <h6>Qty: 5.00</h6>
-                                        <div class="check-product">
-                                            <i class="fa fa-check"></i>
-                                        </div>
-                                    </div>
-                                    <div class="productsetcontent">
-                                        <h5>Headphones</h5>
-                                        <h4>Earphones</h4>
-                                        <h6>150.00</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 d-flex ">
-                                <div class="productset flex-fill">
-                                    <div class="productsetimg">
-                                        <img src="{{asset('/')}}admin/assets/img/product/product45.jpg" alt="img">
-                                        <h6>Qty: 5.00</h6>
-                                        <div class="check-product">
-                                            <i class="fa fa-check"></i>
-                                        </div>
-                                    </div>
-                                    <div class="productsetcontent">
-                                        <h5>Headphones</h5>
-                                        <h4>Earphones</h4>
-                                        <h6>150.00</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-6 d-flex ">
-                                <div class="productset flex-fill">
-                                    <div class="productsetimg">
-                                        <img src="{{asset('/')}}admin/assets/img/product/product36.jpg" alt="img">
-                                        <h6>Qty: 5.00</h6>
-                                        <div class="check-product">
-                                            <i class="fa fa-check"></i>
-                                        </div>
-                                    </div>
-                                    <div class="productsetcontent">
-                                        <h5>Headphones</h5>
-                                        <h4>Earphones</h4>
-                                        <h6>150.00</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-12 ">
+            <div class="col-lg-6 col-sm-12 ">
                 <div class="order-list">
                     <div class="orderid">
                         <h4>Order List</h4>
@@ -640,20 +492,20 @@
                             <div class="col-lg-12">
                                 <div class="select-split ">
                                     <div class="select-group w-100">
-                                        <select class="select">
-                                            <option>Walk-in Customer</option>
-                                            <option>Chris Moris</option>
-                                        </select>
+{{--                                        <select class="select">--}}
+{{--                                            <option>Walk-in Customer</option>--}}
+{{--                                            <option>Chris Moris</option>--}}
+{{--                                        </select>--}}
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="select-split">
                                     <div class="select-group w-100">
-                                        <select class="select">
-                                            <option>Product </option>
-                                            <option>Barcode</option>
-                                        </select>
+{{--                                        <select class="select">--}}
+{{--                                            <option>Product </option>--}}
+{{--                                            <option>Barcode</option>--}}
+{{--                                        </select>--}}
                                     </div>
                                 </div>
                             </div>
@@ -691,9 +543,9 @@
                                                     <h4>{{$product['product_name']}}
                                                         <a href="javascript:void(0);" class="ms-2" data-bs-toggle="modal" data-bs-target="#edit"><img src="{{asset('/')}}admin/assets/img/icons/edit-5.svg" alt="img"></a>
                                                     </h4>
-                                                    {{--                                                <div class="productlinkset">--}}
-                                                    {{--                                                    <h5>PT001</h5>--}}
-                                                    {{--                                                </div>--}}
+                                                                                                    <div class="productlinkset">
+                                                                                                        <h5>PT001</h5>
+                                                                                                    </div>
                                                     <div class="">
                                                         <div class="input-groups ps-4">
 {{--                                                            <input type="button" value="-"  class="button-mi dec button">--}}
@@ -1552,6 +1404,27 @@
 
 @section('js')
     <script>
+        if ($('body').hasClass('mini-sidebar')) {
+            $('body').removeClass('mini-sidebar');
+            $(this).addClass('active');
+            $('.subdrop + ul');
+            localStorage.setItem('screenModeNightTokenState', 'night');
+            setTimeout(function() {
+                $("body").removeClass("mini-sidebar");
+                $(".header-left").addClass("active");
+            }, 100);
+        } else {
+            $('body').addClass('mini-sidebar');
+            $(this).removeClass('active');
+            $('.subdrop + ul');
+            localStorage.removeItem('screenModeNightTokenState', 'night');
+            setTimeout(function() {
+                $("body").addClass("mini-sidebar");
+                $(".header-left").removeClass("active");
+            }, 100);
+        }
+    </script>
+    <script>
         $(document).ready(function(){
             $("[id*=product_id]").on('click',function (){
                 var product_id=$(this).attr('data-title');
@@ -1692,5 +1565,6 @@
         })
     </script>
 @endsection
+
 
 

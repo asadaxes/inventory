@@ -13,7 +13,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        abort_if(!auth()->user()->can('view customer'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('view customers'),403,__('User does not have the right permissions.'));
         return view('admin.people.customer.index',[
             'customers'=>Customer::get(),
         ]);
@@ -24,7 +24,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        abort_if(!auth()->user()->can('create customer'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('create customers'),403,__('User does not have the right permissions.'));
         return view('admin.people.customer.create',[
 //            'companies'=>Brand::get(),
 //            'users'=>User::get(),
@@ -37,7 +37,7 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
 //        return $request;
-        abort_if(!auth()->user()->can('create customer'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('create customers'),403,__('User does not have the right permissions.'));
         $store=Customer::createOrUpdateUser($request);
 //        return $store;
 
@@ -57,7 +57,7 @@ class CustomerController extends Controller
      */
     public function edit(string $id)
     {
-        abort_if(!auth()->user()->can('update customer'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('update customers'),403,__('User does not have the right permissions.'));
         return view('admin.people.customer.edit',[
             'customer'=>Customer::find($id),
         ]);
@@ -68,7 +68,7 @@ class CustomerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        abort_if(!auth()->user()->can('update customer'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('update customers'),403,__('User does not have the right permissions.'));
         $update=Customer::createOrUpdateUser($request,$id);
         return redirect()->route('customers.index')->with('success','Customer information update successfully');
     }
@@ -79,7 +79,7 @@ class CustomerController extends Controller
     public function destroy(string $id)
     {
 //        return $id;
-        abort_if(!auth()->user()->can('delete customer'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('delete customers'),403,__('User does not have the right permissions.'));
         $delete=Customer::find($id);
         if (file_exists($delete->image)){
             unlink(public_path($delete->image));

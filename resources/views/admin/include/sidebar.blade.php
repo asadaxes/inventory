@@ -141,7 +141,7 @@
                     </li>
                 @endcan
 
-                @can('product management')
+                @can('people management')
                     <li class="submenu-open">
 {{--                        <h6 class="submenu-hdr">Peoples</h6>--}}
                         <ul>
@@ -163,6 +163,99 @@
                             </li>
                         </ul>
                     </li>
+                @endcan
+                @can('people management')
+                    <li class="submenu-open">
+{{--                        <h6 class="submenu-hdr">Peoples</h6>--}}
+                        <ul>
+                            <li class="submenu slide {{request()->is('suppliers*') || request()->is('customers*')  ?'is-expanded':''}}">
+                                <a href="javascript:void(0);" class="{{request()->is('customers*') || request()->is('suppliers*') ?'active subdrop':''}}"><i data-feather="users"></i></i>
+                                    <span>Purchases</span><span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    @can('view product')
+                                        <li><a href="{{ route('customers.index') }}" class="{{request()->is('customers*') ? 'active':''}}"><i data-feather="shopping-bag"></i><span>Purchases</span></a></li>
+                                    @endcan
+                                    @can('view brand')
+                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="minimize-2"></i><span>Import Purchases</span></a></li>
+                                    @endcan
+                                    @can('view brand')
+                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="file-minus"></i><span>Purchase Order</span></a></li>
+                                    @endcan
+                                    @can('view brand')
+                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="refresh-cw"></i><span>Purchase Return</span></a></li>
+                                    @endcan
+                                </ul>
+                                {{-- @endcan --}}
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
+                @can('people management')
+                    <li class="submenu-open">
+{{--                        <h6 class="submenu-hdr">Peoples</h6>--}}
+                        <ul>
+                            <li class="submenu slide {{request()->is('suppliers*') || request()->is('customers*')  ?'is-expanded':''}}">
+                                <a href="javascript:void(0);" class="{{request()->is('customers*') || request()->is('suppliers*') ?'active subdrop':''}}"><i data-feather="shopping-cart"></i><span>Sales</span><span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    @can('view product')
+                                        <li><a href="{{ route('customers.index') }}" class="{{request()->is('customers*') ? 'active':''}}"><i data-feather="shopping-cart"></i><span>Sales</span></a></li>
+                                    @endcan
+                                    @can('view brand')
+                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="file-text"></i><span>Invoices</span></a></li>
+                                    @endcan
+                                    @can('view brand')
+                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="copy"></i><span>Sales Return</span></a></li>
+                                    @endcan
+                                    @can('view brand')
+                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="save"></i><span>Quotation</span></a></li>
+                                    @endcan
+                                        <li><a href="pos.html"><i data-feather="hard-drive"></i><span>POS</span></a></li>
+                                        <li class="submenu">
+                                            <a href="javascript:void(0);"><i data-feather="shuffle"></i><span>Transfer</span><span class="menu-arrow"></span></a>
+                                            <ul>
+                                                <li><a href="transferlist.html">Transfer List</a></li>
+                                                <li><a href="importtransfer.html">Import Transfer </a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="submenu">
+                                            <a href="javascript:void(0);"><i data-feather="corner-up-left"></i><span>Return</span><span class="menu-arrow"></span></a>
+                                            <ul>
+                                                <li><a href="salesreturnlist.html">Sales Return</a></li>
+                                                <li><a href="purchasereturnlist.html">Purchase Return</a></li>
+                                            </ul>
+                                        </li>
+                                </ul>
+                                {{-- @endcan --}}
+                            </li>
+                        </ul>
+                    </li>
+
+{{--                    <li class="submenu-open">--}}
+{{--                        <h6 class="submenu-hdr">Sales</h6>--}}
+{{--                        <ul>--}}
+{{--                            <li><a href="saleslist.html"><i data-feather="shopping-cart"></i><span>Sales</span></a></li>--}}
+{{--                            <li><a href="invoicereport.html"><i data-feather="file-text"></i><span>Invoices</span></a></li>--}}
+{{--                            <li><a href="salesreturnlists.html"><i data-feather="copy"></i><span>Sales Return</span></a></li>--}}
+{{--                            <li><a href="quotationList.html"><i data-feather="save"></i><span>Quotation</span></a></li>--}}
+{{--                            <li><a href="pos.html"><i data-feather="hard-drive"></i><span>POS</span></a></li>--}}
+{{--                            <li class="submenu">--}}
+{{--                                <a href="javascript:void(0);"><i data-feather="shuffle"></i><span>Transfer</span><span class="menu-arrow"></span></a>--}}
+{{--                                <ul>--}}
+{{--                                    <li><a href="transferlist.html">Transfer List</a></li>--}}
+{{--                                    <li><a href="importtransfer.html">Import Transfer </a></li>--}}
+{{--                                </ul>--}}
+{{--                            </li>--}}
+{{--                            <li class="submenu">--}}
+{{--                                <a href="javascript:void(0);"><i data-feather="corner-up-left"></i><span>Return</span><span class="menu-arrow"></span></a>--}}
+{{--                                <ul>--}}
+{{--                                    <li><a href="salesreturnlist.html">Sales Return</a></li>--}}
+{{--                                    <li><a href="purchasereturnlist.html">Purchase Return</a></li>--}}
+{{--                                </ul>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
                 @endcan
 
 {{--                <li class="submenu-open">--}}
@@ -196,7 +289,7 @@
                             <li><a href="invoicereport.html"><i data-feather="file-text"></i><span>Invoices</span></a></li>
                             <li><a href="salesreturnlists.html"><i data-feather="copy"></i><span>Sales Return</span></a></li>
                             <li><a href="quotationList.html"><i data-feather="save"></i><span>Quotation</span></a></li>
-                            <li><a href="pos.html"><i data-feather="hard-drive"></i><span>POS</a></li>
+                            <li><a href="pos.html"><i data-feather="hard-drive"></i><span>POS</span></a></li>
                             <li class="submenu">
                                 <a href="javascript:void(0);"><i data-feather="shuffle"></i><span>Transfer</span><span class="menu-arrow"></span></a>
                                 <ul>
