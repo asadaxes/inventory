@@ -12,11 +12,11 @@ class Brand extends Model
     use HasFactory;
 //    use Searchable;
 
-    protected  static $brand;
+
     protected $fillable = ['name', 'image', 'description', 'status', 'slug'];
 
     protected $searchableFields = ['*'];
-
+    protected  static $brand;
     public static function createOrUpdateUser ($request, $id = null)
     {
         if (isset($id))

@@ -257,6 +257,33 @@
 {{--                        </ul>--}}
 {{--                    </li>--}}
                 @endcan
+                @can('people management')
+                    <li class="submenu-open">
+                        {{--                        <h6 class="submenu-hdr">Peoples</h6>--}}
+                        <ul>
+                            <li class="submenu slide {{request()->is('department*') || request()->is('customers*')  ?'is-expanded':''}}">
+                                <a href="javascript:void(0);" class="{{request()->is('customers*') || request()->is('suppliers*') ?'active subdrop':''}}"><i data-feather="users"></i></i>
+                                    <span>Employee</span><span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    @can('view product')
+                                        <li><a href="{{ route('department.index') }}" class="{{request()->is('department*') ? 'active':''}}"><i data-feather="shopping-bag"></i><span>Department</span></a></li>
+                                    @endcan
+                                    @can('view brand')
+                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="minimize-2"></i><span>Designation</span></a></li>
+                                    @endcan
+                                    @can('view brand')
+                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="file-minus"></i><span>Employee</span></a></li>
+                                    @endcan
+{{--                                    @can('view brand')--}}
+{{--                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="refresh-cw"></i><span>Purchase Return</span></a></li>--}}
+{{--                                    @endcan--}}
+                                </ul>
+                                {{-- @endcan --}}
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
 
 {{--                <li class="submenu-open">--}}
 {{--                    <h6 class="submenu-hdr">Peoples</h6>--}}
