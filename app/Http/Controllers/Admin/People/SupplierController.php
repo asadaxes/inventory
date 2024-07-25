@@ -13,7 +13,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        abort_if(!auth()->user()->can('view customer'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('view suppliers'),403,__('User does not have the right permissions.'));
         return view('admin.people.supplier.index',[
             'suppliers'=>Supplier::get(),
         ]);
@@ -24,7 +24,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        abort_if(!auth()->user()->can('create customer'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('create suppliers'),403,__('User does not have the right permissions.'));
         return view('admin.people.supplier.create',[
 //            'companies'=>Brand::get(),
 //            'users'=>User::get(),
@@ -37,7 +37,7 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
 //        return $request;
-        abort_if(!auth()->user()->can('create customer'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('create suppliers'),403,__('User does not have the right permissions.'));
         $store=Supplier::createOrUpdateUser($request);
 //        return $store;
 
@@ -57,7 +57,7 @@ class SupplierController extends Controller
      */
     public function edit(string $id)
     {
-        abort_if(!auth()->user()->can('update customer'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('update suppliers'),403,__('User does not have the right permissions.'));
         return view('admin.people.supplier.edit',[
             'supplier'=>Supplier::find($id),
         ]);
@@ -68,7 +68,7 @@ class SupplierController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        abort_if(!auth()->user()->can('update customer'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('update suppliers'),403,__('User does not have the right permissions.'));
         $update=Supplier::createOrUpdateUser($request,$id);
         return redirect()->route('suppliers.index')->with('success','Supplier information update successfully');
     }
@@ -79,7 +79,7 @@ class SupplierController extends Controller
     public function destroy(string $id)
     {
 //        return $id;
-        abort_if(!auth()->user()->can('delete customer'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('delete suppliers'),403,__('User does not have the right permissions.'));
         $delete=Supplier::find($id);
         if (file_exists($delete->image)){
             unlink(public_path($delete->image));
