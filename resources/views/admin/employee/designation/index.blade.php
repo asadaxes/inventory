@@ -1,16 +1,16 @@
 @extends('admin.master')
 
-@section('title','department')
+@section('title','designation')
 
 @section('content')
     <div class="content">
         <div class="page-header">
             <div class="page-title">
-                <h4>Department List</h4>
-                <h6>Manage your Department</h6>
+                <h4>Designation List</h4>
+                <h6>Manage your Designation</h6>
             </div>
             <div class="page-btn">
-                <a href="{{route('department.create')}}" class="btn btn-added"> <img src="{{asset('/')}}admin/assets/img/icons/plus.svg" alt="img">Add Department</a>
+                <a href="{{route('designation.create')}}" class="btn btn-added"> <img src="{{asset('/')}}admin/assets/img/icons/plus.svg" alt="img">Add Designation</a>
             </div>
         </div>
         <!-- /product list -->
@@ -92,7 +92,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($departments as $department)
+                        @foreach($designations as $designation)
                             <tr>
                                 <td>
                                     <label class="checkboxs">
@@ -100,17 +100,17 @@
                                         <span class="checkmarks"></span>
                                     </label>
                                 </td>
-                                <td>{{$department->name}}</td>
-                                <td>{!! $department->description !!}</td>
-                                <td>{{ $department->status == 1? 'Active':'Inactive' }}</td>
+                                <td>{{$designation->name}}</td>
+                                <td>{!! $designation->description !!}</td>
+                                <td>{{ $designation->status == 1? 'Active':'Inactive' }}</td>
                                 <td>
                                     @can('update brand')
-                                        <a class="me-3" href="{{route('department.edit',$department->id)}}">
+                                        <a class="me-3" href="{{route('designation.edit',$designation->id)}}">
                                             <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
                                         </a>
                                     @endcan
                                     @can('delete brand')
-                                        <form action="{{route('department.destroy',$department->id)}}" method="POST" class="sr-dl" >
+                                        <form action="{{route('designation.destroy',$designation->id)}}" method="POST" class="sr-dl" >
                                             @csrf
                                             @method('delete')
                                             <a class="delete_confirm" href="javascript:void(0);">
