@@ -95,7 +95,6 @@
                                     </div>
                                 </div>
                             @endforeach
-
                         </div>
                     </div>
                     <div class="tab_content" data-tab="headphone">
@@ -224,7 +223,6 @@
                     </div>
                     <div class="tab_content" data-tab="computer">
                         <div class="row">
-
                             <div class="col-lg-3 col-sm-6 d-flex ">
                                 <div class="productset flex-fill">
                                     <div class="productsetimg">
@@ -381,8 +379,7 @@
                         </div>
                     </div>
                     <div  class="tab_content" data-tab="fruits1">
-                        <div class="row ">
-
+                        <div class="row">
                             <div class="col-lg-3 col-sm-6 d-flex ">
                                 <div class="productset flex-fill">
                                     <div class="productsetimg">
@@ -415,7 +412,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-lg-3 col-sm-6 d-flex ">
                                 <div class="productset flex-fill">
                                     <div class="productsetimg">
@@ -432,7 +428,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-lg-3 col-sm-6 d-flex ">
                                 <div class="productset flex-fill">
                                     <div class="productsetimg">
@@ -753,7 +748,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="edit" tabindex="-1"    aria-hidden="true">
+    <div class="modal fade" id="edit" tabindex="-1"  aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -950,134 +945,134 @@
                                 <div class="table-responsive">
                                     <table class="table datanew">
                                         <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Reference</th>
-                                            <th>Customer</th>
-                                            <th>Amount	</th>
-                                            <th class="text-end">Action</th>
-                                        </tr>
+                                            <tr>
+                                                <th>Date</th>
+                                                <th>Reference</th>
+                                                <th>Customer</th>
+                                                <th>Amount	</th>
+                                                <th class="text-end">Action</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>INV/SL0101</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>INV/SL0101</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>INV/SL0101</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>INV/SL0101</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>INV/SL0101</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>INV/SL0101</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>INV/SL0101</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>INV/SL0101</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>INV/SL0101</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>INV/SL0101</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>INV/SL0101</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>INV/SL0101</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>INV/SL0101</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>INV/SL0101</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -1106,7 +1101,7 @@
                                 <div class="table-responsive">
                                     <table class="table datanew">
                                         <thead>
-                                        <tr>
+                                             <tr>
                                             <th>Date</th>
                                             <th>Reference</th>
                                             <th>Customer</th>
@@ -1115,125 +1110,125 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>0101</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>0102</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>0103</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>0104</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>0105</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>0106</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>0107</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>0101</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>0102</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>0103</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>0104</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>0105</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>0106</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>0107</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -1262,7 +1257,7 @@
                                 <div class="table-responsive">
                                     <table class="table datanew">
                                         <thead>
-                                        <tr>
+                                             <tr>
                                             <th>Date</th>
                                             <th>Reference</th>
                                             <th>Customer</th>
@@ -1271,125 +1266,125 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>0101</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>0102</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>0103</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>0104</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>0105</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>0106</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2022-03-07	</td>
-                                            <td>0107</td>
-                                            <td>Walk-in Customer</td>
-                                            <td>$ 1500.00</td>
-                                            <td>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
-                                                </a>
-                                                <a class="me-3" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
-                                                </a>
-                                                <a class="me-3 confirm-text" href="javascript:void(0);">
-                                                    <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
-                                                </a>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>0101</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>0102</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>0103</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>0104</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>0105</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>0106</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2022-03-07	</td>
+                                                <td>0107</td>
+                                                <td>Walk-in Customer</td>
+                                                <td>$ 1500.00</td>
+                                                <td>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/eye.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
+                                                    </a>
+                                                    <a class="me-3 confirm-text" href="javascript:void(0);">
+                                                        <img src="{{asset('/')}}admin/assets/img/icons/delete.svg" alt="img">
+                                                    </a>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>

@@ -270,7 +270,7 @@
                                         <li><a href="{{ route('department.index') }}" class="{{request()->is('department*') ? 'active':''}}"><i data-feather="shopping-bag"></i><span>Department</span></a></li>
                                     @endcan
                                     @can('view brand')
-                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="minimize-2"></i><span>Designation</span></a></li>
+                                        <li><a href="{{route('designation.index')}}" class="{{request()->is('designation*') ? 'active':''}}" ><i data-feather="minimize-2"></i><span>Designation</span></a></li>
                                     @endcan
                                     @can('view brand')
                                         <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="file-minus"></i><span>Employee</span></a></li>
