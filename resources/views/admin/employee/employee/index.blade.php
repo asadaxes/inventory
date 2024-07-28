@@ -1,16 +1,16 @@
 @extends('admin.master')
 
-@section('title','category')
+@section('title','employee')
 
 @section('content')
     <div class="content">
         <div class="page-header">
             <div class="page-title">
-                <h4>Customer List</h4>
-                <h6>Manage your Customers</h6>
+                <h4>Employee List</h4>
+                <h6>Manage your Employee</h6>
             </div>
             <div class="page-btn">
-                <a href="{{route('customers.create')}}" class="btn btn-added"> <img src="{{asset('/')}}admin/assets/img/icons/plus.svg" alt="img">Add Customer</a>
+                <a href="{{route('employee.create')}}" class="btn btn-added"> <img src="{{asset('/')}}admin/assets/img/icons/plus.svg" alt="img">Add employee</a>
             </div>
         </div>
         <!-- /product list -->
@@ -85,17 +85,27 @@
                                     <span class="checkmarks"></span>
                                 </label>
                             </th>
-                            <th>Customer image</th>
-                            <th>code</th>
-                            <th>Customer</th>
-                            <th>Phone</th>
+                            <th>Employee image</th>
+                            <th>name</th>
+                            <th>department_id</th>
+                            <th>designation_id</th>
+                            <th>fname</th>
+                            <th>mname</th>
+                            <th>mobile</th>
+                            <th>phone</th>
                             <th>email</th>
+                            <th>nid</th>
+                            <th>dob</th>
+                            <th>joining_date</th>
+                            <th>salary</th>
+                            <th>address</th>
+                            <th>per_address</th>
                             <th>status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($customers as $customer)
+                        @foreach($employees as $employee)
                             <tr>
                                 <td>
                                     <label class="checkboxs">
@@ -105,23 +115,33 @@
                                 </td>
                                 <td class="productimgname">
                                     <a href="javascript:void(0);" class="product-img">
-                                        <img src="{{isset($customer->image)?asset($customer->image):asset('admin/assets/img/customer/customer1.jpg')}}" alt="product">
+                                        <img src="{{isset($employee->image)?asset($employee->image):asset('admin/assets/img/customer/customer1.jpg')}}" alt="product">
                                     </a>
-                                    <a href="javascript:void(0);">{{$customer->name}}</a>
+                                    <a href="javascript:void(0);">{{$employee->name}}</a>
                                 </td>
-                                <td>{{$customer->cus_code}}</td>
-                                <td>{{$customer->name}}</td>
-                                <td>{{$customer->mobile}}</td>
-                                <td>{{$customer->email}}</td>
-                                <td>{{ $customer->status == 1? 'Active':'Inactive' }}</td>
+                                <td>{{$employee->name}}</td>
+                                <td>{{$employee->department_id}}</td>
+                                <td>{{$employee->designation_id}}</td>
+                                <td>{{$employee->fname}}</td>
+                                <td>{{$employee->mname}}</td>
+                                <td>{{$employee->mobile}}</td>
+                                <td>{{$employee->phone}}</td>
+                                <td>{{$employee->email}}</td>
+                                <td>{{$employee->nid}}</td>
+                                <td>{{$employee->dob}}</td>
+                                <td>{{$employee->joining_date}}</td>
+                                <td>{{$employee->salary}}</td>
+                                <td>{{$employee->address}}</td>
+                                <td>{{$employee->per_address}}</td>
+                                <td>{{ $employee->status == 1? 'Active':'Inactive' }}</td>
                                 <td>
                                     @can('update brand')
-                                        <a class="me-3" href="{{route('customers.edit',$customer->id)}}">
+                                        <a class="me-3" href="{{route('employee.edit',$employee->id)}}">
                                             <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
                                         </a>
                                     @endcan
                                     @can('delete brand')
-                                        <form action="{{route('customers.destroy',$customer->id)}}" method="POST" class="sr-dl" >
+                                        <form action="{{route('employee.destroy',$employee->id)}}" method="POST" class="sr-dl" >
                                             @csrf
                                             @method('delete')
                                             <a class="delete_confirm" href="javascript:void(0);">
