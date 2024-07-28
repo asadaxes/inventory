@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -12,7 +13,10 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        abort_if(!auth()->user()->can('view customers'),403,__('User does not have the right permissions.'));
+        return view('admin.employee.employee.index',[
+            'employees'=>Employee::get(),
+        ]);
     }
 
     /**
@@ -20,7 +24,11 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        abort_if(!auth()->user()->can('create customers'),403,__('User does not have the right permissions.'));
+        return view('admin.employee.employee.create',[
+//            'companies'=>Brand::get(),
+//            'users'=>User::get(),
+        ]);
     }
 
     /**
@@ -28,7 +36,12 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        return $request;
+        abort_if(!auth()->user()->can('create customers'),403,__('User does not have the right permissions.'));
+        $store=Employee::createOrUpdateUser($request);
+//        return $store;
+
+        return redirect()->route('employee.index')->with('success','Employee create successfully');
     }
 
     /**
@@ -44,7 +57,10 @@ class EmployeeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        abort_if(!auth()->user()->can('update customers'),403,__('User does not have the right permissions.'));
+        return view('admin.employee.employee.edit',[
+            'employee'=>Employee::find($id),
+        ]);
     }
 
     /**
@@ -52,7 +68,9 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        abort_if(!auth()->user()->can('update customers'),403,__('User does not have the right permissions.'));
+        $update=Employee::createOrUpdateUser($request,$id);
+        return redirect()->route('employee.index')->with('success','Employee information update successfully');
     }
 
     /**
@@ -60,6 +78,10 @@ class EmployeeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+//        return $id;
+        abort_if(!auth()->user()->can('delete customers'),403,__('User does not have the right permissions.'));
+        $delete=Employee::find($id);
+        $delete->delete();
+        return redirect()->route('employee.index')->with('error','Employee delete successfully');
     }
 }

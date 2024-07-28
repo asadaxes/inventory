@@ -13,62 +13,80 @@
         <!-- /add -->
         <div class="card">
             <div class="card-body">
-                <form action="{{route('customers.update',$customer->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('employee.update',$employee->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="row">
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Customer Name</label>
-                                <input type="text" name="name" value="{{$customer->name}}">
+                                <label> Name</label>
+                                <input type="text" name="name" value="{{$employee->name}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label> department_id</label>
+                                <input type="text" name="department_id" value="{{$employee->department_id}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label> designation_id</label>
+                                <input type="text" name="designation_id" value="{{$employee->designation_id}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label> fname</label>
+                                <input type="text" name="fname" value="{{$employee->fname}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label> mname</label>
+                                <input type="text" name="mname" value="{{$employee->mname}}">
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="text" name="email" value="{{$customer->email}}" >
+                                <input type="text" name="email" value="{{$employee->email}}">
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input type="text" name="mobile" value="{{$customer->mobile}}" >
+                                <input type="text" name="phone" value="{{$employee->phone}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Mobile</label>
+                                <input type="text" name="mobile" value="{{$employee->mobile}}">
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>NID</label>
-                                <input type="text" name="nid" value="{{$customer->nid}}">
+                                <input type="text" name="nid" value="{{$employee->nid}}">
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Contact Person</label>
-                                <input type="text" name="cperson" value="{{$customer->cperson}}">
+                                <label>Date of Birth</label>
+                                <input type="date" name="dob" value="{{$employee->dob}}">
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Contact mobile</label>
-                                <input type="text" name="cmobile" value="{{$customer->cmobile}}">
+                                <label>joining_date</label>
+                                <input type="text" name="joining_date" value="{{$employee->joining_date}}">
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Creditlimit</label>
-                                <input type="text" name="creditlimit" value="{{$customer->creditlimit}}">
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label>Balance</label>
-                                <input type="text" name="balance" value="{{$customer->balance}}">
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label>Rank</label>
-                                <input type="text" name="rank" value="{{$customer->rank}}">
+                                <label>salary</label>
+                                <input type="text" name="salary" value="{{$employee->salary}}">
                             </div>
                         </div>
 
@@ -77,48 +95,29 @@
                                 <label class="d-block">Status</label>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="status" id="gender_male"
-                                           value="1" {{$customer->status == 1?'checked':''}}>
+                                           value="1" {{$employee->status == 1?'checked':''}}>
                                     <label class="form-check-label" for="gender_male">Active</label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="status" id="gender_female"
-                                           value="0" {{$customer->status == 0?'checked':''}}>
+                                           value="0" {{$employee->status == 0?'checked':''}}>
                                     <label class="form-check-label" for="gender_female">Inactive</label>
                                 </div>
                             </div>
                         </div>
-                        {{--                    <div class="col-lg-3 col-sm-6 col-12">--}}
-                        {{--                        <div class="form-group">--}}
-                        {{--                            <label>Choose Country</label>--}}
-                        {{--                            <select class="select">--}}
-                        {{--                                <option>Choose Country</option>--}}
-                        {{--                                <option>India</option>--}}
-                        {{--                                <option>USA</option>--}}
-                        {{--                            </select>--}}
-                        {{--                        </div>--}}
-                        {{--                    </div>--}}
-                        {{--                    <div class="col-lg-3 col-sm-6 col-12">--}}
-                        {{--                        <div class="form-group">--}}
-                        {{--                            <label>City</label>--}}
-                        {{--                            <select class="select">--}}
-                        {{--                                <option>Choose City</option>--}}
-                        {{--                                <option>City 1</option>--}}
-                        {{--                                <option>City 2</option>--}}
-                        {{--                            </select>--}}
-                        {{--                        </div>--}}
-                        {{--                    </div>--}}
                         <div class="col-lg-9 col-12">
                             <div class="form-group">
-                                <label>Address</label>
-                                <input type="text" name="address" value="{{$customer->address}}">
+                                <label>address</label>
+                                <textarea class="form-control" name="address">{!! $employee->address !!}</textarea>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control" name="note">{!! $customer->note !!}</textarea>
+                                <label>per_address</label>
+                                <textarea class="form-control" name="per_address">{!! $employee->per_address !!}</textarea>
                             </div>
                         </div>
+
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label>	Avatar</label>
@@ -136,11 +135,11 @@
                                 <li>
                                     <div class="productviews">
                                         <div class="productviewsimg">
-                                            <img src="{{asset($customer->image)}}" alt="img">
+                                            <img src="{{asset($employee->image)}}" alt="img">
                                         </div>
                                         <div class="productviewscontent">
                                             <div class="productviewsname">
-                                                <h2>{{$customer->name}}</h2>
+                                                <h2>{{$employee->name}}</h2>
                                                 {{--                                                    <h3>581kb</h3>--}}
                                             </div>
                                             <a href="javascript:void(0);" class="hideset">x</a>
@@ -151,7 +150,7 @@
                         </div>
                         <div class="col-lg-12">
                             <button type="submit"  class="btn btn-submit me-2">update</button>
-                            <a href="{{route('customers.index')}}"  class="btn btn-cancel">Cancel</a>
+                            <a href="{{route('employee.index')}}"  class="btn btn-cancel">Cancel</a>
                         </div>
                     </div>
                 </form>

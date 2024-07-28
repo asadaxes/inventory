@@ -1,25 +1,49 @@
 @extends('admin.master')
 
-@section('title','category')
+@section('title','employee')
 
 @section('content')
     <div class="content">
         <div class="page-header">
             <div class="page-title">
-                <h4>Customer Management</h4>
-                <h6>Add/Update Customer</h6>
+                <h4>Employee Management</h4>
+                <h6>Add/Update Employee</h6>
             </div>
         </div>
         <!-- /add -->
         <div class="card">
             <div class="card-body">
-                <form action="{{route('customers.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('employee.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Customer Name</label>
+                                <label> Name</label>
                                 <input type="text" name="name" >
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label> department_id</label>
+                                <input type="text" name="department_id" >
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label> designation_id</label>
+                                <input type="text" name="designation_id" >
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label> fname</label>
+                                <input type="text" name="fname" >
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label> mname</label>
+                                <input type="text" name="mname" >
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
@@ -31,6 +55,12 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label>Phone</label>
+                                <input type="text" name="phone" >
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label>Mobile</label>
                                 <input type="text" name="mobile" >
                             </div>
                         </div>
@@ -42,32 +72,20 @@
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Contact Person</label>
-                                <input type="text" name="cperson" >
+                                <label>Date of Birth</label>
+                                <input type="date" name="dob" >
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Contact mobile</label>
-                                <input type="text" name="cmobile" >
+                                <label>joining_date</label>
+                                <input type="text" name="joining_date" >
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>Creditlimit</label>
-                                <input type="text" name="creditlimit" >
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label>Balance</label>
-                                <input type="text" name="balance" >
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="form-group">
-                                <label>Rank</label>
-                                <input type="text" name="rank" >
+                                <label>salary</label>
+                                <input type="text" name="salary" >
                             </div>
                         </div>
 
@@ -86,36 +104,16 @@
                                 </div>
                             </div>
                         </div>
-                        {{--                    <div class="col-lg-3 col-sm-6 col-12">--}}
-                        {{--                        <div class="form-group">--}}
-                        {{--                            <label>Choose Country</label>--}}
-                        {{--                            <select class="select">--}}
-                        {{--                                <option>Choose Country</option>--}}
-                        {{--                                <option>India</option>--}}
-                        {{--                                <option>USA</option>--}}
-                        {{--                            </select>--}}
-                        {{--                        </div>--}}
-                        {{--                    </div>--}}
-                        {{--                    <div class="col-lg-3 col-sm-6 col-12">--}}
-                        {{--                        <div class="form-group">--}}
-                        {{--                            <label>City</label>--}}
-                        {{--                            <select class="select">--}}
-                        {{--                                <option>Choose City</option>--}}
-                        {{--                                <option>City 1</option>--}}
-                        {{--                                <option>City 2</option>--}}
-                        {{--                            </select>--}}
-                        {{--                        </div>--}}
-                        {{--                    </div>--}}
                         <div class="col-lg-9 col-12">
                             <div class="form-group">
-                                <label>Address</label>
+                                <label>address</label>
                                 <input type="text" name="address">
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control" name="note"></textarea>
+                                <label>per_address</label>
+                                <textarea class="form-control" name="per_address"></textarea>
                             </div>
                         </div>
                         <div class="col-lg-12">
@@ -132,7 +130,7 @@
                         </div>
                         <div class="col-lg-12">
                             <button type="submit"  class="btn btn-submit me-2">Submit</button>
-                            <a href="{{route('customers.index')}}"  class="btn btn-cancel">Cancel</a>
+                            <a href="{{route('employee.index')}}"  class="btn btn-cancel">Cancel</a>
                         </div>
                     </div>
                 </form>
