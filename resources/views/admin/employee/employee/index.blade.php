@@ -135,12 +135,12 @@
                                 <td>{{$employee->per_address}}</td>
                                 <td>{{ $employee->status == 1? 'Active':'Inactive' }}</td>
                                 <td>
-                                    @can('update brand')
+                                    @can('update employee')
                                         <a class="me-3" href="{{route('employee.edit',$employee->id)}}">
                                             <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
                                         </a>
                                     @endcan
-                                    @can('delete brand')
+                                    @can('delete employee')
                                         <form action="{{route('employee.destroy',$employee->id)}}" method="POST" class="sr-dl" >
                                             @csrf
                                             @method('delete')

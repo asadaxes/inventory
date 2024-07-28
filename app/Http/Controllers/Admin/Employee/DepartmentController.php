@@ -13,7 +13,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        abort_if(!auth()->user()->can('view customers'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('view department'),403,__('User does not have the right permissions.'));
         return view('admin.employee.department.index',[
             'departments'=>Department::get(),
         ]);
@@ -24,7 +24,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        abort_if(!auth()->user()->can('create customers'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('create department'),403,__('User does not have the right permissions.'));
         return view('admin.employee.department.create',[
 //            'companies'=>Brand::get(),
 //            'users'=>User::get(),
@@ -37,7 +37,7 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
 //        return $request;
-        abort_if(!auth()->user()->can('create customers'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('create department'),403,__('User does not have the right permissions.'));
         $store=Department::createOrUpdateUser($request);
 //        return $store;
 
@@ -57,7 +57,7 @@ class DepartmentController extends Controller
      */
     public function edit(string $id)
     {
-        abort_if(!auth()->user()->can('update customers'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('update department'),403,__('User does not have the right permissions.'));
         return view('admin.employee.department.edit',[
             'department'=>Department::find($id),
         ]);
@@ -68,7 +68,7 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        abort_if(!auth()->user()->can('update customers'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('update department'),403,__('User does not have the right permissions.'));
         $update=Department::createOrUpdateUser($request,$id);
         return redirect()->route('department.index')->with('success','Department information update successfully');
     }
@@ -79,7 +79,7 @@ class DepartmentController extends Controller
     public function destroy(string $id)
     {
 //        return $id;
-        abort_if(!auth()->user()->can('delete customers'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('delete department'),403,__('User does not have the right permissions.'));
         $delete=Department::find($id);
         $delete->delete();
         return redirect()->route('department.index')->with('error','Department delete successfully');

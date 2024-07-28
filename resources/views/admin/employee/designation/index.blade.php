@@ -104,12 +104,12 @@
                                 <td>{!! $designation->description !!}</td>
                                 <td>{{ $designation->status == 1? 'Active':'Inactive' }}</td>
                                 <td>
-                                    @can('update brand')
+                                    @can('update designation')
                                         <a class="me-3" href="{{route('designation.edit',$designation->id)}}">
                                             <img src="{{asset('/')}}admin/assets/img/icons/edit.svg" alt="img">
                                         </a>
                                     @endcan
-                                    @can('delete brand')
+                                    @can('delete designation')
                                         <form action="{{route('designation.destroy',$designation->id)}}" method="POST" class="sr-dl" >
                                             @csrf
                                             @method('delete')
