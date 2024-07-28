@@ -1446,7 +1446,7 @@
                                     '</div>'+
                                     '<div class="productcontet">'+
                                     '<h4>'+val.product_name+
-                                    '<a href="javascript:void(0);" class="ms-2" data-bs-toggle="modal" data-bs-target="#edit"><img src="{{asset('/')}}admin/assets/img/icons/edit-5.svg" alt="img"></a>'+
+                                    '<a href="javascript:void(0);" class="ms-2" data-bs-toggle="modal" data-bs-target="#edit"><img src="{{asset('/')}}admin/assets/img/icons/edit-5.svg" alt="img">edit</a>'+
                                     '</h4>'+
                                     '<div class="productlinkset">'+
                                     // '<h5>PT001</h5>'+

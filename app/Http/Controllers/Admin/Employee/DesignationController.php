@@ -13,7 +13,7 @@ class DesignationController extends Controller
      */
     public function index()
     {
-        abort_if(!auth()->user()->can('view customers'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('view designation'),403,__('User does not have the right permissions.'));
         return view('admin.employee.designation.index',[
             'designations'=>Designation::get(),
         ]);
@@ -24,7 +24,7 @@ class DesignationController extends Controller
      */
     public function create()
     {
-        abort_if(!auth()->user()->can('create customers'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('create designation'),403,__('User does not have the right permissions.'));
         return view('admin.employee.designation.create',[
 //            'companies'=>Brand::get(),
 //            'users'=>User::get(),
@@ -37,7 +37,7 @@ class DesignationController extends Controller
     public function store(Request $request)
     {
 //        return $request;
-        abort_if(!auth()->user()->can('create customers'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('create designation'),403,__('User does not have the right permissions.'));
         $store=Designation::createOrUpdateUser($request);
 //        return $store;
 
@@ -57,7 +57,7 @@ class DesignationController extends Controller
      */
     public function edit(string $id)
     {
-        abort_if(!auth()->user()->can('update customers'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('update designation'),403,__('User does not have the right permissions.'));
         return view('admin.employee.designation.edit',[
             'designation'=>Designation::find($id),
         ]);
@@ -68,7 +68,7 @@ class DesignationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        abort_if(!auth()->user()->can('update customers'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('update designation'),403,__('User does not have the right permissions.'));
         $update=Designation::createOrUpdateUser($request,$id);
         return redirect()->route('designation.index')->with('success','Designation information update successfully');
     }
@@ -79,7 +79,7 @@ class DesignationController extends Controller
     public function destroy(string $id)
     {
 //        return $id;
-        abort_if(!auth()->user()->can('delete customers'),403,__('User does not have the right permissions.'));
+        abort_if(!auth()->user()->can('delete designation'),403,__('User does not have the right permissions.'));
         $delete=Designation::find($id);
         $delete->delete();
         return redirect()->route('designation.index')->with('error','Designation delete successfully');
