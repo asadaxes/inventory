@@ -26,24 +26,36 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label> department_id</label>
-                                <input type="text" name="department_id" value="{{$employee->department_id}}">
+{{--                                <input type="text" name="department_id" value="{{$employee->department_id}}">--}}
+                                <select class="select" name="department_id" >
+                                    <option>Choose department</option>
+                                    @foreach($departments as $department)
+                                        <option value="{{$department->id}}" {{$department->id == $employee->department_id ? 'selected':''}} >{{$department->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
                                 <label> designation_id</label>
-                                <input type="text" name="designation_id" value="{{$employee->designation_id}}">
+{{--                                <input type="text" name="designation_id" value="{{$employee->designation_id}}">--}}
+                                <select class="select" name="designation_id" >
+                                    <option>Choose department</option>
+                                    @foreach($designations as $designation)
+                                        <option value="{{$designation->id}}" {{$designation->id == $employee->designation_id ? 'selected':''}} >{{$designation->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label> fname</label>
+                                <label>Father Name</label>
                                 <input type="text" name="fname" value="{{$employee->fname}}">
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label> mname</label>
+                                <label>Mother Name</label>
                                 <input type="text" name="mname" value="{{$employee->mname}}">
                             </div>
                         </div>
@@ -79,13 +91,13 @@
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>joining_date</label>
-                                <input type="text" name="joining_date" value="{{$employee->joining_date}}">
+                                <label>Joining Date</label>
+                                <input type="date" name="joining_date" value="{{$employee->joining_date}}">
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="form-group">
-                                <label>salary</label>
+                                <label>Salary</label>
                                 <input type="text" name="salary" value="{{$employee->salary}}">
                             </div>
                         </div>
@@ -107,20 +119,20 @@
                         </div>
                         <div class="col-lg-9 col-12">
                             <div class="form-group">
-                                <label>address</label>
+                                <label>Address</label>
                                 <textarea class="form-control" name="address">{!! $employee->address !!}</textarea>
                             </div>
                         </div>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>per_address</label>
+                                <label>Permanent Address</label>
                                 <textarea class="form-control" name="per_address">{!! $employee->per_address !!}</textarea>
                             </div>
                         </div>
 
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label>	Avatar</label>
+                                <label>Image</label>
                                 <div class="image-upload">
                                     <input type="file" name="image">
                                     <div class="image-uploads">
@@ -149,7 +161,7 @@
                             </ul>
                         </div>
                         <div class="col-lg-12">
-                            <button type="submit"  class="btn btn-submit me-2">update</button>
+                            <button type="submit"  class="btn btn-submit me-2">Update</button>
                             <a href="{{route('employee.index')}}"  class="btn btn-cancel">Cancel</a>
                         </div>
                     </div>

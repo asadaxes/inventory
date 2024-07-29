@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin\Employee;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
+use App\Models\Designation;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -26,8 +28,8 @@ class EmployeeController extends Controller
     {
         abort_if(!auth()->user()->can('create employee'),403,__('User does not have the right permissions.'));
         return view('admin.employee.employee.create',[
-//            'companies'=>Brand::get(),
-//            'users'=>User::get(),
+            'departments'=>Department::get(),
+            'designations'=>Designation::get(),
         ]);
     }
 
@@ -60,6 +62,8 @@ class EmployeeController extends Controller
         abort_if(!auth()->user()->can('update employee'),403,__('User does not have the right permissions.'));
         return view('admin.employee.employee.edit',[
             'employee'=>Employee::find($id),
+            'departments'=>Department::get(),
+            'designations'=>Designation::get(),
         ]);
     }
 
