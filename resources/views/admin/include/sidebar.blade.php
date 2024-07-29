@@ -295,6 +295,98 @@
 {{--                    </ul>--}}
 {{--                </li>--}}
 
+                @can('account management')
+                    <li class="submenu-open">
+                        <h6 class="submenu-hdr">Accounts Setup</h6>
+                        <ul>
+                            <li class="submenu slide {{ request()->is('class*') || request()->is('group*')|| request()->is('sub_group*') || request()->is('journal*') || request()->is('ledger*') || request()->is('account_payment*') || request()->is('account_receive*') || request()->is('transaction*') || request()->is('expense_details*') || request()->is('transaction_details*') ? 'is-expanded' : '' }}">
+                                {{--                                @can('role management')--}}
+                                <a href="javascript:void(0);" class="{{ request()->is('class*') || request()->is('group*')|| request()->is('sub_group*') || request()->is('journal*') || request()->is('ledger*') || request()->is('account_payment*') || request()->is('account_receive*') || request()->is('transaction*') || request()->is('expense_details*') || request()->is('transaction_details*') ? 'active subdrop' : ''}}"><i class="far fa-money-bill-alt me-2"></i>
+                                    <span>Accounts</span><span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    @can('view class')
+                                        <li><a class="{{request()->is('class*') ? 'active':''}}" href="{{route('class.index')}}"><i class="fas fa-list-ol me-2"></i><span>Class</span></a></li>
+                                    @endcan
+                                    @can('view group')
+                                        <li><a class="{{request()->is('group*') ? 'active':''}}" href="{{route('group.index')}}"><i class="fas fa-object-ungroup me-2"></i><span>Group</span></a></li>
+                                    @endcan
+                                    @can('view subgroup')
+                                        <li><a class="{{request()->is('sub_group*') ? 'active':''}}" href="{{route('sub_group.index')}}"><i class="far fa-object-ungroup me-2"></i><span>Sub-Group</span></a></li>
+                                    @endcan
+                                    @can('view ledger')
+                                        <li><a class="{{request()->is('ledger*') ? 'active':''}}" href="{{route('ledger.index')}}"><i class="fas fa-file-invoice-dollar me-2"></i><span>Ledger</span></a></li>
+                                    @endcan
+                                    @can('view accountpayment')
+                                        <li><a class="{{request()->is('account_payment*') && !request()->is('account_payment_details*') ? 'active':''}}" href="{{route('account_payment.index')}}"><i class="fas fa-cash-register me-2"></i><span>Payment Voucher</span></a></li>
+                                    @endcan
+                                    @can('view accountreceive')
+                                        <li><a class="{{request()->is('account_receive*') && !request()->is('account_receive_details*') ? 'active':''}}" href="{{route('account_receive.index')}}"><i class="fas fa-money-check me-2"></i><span>Receive Voucher</span></a></li>
+                                    @endcan
+                                    @can('view journal')
+                                        <li><a class="{{request()->is('journal*') && !request()->is('journal_details*') ? 'active':''}}" href="{{route('journal.index')}}"><i class="fas fa-newspaper me-2"></i><span>Journal</span></a></li>
+                                    @endcan
+                                    @can('view transaction')
+                                        <li><a class="{{request()->is('transaction*') && !request()->is('transaction_details*') ? 'active' : ''}}" href="{{route('transaction.index')}}"><i class="fas fa-university me-2"></i><span>Bank Transaction</span></a></li>
+                                    @endcan
+                                    @can('view expensedetails')
+                                        <li><a class="{{request()->is('expense_details*') ? 'active':''}}" href="{{route('expense_details.index')}}"><i class="fas fa-hand-holding-usd me-2"></i><span>Expense Details</span></a></li>
+                                    @endcan
+                                    @can('view transactiondetails')
+                                        <li><a class="{{request()->is('transaction_details*') ? 'active':''}}" href="{{route('transaction_details.index')}}"><i class="fas fa-file-invoice me-2"></i><span>Transaction Details</span></a></li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
+
+                @can('bank management')
+                    <li class="submenu-open">
+                        <h6 class="submenu-hdr">Bank Management</h6>
+                        <ul>
+                            <li class="submenu slide {{ request()->is('banks*') || request()->is('bank_account*') || request()->is('bank_mobile*') || request()->is('bank_transaction*') || request()->is('bank_transfer*') || request()->is('bank_cheque*') ?'is-expanded':''}}">
+                                <a href="javascript:void(0);" class="{{request()->is('banks*') || request()->is('bank_account*') || request()->is('bank_mobile*') || request()->is('bank_transaction*') || request()->is('bank_transfer*') || request()->is('bank_cheque*') ?'active subdrop':''}}"><i class="fas fa-university me-2"></i>
+                                    <span>Bank</span><span class="menu-arrow"></span>
+                                </a>
+                                <ul>
+                                    @can('view bank')
+                                        <li>
+                                            <a class="{{request()->is('banks*') ? 'active':''}}"
+                                               href="{{route('banks.index')}}"><i class="fas fa-building me-2"></i><span>Banks</span></a>
+                                        </li>
+                                    @endcan
+                                    @can('view bankaccount')
+                                        <li>
+                                            <a class="{{request()->is('bank_account*') ? 'active':''}}"
+                                               href="{{route('bank_account.index')}}"><i class="fas fa-wallet me-2"></i><span>Bank Accounts</span></a>
+                                        </li>
+                                    @endcan
+                                    @can('view bankmobile')
+                                        <li>
+                                            <a class="{{request()->is('bank_mobile*') ? 'active':''}}"
+                                               href="{{route('bank_mobile.index')}}"><i class="fas fa-mobile me-2"></i><span>Mobile Banking</span></a></li>
+                                    @endcan
+                                    @can('view banktransaction')
+                                        <li>
+                                            <a class="{{request()->is('bank_transaction*') ? 'active':''}}"
+                                               href="{{route('bank_transaction.index')}}"><i class="fas fa-file-invoice-dollar me-2"></i><span>Transactions</span></a></li>
+                                    @endcan
+                                    @can('view banktransfer')
+                                        <li>
+                                            <a class="{{request()->is('bank_transfer*') ? 'active':''}}"
+                                               href="{{route('bank_transfer.index')}}"><i class="fas fa-exchange-alt me-2"></i><span>Transfer</span></a></li>
+                                    @endcan
+                                    @can('view bankcheque')
+                                        <li>
+                                            <a class="{{request()->is('bank_cheque*') ? 'active':''}}"
+                                               href="{{route('bank_cheque.index')}}"><i class="fas fa-money-check-alt me-2"></i><span>Cheque</span></a></li>
+                                    @endcan
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
 
                @can('')
                     <li class="submenu-open">
