@@ -47,8 +47,8 @@ class Employee extends Model
             self::$employee = new Employee();
         }
         self::$employee->name                       = $request->name ?? '';
-        self::$employee->department_id                   = $request->department_id ?? '';
-        self::$employee->designation_id                      = $request->designation_id ?? '';
+        self::$employee->department_id              = $request->department_id ?? '';
+        self::$employee->designation_id             = $request->designation_id ?? '';
         self::$employee->fname                     = $request->fname ?? '';
         self::$employee->mname                        = $request->mname ?? '';
         self::$employee->mobile                    = $request->mobile ?? '';

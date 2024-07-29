@@ -120,8 +120,8 @@
                                     <a href="javascript:void(0);">{{$employee->name}}</a>
                                 </td>
                                 <td>{{$employee->name}}</td>
-                                <td>{{$employee->department_id}}</td>
-                                <td>{{$employee->designation_id}}</td>
+                                <td>{{$employee->department->name}}</td>
+                                <td>{{$employee->designation->name}}</td>
                                 <td>{{$employee->fname}}</td>
                                 <td>{{$employee->mname}}</td>
                                 <td>{{$employee->mobile}}</td>
