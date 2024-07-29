@@ -22,6 +22,22 @@ use App\Http\Controllers\Admin\People\SupplierController;
 use App\Http\Controllers\Admin\Employee\DepartmentController;
 use App\Http\Controllers\Admin\Employee\DesignationController;
 use App\Http\Controllers\Admin\Employee\EmployeeController;
+use App\Http\Controllers\Admin\Account\ClassController;
+use App\Http\Controllers\Admin\Account\GroupController;
+use App\Http\Controllers\Admin\Account\SubGroupController;
+use App\Http\Controllers\Admin\Account\LedgerController;
+use App\Http\Controllers\Admin\Account\PaymentController;
+use App\Http\Controllers\Admin\Account\ReceiveController;
+use App\Http\Controllers\Admin\Account\JournalController;
+use App\Http\Controllers\Admin\Account\BankTransactionController;
+use App\Http\Controllers\Admin\Account\ExpenseDetailsController;
+use App\Http\Controllers\Admin\Account\TransactionDetailsController;
+use App\Http\Controllers\Admin\Bank\BankController;
+use App\Http\Controllers\Admin\Bank\BankAccountController;
+use App\Http\Controllers\Admin\Bank\BankMobileController;
+use App\Http\Controllers\Admin\Bank\BankTransactionsController;
+use App\Http\Controllers\Admin\Bank\BankTransferController;
+use App\Http\Controllers\Admin\Bank\BankChequeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -126,6 +142,61 @@ Route::group(['middleware' => ['admin_access']], function() {
     //employee
     Route::resource('employee',EmployeeController::class);
 //================================================ Employee module end===================================================
+
+//================================================ Account module start=================================================
+    // class
+    Route::resource('class', ClassController::class);
+
+    // group
+    Route::resource('group', GroupController::class);
+
+    // sub-group
+    Route::resource('sub_group', SubGroupController::class);
+
+    // ledger
+    Route::resource('ledger', LedgerController::class);
+
+    // payment voucher
+    Route::resource('account_payment', PaymentController::class);
+
+    // receive voucher
+    Route::resource('account_receive', ReceiveController::class);
+
+    // journal
+    Route::resource('journal', JournalController::class);
+
+    // bank transaction
+    Route::resource('transaction', BankTransactionController::class);
+
+    // expense details
+    Route::resource('expense_details', ExpenseDetailsController::class);
+
+    // transaction details
+    Route::resource('transaction_details', TransactionDetailsController::class);
+
+    //================================================ Account module end===================================================
+
+    //================================================ Bank module start=================================================
+    // banks
+    Route::resource('banks', BankController::class);
+
+    // bank accounts
+    Route::resource('bank_account', BankAccountController::class);
+
+    // bank mobile
+    Route::resource('bank_mobile', BankMobileController::class);
+
+    // bank transaction
+    Route::resource('bank_transaction', BankTransactionsController::class);
+
+    // bank transfer
+    Route::resource('bank_transfer', BankTransferController::class);
+
+    // bank cheque
+    Route::resource('bank_cheque', BankChequeController::class);
+
+//================================================ Bank module end===================================================
+
 
 
 });
