@@ -13,6 +13,10 @@
 <!-- Slimscroll JS -->
 <script src="{{asset('/')}}admin/assets/js/jquery.slimscroll.min.js"></script>
 
+<!-- Select2 JS -->
+{{--<script src="{{asset('/')}}admin/assets/plugins/select2/js/select2.min.js"></script>--}}
+{{--<script src="{{asset('/')}}admin/assets/plugins/select2/js/custom-select.js"></script>--}}
+
 <!-- Owl JS -->
 <script src="{{asset('/')}}admin/assets/plugins/owlcarousel/owl.carousel.min.js"></script>
 
@@ -105,4 +109,28 @@
 <script>
     var base_url = window.location.origin;
 </script>
+
+<script>
+    $(document).ready(function(){
+        // console.log('sarowar');
+        $('#selectlang a').click(function (e){
+            e.preventDefault();
+            var val=$(this).attr('val');
+            $('#selectlang a').removeClass('active');
+            $(this).addClass('active');
+            $.ajax({
+                url:base_url+'/change_lang/'+val,
+                type:'get',
+                success:function (){
+                    // console.log('sar');
+                    location.reload();
+                }
+
+            });
+            // alert(val);
+        });
+    });
+</script>
+
+
 @yield('js')

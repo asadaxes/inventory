@@ -53,6 +53,11 @@ Route::get('/', function () {
     return redirect(route('dashboard'));
 });
 
+Route::get('/change_lang/{val}',function ($val){
+//    app()->setLocale($val);
+    session()->put('local',$val);
+});
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard.home');
 })->middleware(['auth', 'verified'])->name('dashboard');

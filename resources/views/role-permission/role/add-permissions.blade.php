@@ -62,7 +62,7 @@
 @section('title','users')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="content">
         <div class="row">
             <div class="col-md-12">
 
@@ -90,24 +90,19 @@
                                 <label for="">Permissions</label>
 
                                 <div class="row">
-                                    <table class="permissionTable table table-bordered table-striped">
+                                    <table class="permissionTable table-striped mb-0">
                                         <th>
                                             {{__('Section')}}
                                         </th>
-
                                         <th>
                                             <label>
                                                 <input class="grand_selectall" type="checkbox">
                                                 {{__('Select All') }}
                                             </label>
                                         </th>
-
                                         <th>
                                             {{__("Available permissions")}}
                                         </th>
-
-
-
                                         <tbody>
                                         @foreach($custom_permission as $key => $group)
                                             <tr>

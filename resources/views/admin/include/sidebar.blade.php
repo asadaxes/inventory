@@ -39,7 +39,7 @@
                 </li>
                 @can('company management')
                     <li class="submenu-open">
-                        <h6 class="submenu-hdr">Company</h6>
+                        <h6 class="submenu-hdr">{{__('Company')}}</h6>
 {{--                        <a href="javascript:void(0);" class="{{request()->is('company*')  ?'active subdrop':''}}"><i data-feather="smartphone"></i>--}}
 {{--                            <span>Company Management</span><span class="menu-arrow"></span>--}}
 {{--                        </a>--}}
@@ -47,26 +47,26 @@
                             <li class="submenu slide {{request()->is('company*') || request()->is('branch*')|| request()->is('store*')  ?'is-expanded':''}}">
 {{--                                @can('role management')--}}
                                     <a href="javascript:void(0);" class="{{request()->is('company*') || request()->is('branch*')|| request()->is('store*') ?'active subdrop':''}}"><i data-feather="smartphone"></i>
-                                        <span>Company</span><span class="menu-arrow"></span>
+                                        <span>{{__('Company')}}</span><span class="menu-arrow"></span>
                                     </a>
                                     <ul>
                                         @can('view company')
                                             <li>
                                                 <a class="{{request()->is('company*') ? 'active':''}}"
-                                                   href="{{route('company.index')}}"><i data-feather="box"></i><span>Company</span></a>
+                                                   href="{{route('company.index')}}"><i data-feather="box"></i><span>{{__('Company')}}</span></a>
                                             </li>
                                         @endcan
                                         @can('view branch')
                                             <li>
                                                 <a class="{{request()->is('branch*') ? 'active':''}}"
-                                                   href="{{route('branch.index')}}"><i data-feather="box"></i><span>Branch</span></a>
+                                                   href="{{route('branch.index')}}"><i data-feather="box"></i><span>{{__('Branch')}}</span></a>
                                             </li>
                                         @endcan
                                         @can('view store')
                                             <li>
                                                 <a class="{{request()->is('store*') ? 'active':''}}"
                                                    href="{{route('store.index')}}"><i
-                                                        data-feather="box"></i><span>Store</span></a></li>
+                                                        data-feather="box"></i><span>{{__('Store')}}</span></a></li>
                                         @endcan
 {{--                                                                                            <li><a href="addproduct.html"><i data-feather="plus-square"></i><span>Create Product</span></a></li>--}}
 {{--                                        <li><a href="categorylist.html"><i data-feather="codepen"></i><span>Category</span></a></li>--}}
@@ -94,43 +94,43 @@
 
                 @can('product management')
                     <li class="submenu-open">
-                        <h6 class="submenu-hdr">Products</h6>
+                        <h6 class="submenu-hdr">{{__('Products')}}</h6>
                         <ul>
                             <li class="submenu slide {{request()->is('brand*') || request()->is('category*')|| request()->is('sub_category*') || request()->is('child_category*')|| request()->is('color*')|| request()->is('size*') || request()->is('unit*') || request()->is('manufacture*') || request()->is('product*')  ?'is-expanded':''}}">
                                 {{--                                @can('role management')--}}
                                 <a href="javascript:void(0);" class="{{request()->is('brand*') || request()->is('category*')|| request()->is('sub_category*') || request()->is('child_category*') || request()->is('color*') || request()->is('size*') || request()->is('unit*') || request()->is('manufacture*')|| request()->is('product*') ?'active subdrop':''}}"><i data-feather="smartphone"></i>
-                                    <span>Product</span><span class="menu-arrow"></span>
+                                    <span>{{__('Product')}}</span><span class="menu-arrow"></span>
                                 </a>
                                 <ul>
                                     @can('view product')
-                                    <li><a href="{{ route('product.index') }}" class="{{request()->is('product*') ? 'active':''}}"><i data-feather="box"></i><span>Products</span></a></li>
+                                    <li><a href="{{ route('product.index') }}" class="{{request()->is('product*') ? 'active':''}}"><i data-feather="box"></i><span>{{__('Products')}}</span></a></li>
                                     @endcan
                                     <li><a href="{{ route('select_product') }}" class="{{request()->is('product*') ? 'active':''}}"><i data-feather="box"></i><span>select_product</span></a></li>
 {{--                                    <li><a href="{{ route('product.create') }}"><i data-feather="plus-square"></i><span>Create Product</span></a></li>--}}
                                     {{--                                        <li><a href="categorylist.html"><i data-feather="codepen"></i><span>Category</span></a></li>--}}
                                     @can('view brand')
-                                        <li><a class="{{request()->is('brand*') ? 'active':''}}" href="{{route('brand.index')}}"><i data-feather="tag"></i><span>Brands</span></a></li>
+                                        <li><a class="{{request()->is('brand*') ? 'active':''}}" href="{{route('brand.index')}}"><i data-feather="tag"></i><span>{{__('Brands')}}</span></a></li>
                                     @endcan
                                     @can('view category')
-                                        <li><a class="{{request()->is('category*') ? 'active':''}}" href="{{route('category.index')}}"><i data-feather="codepen"></i><span>Category</span></a></li>
+                                        <li><a class="{{request()->is('category*') ? 'active':''}}" href="{{route('category.index')}}"><i data-feather="codepen"></i><span>{{__('Category')}}</span></a></li>
                                     @endcan
                                     @can('view subcategory')
-                                        <li><a class="{{request()->is('sub_category*') ? 'active':''}}" href="{{route('sub_category.index')}}"><i data-feather="speaker"></i><span>Sub Category</span></a></li>
+                                        <li><a class="{{request()->is('sub_category*') ? 'active':''}}" href="{{route('sub_category.index')}}"><i data-feather="speaker"></i><span>{{__('Sub Category')}}</span></a></li>
                                     @endcan
                                     @can('view childcategory')
-                                        <li><a class="{{request()->is('child_category*') ? 'active':''}}" href="{{route('child_category.index')}}"><i data-feather="speaker"></i><span>Child Category</span></a></li>
+                                        <li><a class="{{request()->is('child_category*') ? 'active':''}}" href="{{route('child_category.index')}}"><i data-feather="speaker"></i><span>{{__('Child Category')}}</span></a></li>
                                     @endcan
                                     @can('view color')
-                                        <li><a class="{{request()->is('color*') ? 'active':''}}" href="{{route('color.index')}}"><i data-feather="command"></i><span>Colors</span></a></li>
+                                        <li><a class="{{request()->is('color*') ? 'active':''}}" href="{{route('color.index')}}"><i data-feather="command"></i><span>{{__('Color')}}</span></a></li>
                                     @endcan
                                     @can('view size')
-                                        <li><a class="{{request()->is('size*') ? 'active':''}}" href="{{route('size.index')}}"><i data-feather="minimize"></i><span>Sizes</span></a></li>
+                                        <li><a class="{{request()->is('size*') ? 'active':''}}" href="{{route('size.index')}}"><i data-feather="minimize"></i><span>{{__('Size')}}</span></a></li>
                                     @endcan
                                     @can('view unit')
-                                        <li><a class="{{request()->is('unit*') ? 'active':''}}" href="{{route('unit.index')}}"><i data-feather="grid"></i><span>Units</span></a></li>
+                                        <li><a class="{{request()->is('unit*') ? 'active':''}}" href="{{route('unit.index')}}"><i data-feather="grid"></i><span>{{__('Units')}}</span></a></li>
                                     @endcan
                                     @can('view manufacture')
-                                        <li><a class="{{request()->is('manufacture*') ? 'active':''}}" href="{{route('manufacture.index')}}"><i data-feather="cpu"></i><span>Manufacture</span></a></li>
+                                        <li><a class="{{request()->is('manufacture*') ? 'active':''}}" href="{{route('manufacture.index')}}"><i data-feather="cpu"></i><span>{{__('Manufacture')}}</span></a></li>
                                     @endcan
 {{--                                    <li><a href="barcode.html"><i data-feather="align-justify"></i><span>Print Barcode</span></a></li>--}}
 {{--                                    <li><a href="importproduct.html"><i data-feather="minimize-2"></i><span>Import Products</span></a></li>--}}
@@ -266,13 +266,13 @@
                                     <span>Employee</span><span class="menu-arrow"></span>
                                 </a>
                                 <ul>
-                                    @can('view product')
+                                    @can('view department')
                                         <li><a href="{{ route('department.index') }}" class="{{request()->is('department*') ? 'active':''}}"><i data-feather="shopping-bag"></i><span>Department</span></a></li>
                                     @endcan
-                                    @can('view brand')
+                                    @can('view designation')
                                         <li><a href="{{route('designation.index')}}" class="{{request()->is('designation*') ? 'active':''}}" ><i data-feather="minimize-2"></i><span>Designation</span></a></li>
                                     @endcan
-                                    @can('view brand')
+                                    @can('view employee')
                                         <li><a href="{{route('employee.index')}}" class="{{request()->is('employee*') ? 'active':''}}" ><i data-feather="file-minus"></i><span>Employee</span></a></li>
                                     @endcan
 {{--                                    @can('view brand')--}}

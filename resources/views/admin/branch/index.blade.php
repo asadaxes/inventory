@@ -1,17 +1,17 @@
 @extends('admin.master')
 
-@section('title','Branch')
+@section('title',__('Branch'))
 
 @section('content')
     <div class="content">
         <div class="page-header">
             <div class="page-title">
-                <h4>Branch List</h4>
-                <h6>Manage your Branch</h6>
+                <h4>{{__('Branch')}} {{__('List')}}</h4>
+                <h6>{{__('Manage your')}} {{__('Branch')}}</h6>
             </div>
             <div class="page-btn">
                 <a href="{{ route('branch.create')}}" class="btn btn-added">
-                    <img src="{{asset('/')}}admin/assets/img/icons/plus.svg" alt="img" class="me-2">Add Branch</a>
+                    <img src="{{asset('/')}}admin/assets/img/icons/plus.svg" alt="img" class="me-2">{{__('Add')}}</a>
             </div>
         </div>
 
@@ -96,22 +96,22 @@
                                     <span class="checkmarks"></span>
                                 </label>
                             </th>
-                            <th>name</th>
-                            <th>page_header</th>
-                            <th>address</th>
-                            <th>email</th>
-                            <th>phone</th>
-                            <th>fax</th>
-                            <th>Company</th>
-                            <th>Branch Code</th>
-                            <th>mobile</th>
+                            <th>{{__('Name')}}</th>
+                            <th>{{__('Page Header')}}</th>
+                            <th>{{__('Address')}}</th>
+                            <th>{{__('Email')}}</th>
+                            <th>{{__('Phone')}}</th>
+                            <th>{{__('Fax')}}</th>
+                            <th>{{__('Company')}}</th>
+                            <th>{{__('Branch Code')}}</th>
+                            <th>{{__('Mobile')}}</th>
 {{--                            <th>web</th>--}}
 {{--                            <th>tin</th>--}}
 {{--                            <th>vat</th>--}}
 {{--                            <th>license</th>--}}
-                            <th>logo</th>
-                            <th>status</th>
-                            <th>Action</th>
+                            <th>{{__('Logo')}}</th>
+                            <th>{{__('Status')}}</th>
+                            <th>{{__('Action')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -163,6 +163,8 @@
 
                         </tbody>
                     </table>
+                    <!-- Pagination Links -->
+{{--                    {{ $branches->links() }}--}}
                 </div>
             </div>
         </div>
