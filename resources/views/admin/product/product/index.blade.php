@@ -1,16 +1,16 @@
 @extends('admin.master')
 
-@section('title','Manufacture')
+@section('title',__('Manufacture'))
 
 @section('content')
     <div class="content">
         <div class="page-header">
             <div class="page-title">
-                <h4>Product List</h4>
-                <h6>Manage your products</h6>
+                <h4>{{__('Product')}} {{__('List')}}</h4>
+                <h6>{{__('Manage your')}} {{__('products')}}</h6>
             </div>
             <div class="page-btn">
-                <a href="{{route('product.create')}}" class="btn btn-added"><img src="{{asset('/')}}admin/assets/img/icons/plus.svg" alt="img" class="me-1">Add New Product</a>
+                <a href="{{route('product.create')}}" class="btn btn-added"><img src="{{asset('/')}}admin/assets/img/icons/plus.svg" alt="img" class="me-1">Add</a>
             </div>
         </div>
 

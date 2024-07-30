@@ -25,21 +25,25 @@
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);" role="button">
             <i data-feather="globe"></i>
         </a>
-        <div class="dropdown-menu dropdown-menu-right">
-            <a href="javascript:void(0);" class="dropdown-item active">
+        <div class="dropdown-menu" id="selectlang">
+            <a href="javascript:void(0);" class="dropdown-item " val="en"  >
                 <img src="{{asset('/')}}admin/assets/img/flags/us.png" alt="" height="16"> English
             </a>
-            <a href="javascript:void(0);" class="dropdown-item">
-                <img src="{{asset('/')}}admin/assets/img/flags/fr.png" alt="" height="16"> French
+            <a href="javascript:void(0);" class="dropdown-item " val="bn"  >
+                <img src="{{asset('/')}}admin/assets/img/flags/bd.png" alt="" height="16"> Bangla
             </a>
-            <a href="javascript:void(0);" class="dropdown-item">
-                <img src="{{asset('/')}}admin/assets/img/flags/es.png" alt="" height="16"> Spanish
-            </a>
-            <a href="javascript:void(0);" class="dropdown-item">
-                <img src="{{asset('/')}}admin/assets/img/flags/de.png" alt="" height="16"> German
-            </a>
+{{--            <a href="javascript:void(0);" class="dropdown-item">--}}
+{{--                <img src="{{asset('/')}}admin/assets/img/flags/fr.png" alt="" height="16"> French--}}
+{{--            </a>--}}
+{{--            <a href="javascript:void(0);" class="dropdown-item">--}}
+{{--                <img src="{{asset('/')}}admin/assets/img/flags/es.png" alt="" height="16"> Spanish--}}
+{{--            </a>--}}
+{{--            <a href="javascript:void(0);" class="dropdown-item">--}}
+{{--                <img src="{{asset('/')}}admin/assets/img/flags/de.png" alt="" height="16"> German--}}
+{{--            </a>--}}
         </div>
     </li>
+
     <!-- /Flag -->
 
     <li class="nav-item nav-item-box">
@@ -177,3 +181,5 @@
         </div>
     </li>
 </ul>
+
+

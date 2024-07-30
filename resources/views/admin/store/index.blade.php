@@ -1,17 +1,17 @@
 @extends('admin.master')
 
-@section('title','store')
+@section('title',__('Store'))
 
 @section('content')
     <div class="content">
         <div class="page-header">
             <div class="page-title">
-                <h4>Store List</h4>
-                <h6>Manage your Store</h6>
+                <h4>{{__('Store')}} {{__('List')}}</h4>
+                <h6>{{__('Manage your')}} {{__('Store')}}</h6>
             </div>
             <div class="page-btn">
                 <a href="{{ route('store.create')}}" class="btn btn-added">
-                    <img src="{{asset('/')}}admin/assets/img/icons/plus.svg" alt="img" class="me-2">Add Store</a>
+                    <img src="{{asset('/')}}admin/assets/img/icons/plus.svg" alt="img" class="me-2">{{__('Add')}}</a>
             </div>
         </div>
 
@@ -96,23 +96,14 @@
                                     <span class="checkmarks"></span>
                                 </label>
                             </th>
-                            <th>name</th>
-{{--                            <th>page_header</th>--}}
-                            <th>address</th>
-{{--                            <th>email</th>--}}
-{{--                            <th>store_code</th>--}}
-{{--                            <th>fax</th>--}}
-                            <th>Company</th>
-                            <th>store code</th>
-                            <th>mobile</th>
-                            <th>incharge</th>
-{{--                            <th>web</th>--}}
-{{--                            <th>tin</th>--}}
-{{--                            <th>vat</th>--}}
-{{--                            <th>license</th>--}}
-{{--                            <th>logo</th>--}}
-                            <th>status</th>
-                            <th>Action</th>
+                            <th>{{__('Name')}}</th>
+                            <th>{{__('Address')}}</th>
+                            <th>{{__('Company')}}</th>
+                            <th>{{__('Code')}}</th>
+                            <th>{{__('Mobile')}}</th>
+                            <th>{{__('Incharge')}}</th>
+                            <th>{{__('Status')}}</th>
+                            <th>{{__('Action')}}</th>
                         </tr>
                         </thead>
                         <tbody>

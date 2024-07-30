@@ -1,17 +1,17 @@
 @extends('admin.master')
 
-@section('title','company')
+@section('title',__('Company'))
 
 @section('content')
     <div class="content">
         <div class="page-header">
             <div class="page-title">
-                <h4>Company List</h4>
-                <h6>Manage your Company</h6>
+                <h4>{{__('Company')}} {{__('List')}}</h4>
+                <h6>{{__('Manage your')}} {{__('Company')}}</h6>
             </div>
             <div class="page-btn">
                 <a href="{{ route('company.create')}}" class="btn btn-added">
-                    <img src="{{asset('/')}}admin/assets/img/icons/plus.svg" alt="img" class="me-2">Add Company</a>
+                    <img src="{{asset('/')}}admin/assets/img/icons/plus.svg" alt="img" class="me-2">{{__('Add')}}</a>
             </div>
         </div>
 
@@ -50,41 +50,41 @@
                     </div>
                 </div>
                 <!-- /Filter -->
-{{--                <div class="card" id="filter_inputs">--}}
-{{--                    <div class="card-body pb-0">--}}
-{{--                        <div class="row">--}}
-{{--                            <div class="col-lg-2 col-sm-6 col-12">--}}
-{{--                                <div class="form-group">--}}
-{{--                                    <input type="text" placeholder="Enter User Name">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-2 col-sm-6 col-12">--}}
-{{--                                <div class="form-group">--}}
-{{--                                    <input type="text" placeholder="Enter Phone">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-2 col-sm-6 col-12">--}}
-{{--                                <div class="form-group">--}}
-{{--                                    <input type="text" placeholder="Enter Email">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-2 col-sm-6 col-12">--}}
-{{--                                <div class="form-group">--}}
-{{--                                    <select class="select">--}}
-{{--                                        <option>Disable</option>--}}
-{{--                                        <option>Enable</option>--}}
-{{--                                    </select>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-lg-1 col-sm-6 col-12 ms-auto">--}}
-{{--                                <div class="form-group">--}}
-{{--                                    <a class="btn btn-filters ms-auto"><img--}}
-{{--                                            src="{{asset('/')}}admin/assets/img/icons/search-whites.svg" alt="img"></a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                {{--                <div class="card" id="filter_inputs">--}}
+                {{--                    <div class="card-body pb-0">--}}
+                {{--                        <div class="row">--}}
+                {{--                            <div class="col-lg-2 col-sm-6 col-12">--}}
+                {{--                                <div class="form-group">--}}
+                {{--                                    <input type="text" placeholder="Enter User Name">--}}
+                {{--                                </div>--}}
+                {{--                            </div>--}}
+                {{--                            <div class="col-lg-2 col-sm-6 col-12">--}}
+                {{--                                <div class="form-group">--}}
+                {{--                                    <input type="text" placeholder="Enter Phone">--}}
+                {{--                                </div>--}}
+                {{--                            </div>--}}
+                {{--                            <div class="col-lg-2 col-sm-6 col-12">--}}
+                {{--                                <div class="form-group">--}}
+                {{--                                    <input type="text" placeholder="Enter Email">--}}
+                {{--                                </div>--}}
+                {{--                            </div>--}}
+                {{--                            <div class="col-lg-2 col-sm-6 col-12">--}}
+                {{--                                <div class="form-group">--}}
+                {{--                                    <select class="select">--}}
+                {{--                                        <option>Disable</option>--}}
+                {{--                                        <option>Enable</option>--}}
+                {{--                                    </select>--}}
+                {{--                                </div>--}}
+                {{--                            </div>--}}
+                {{--                            <div class="col-lg-1 col-sm-6 col-12 ms-auto">--}}
+                {{--                                <div class="form-group">--}}
+                {{--                                    <a class="btn btn-filters ms-auto"><img--}}
+                {{--                                            src="{{asset('/')}}admin/assets/img/icons/search-whites.svg" alt="img"></a>--}}
+                {{--                                </div>--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
                 <!-- /Filter -->
                 <div class="table-responsive">
                     <table class="table  datanew">
@@ -96,22 +96,22 @@
                                     <span class="checkmarks"></span>
                                 </label>
                             </th>
-                            <th>name</th>
-                            <th>page_header</th>
-                            <th>address</th>
-                            <th>email</th>
-                            <th>phone</th>
-                            <th>fax</th>
-                            <th>mobile</th>
-                            <th>web</th>
-                            <th>tin</th>
-                            <th>vat</th>
-                            <th>license</th>
-                            <th>logo</th>
-                            <th>license_image</th>
-                            <th>tin_image</th>
-                            <th>status</th>
-                            <th>Action</th>
+                            <th>{{__('Name')}}</th>
+                            <th>{{__('Page Header')}}</th>
+                            <th>{{__('Address')}}</th>
+                            <th>{{__('Email')}}</th>
+                            <th>{{__('Phone')}}</th>
+                            <th>{{__('Fax')}}</th>
+                            <th>{{__('Mobile')}}</th>
+                            <th>{{__('Web')}}</th>
+                            <th>{{__('Tin')}}</th>
+                            <th>{{__('Vat')}}</th>
+                            <th>{{__('License')}}</th>
+                            <th>{{__('Logo')}}</th>
+                            <th>{{__('License Image')}}</th>
+                            <th>{{__('Tin Image')}}</th>
+                            <th>{{__('Status')}}</th>
+                            <th>{{__('Action')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -157,7 +157,8 @@
                                         </a>
                                     @endcan
                                     @can('delete user')
-                                        <form action="{{route('company.destroy',$company->id)}}" method="POST" class="sr-dl">
+                                        <form action="{{route('company.destroy',$company->id)}}" method="POST"
+                                              class="sr-dl">
                                             @csrf
                                             @method('delete')
                                             <a class="me-3 delete_confirm" href="javascript:void(0);">
@@ -171,6 +172,8 @@
 
                         </tbody>
                     </table>
+                    <!-- Pagination Links -->
+                    {{--                    {{ $companies->links() }}--}}
                 </div>
             </div>
         </div>
@@ -180,5 +183,5 @@
 @endsection
 
 @section('js')
-{{--    @include('admin.include.plugin.datatable')--}}
+    {{--    @include('admin.include.plugin.datatable')--}}
 @endsection
