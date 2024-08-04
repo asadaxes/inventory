@@ -26,6 +26,8 @@ class ProductController extends Controller
             'products'=>Product::get()
         ]);
     }
+
+
     public function select_product()
     {
 //        abort_if(!auth()->user()->can('view product'),403,__('User does not have the right permissions.'));
