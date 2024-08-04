@@ -449,34 +449,146 @@
                 </div>
             </div>
             <div class="col-lg-6 col-sm-12 ">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="col-form-label col-md-2">Radio</label>
+                        <div class="col-md-10">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" value="cus" name="radio"> Customer
+                                </label>
+                                <label>
+                                    <input type="radio" value="sup" name="radio"> Supplier
+                                </label>
+                                <label>
+                                    <input type="radio" value="org" name="radio"> Organization
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="col-lg-3 col-form-label">Vendor</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
                 <div class="order-list">
-                    <div class="orderid">
-                        <h4>Order List</h4>
-                        <h5>Transaction id : #65565</h5>
-                    </div>
-                    <div class="actionproducts">
-                        <ul>
-                            <li>
-                                <a href="javascript:void(0);" class="deletebg confirm-text"><img src="{{asset('/')}}admin/assets/img/icons/delete-2.svg" alt="img"></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" data-bs-toggle="dropdown" aria-expanded="false" class="dropset" >
-                                    <img src="{{asset('/')}}admin/assets/img/icons/ellipise1.svg" alt="img">
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-popper-placement="bottom-end">
-                                    <li>
-                                        <a href="#" class="dropdown-item">Action</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown-item">Another Action</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown-item">Something Elses</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+
+{{--                    <div class="row">--}}
+{{--                        <label class="col-lg-3 col-form-label">Name</label>--}}
+{{--                        <div class="col-lg-9">--}}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-form-label col-md-2">Radio</label>
+                                    <div class="col-md-10">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="radio"> Option 1
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="radio"> Option 2
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="radio"> Option 3
+                                            </label>
+                                        </div>
+                                    </div>
+{{--                                    <div class="form-group row">--}}
+{{--                                        <label class="col-form-label col-md-2">Radio</label>--}}
+{{--                                        <div class="col-md-10">--}}
+{{--                                            <div class="radio">--}}
+{{--                                                <label>--}}
+{{--                                                    <input type="radio" name="radio"> Option 1--}}
+{{--                                                </label>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="radio">--}}
+{{--                                                <label>--}}
+{{--                                                    <input type="radio" name="radio"> Option 2--}}
+{{--                                                </label>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="radio">--}}
+{{--                                                <label>--}}
+{{--                                                    <input type="radio" name="radio"> Option 3--}}
+{{--                                                </label>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <input type="text" placeholder="First Name" class="form-control">--}}
+{{--                                    </div>--}}
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-lg-3 col-form-label">Email</label>
+                                    <div class="col-lg-9">
+                                        <input type="text" class="form-control">
+                                    </div>
+{{--                                    <div class="form-group row">--}}
+{{--                                        <label class="col-lg-3 col-form-label">Email</label>--}}
+{{--                                        <div class="col-lg-9">--}}
+{{--                                            <input type="text" class="form-control">--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <input type="text" placeholder="Last Name" class="form-control">--}}
+{{--                                    </div>--}}
+                                </div>
+                            </div>
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="form-group row">--}}
+{{--                            <label class="col-form-label col-md-2">Radio</label>--}}
+{{--                            <div class="col-md-10">--}}
+{{--                                <div class="radio">--}}
+{{--                                    <label>--}}
+{{--                                        <input type="radio" name="radio"> Option 1--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
+{{--                                <div class="radio">--}}
+{{--                                    <label>--}}
+{{--                                        <input type="radio" name="radio"> Option 2--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
+{{--                                <div class="radio">--}}
+{{--                                    <label>--}}
+{{--                                        <input type="radio" name="radio"> Option 3--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="orderid">--}}
+{{--                        <h4>Order List</h4>--}}
+{{--                        <h5>Transaction id : #65565</h5>--}}
+{{--                    </div>--}}
+{{--                    <div class="actionproducts">--}}
+{{--                        <ul>--}}
+{{--                            <li>--}}
+{{--                                <a href="javascript:void(0);" class="deletebg confirm-text"><img src="{{asset('/')}}admin/assets/img/icons/delete-2.svg" alt="img"></a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="javascript:void(0);" data-bs-toggle="dropdown" aria-expanded="false" class="dropset" >--}}
+{{--                                    <img src="{{asset('/')}}admin/assets/img/icons/ellipise1.svg" alt="img">--}}
+{{--                                </a>--}}
+{{--                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-popper-placement="bottom-end">--}}
+{{--                                    <li>--}}
+{{--                                        <a href="#" class="dropdown-item">Action</a>--}}
+{{--                                    </li>--}}
+{{--                                    <li>--}}
+{{--                                        <a href="#" class="dropdown-item">Another Action</a>--}}
+{{--                                    </li>--}}
+{{--                                    <li>--}}
+{{--                                        <a href="#" class="dropdown-item">Something Elses</a>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
                 </div>
                 <div class="card card-order">
                     <div class="card-body">
