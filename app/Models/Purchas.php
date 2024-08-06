@@ -57,16 +57,16 @@ class Purchas extends Model
         self::$purchas->vendor_type             = $request->vendor_type ?? '';
         self::$purchas->vendor                  = $request->vendor ?? '';
         self::$purchas->dis_type                = $request->dis_type ?? '';
-        self::$purchas->discount                = $request->discount ?? '';
+        self::$purchas->discount                = $request->all_discount ?? '';
         self::$purchas->vat_type                = $request->vat_type ?? '';
-        self::$purchas->vat                     = $request->vat ?? '';
+        self::$purchas->vat                     = $request->all_vat ?? '';
         self::$purchas->tax_type                = $request->tax_type ?? '';
-        self::$purchas->tax                     = $request->tax ?? '';
+        self::$purchas->tax                     = $request->all_tax ?? '';
         self::$purchas->speed_money             = $request->speed_money ?? '';
         self::$purchas->others_name             = $request->others_name ?? '';
         self::$purchas->other_amount            = $request->other_amount ?? '';
         self::$purchas->issue_date              = $request->issue_date ?? '';
-        self::$purchas->freight                 = $request->freight ?? '';
+        self::$purchas->freight                 = $request->all_freight ?? '';
         self::$purchas->less                    = $request->less ?? '';
         self::$purchas->add_money               = $request->add_money ?? '';
         self::$purchas->cur_id                  = $request->cur_id ?? '';
@@ -75,9 +75,11 @@ class Purchas extends Model
         self::$purchas->date                    = $request->date ?? '';
         self::$purchas->due_date                = $request->due_date ?? '';
         self::$purchas->due                     = $request->due ?? '';
-        self::$purchas->sub_total               = $request->sub_total ?? '';
+        self::$purchas->sub_total               = $request->all_subtotal ?? '';
         self::$purchas->total                   = $request->total ?? '';
-        self::$purchas->status                  = $request->status ?? '';
+//        self::$purchas->company_id                   = 1;
+//        self::$purchas->branch_id                   = 1;
+//        self::$purchas->status                  = $request->status ?? '';
         self::$purchas->save();
         return self::$purchas;
     }
