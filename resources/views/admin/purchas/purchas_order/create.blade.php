@@ -330,246 +330,250 @@
             </div>
             <div class="col-md-6">
                 <aside class="product-order-list">
-                    <div class="customer-info block-section mb-3">
-                        <h6>Walk-in Information</h6>
-                        <div class="selling-info">
-                            <div class="row">
-                                <div class="col-sm-7 col-12">
-                                    <div class="input-block">
-                                        <label>Choice
-                                            <div class="save_progress d-none">
-                                                <i class="fas fa-spinner"></i>
-                                            </div>
-                                        </label>
-                                        <div class="col-md-10">
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" value="cus" name="radio"> Customer
-                                                </label>
-                                                <label>
-                                                    <input type="radio" value="sup" name="radio"> Supplier
-                                                </label>
-{{--                                                <label>--}}
-{{--                                                    <input type="radio" value="org" name="radio"> Organization--}}
-{{--                                                </label>--}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class=" col-sm-5 col-12 mb-2">
-                                    <div class="input-block">
-                                        <label>Note
-                                            <div class="save_progress d-none">
-                                                <i class="fas fa-spinner"></i>
-                                            </div>
-                                        </label>
-                                        <input type="text" class="form-control" id="note_field" value="{{ isset($ssn_additional) && isset($ssn_additional['note']) ? $ssn_additional['note'] : '' }}">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="head d-flex align-items-center">
-                            <button type="button" class="btn btn-primary btn-icon me-2" data-bs-toggle="offcanvas" data-bs-target="#select_walkin_offcanvas">
-                                <i class="fas fa-luggage-cart"></i>
-                            </button>
-                            <div class="w-100">
-                                <div id="walkin_details_container">
-                                    @if(!empty($ssn_walkin) && isset($ssn_walkin['name']) && isset($ssn_walkin['balance']))
-                                        <h6 class="mb-0">{{ $ssn_walkin['name'] }}</h6>
-                                        <div>৳{{ $ssn_walkin['balance'] }}</div>
-                                    @else
-                                        <p class="placeholder-glow d-inline">
-                                            <span class="placeholder w-50"></span>
-                                        </p>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-gird">
-                            <button type="button" class="btn btn-light border btn-icon me-2 mb-2" data-bs-toggle="popover" data-bs-title="Barcode" data-bs-content="
-                            <input type='text' class='form-control' placeholder='e.g. 1234567890'>
-                            " id="popover_barcode">
-                                <i class="fas fa-barcode"></i>
-                            </button>
-                            <button type="button" class="btn btn-light border btn-icon me-2 mb-2" data-bs-toggle="popover" data-bs-title="Hertz" data-bs-content="
-                            <input type='text' class='form-control' placeholder='e.g. 125Hz'>
-                            " id="popover_hertz">
-                                <i class="fas fa-wave-square"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-added block-section mb-3">
-                        <div class="head-text d-flex align-items-center justify-content-between mb-3">
-                            <h6 class="d-flex align-items-center mb-0">Product Added<span class="count" id="product_len_counter">{{ count($ssn_products) }}</span></h6>
-                            <a href="javascript:void(0);" class="d-flex align-items-center text-danger" id="clear_all_btn">
-                             <span class="me-1">
-                                <i class="fas fa-times"></i>
-                             </span>
-                                Clear all
-                            </a>
-                        </div>
-                        <div class="product-wrap">
-                            <table class="table table-border text-center">
-                                <thead>
-                                <tr>
-                                    <th><i class="fas fa-boxes"></i></th>
-                                    <th>Serial</th>
-                                    <th>Qty</th>
-                                    <th>Cost</th>
-                                    <th>SubTotal</th>
-                                    <th><i class="fas fa-trash-alt"></i></th>
-                                </tr>
-                                </thead>
-                                <tbody id="product_list_tbody">
-                                @if(count($ssn_products) > 0)
-                                    @foreach($ssn_products as $key=> $product)
-                                        <tr>
-                                            <td class="py-1">
-                                                <a href="javascript:void(0);" class="product_offcanvas_btn cursor_pointer" role="button" data-bs-toggle="offcanvas" data-bs-target="#product_offcanvas" data-id="{{ $product['id'] }}">{{ $product['name'] }}</a>
-                                            </td>
-                                            <td class="py-1">
-                                                <div class="d-flex">
-                                                    <input type="radio" name="serial{{ $product['id'] }}" class="me-1 serial-radio" id="serial_auto{{ $product['id'] }}" value="{{ $product['id'] }}" data-serial-method="auto" {{ $product['serial_method'] === 'auto' ? 'checked' : '' }}>
-                                                    <label for="serial_auto{{ $product['id'] }}" class="cursor_pointer"><small>Auto</small></label>
-                                                </div>
-                                                <div class="d-flex">
-                                                    <input type="radio" name="serial{{ $product['id'] }}" class="me-1 serial-radio manual-radio" id="serial_manual{{ $product['id'] }}" value="{{ $product['id'] }}" data-serial-method="manual" {{ $product['serial_method'] === 'manual' ? 'checked' : '' }}>
-                                                    <label for="serial_manual{{ $product['id'] }}" class="cursor_pointer" data-bs-toggle="modal" data-bs-target="#product_serial_modal" role="button"><small>Manual</small></label>
-                                                </div>
-                                            </td>
-                                            <td class="py-1">
-                                                <div class="d-flex justify-content-center">
-                                                    <div class="qty-item text-center">
-                                                        <a class="dec d-flex justify-content-center align-items-center" data-id="{{ $product['id'] }}"><i class="far fa-minus-square"></i></a>
-                                                        <input type="text" class="form-control text-center qty-input" id="product_qty" data-id="{{ $product['id'] }}" name="qty" value="{{ $product['quantity'] }}" >
-                                                        <a class="inc d-flex justify-content-center align-items-center" data-id="{{ $product['id'] }}"><i class="far fa-plus-square"></i></a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="py-1">
-                                                <input type="tel" class="product_cost_field" value="{{ $product['price'] }}" data-id="{{ $product['id'] }}">
+                    <form action="{{route('purchases.store')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="customer-info block-section mb-3">
+                            <h6>Walk-in Information</h6>
+                            <div class="selling-info">
+                                <div class="row">
+                                    <div class="col-sm-7 col-12">
+                                        <div class="input-block">
+                                            <label>Choice
                                                 <div class="save_progress d-none">
                                                     <i class="fas fa-spinner"></i>
                                                 </div>
-                                            </td>
-                                            <td class="py-1">{{ $product['price'] * $product['quantity'] }}</td>
-                                            <td class="py-1">
-                                                <a href="javascript:void(0);" class="btn-icon dlt_pd_ssn" data-id="{{ $product['id'] }}">
-                                                    <i class="fas fa-times-circle text-danger"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @else
+                                            </label>
+                                            <div class="col-md-10">
+                                                <div class="radio" id="vendor_type">
+                                                    <label>
+                                                        <input type="radio" value="cus" name="vendor_type"> Customer
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" value="sup" name="vendor_type"> Supplier
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" value="org" name="vendor_type"> Organization
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" col-sm-5 col-12 mb-2">
+                                        <div class="input-block">
+                                            <label>vendor
+                                                <div class="save_progress d-none">
+                                                    <i class="fas fa-spinner"></i>
+                                                </div>
+                                            </label>
+                                            <input type="text" name="vendor" class="form-control" id="vendor" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="selling-info">
+                                <div class="row">
+                                    <div class="col-sm-4 col-12 mb-2">
+                                        <div class="input-block">
+                                            <label>Reference
+                                                <div class="save_progress d-none">
+                                                    <i class="fas fa-spinner"></i>
+                                                </div>
+                                            </label>
+                                            <input type="text" class="form-control" name="ref" id="reference_field" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8 col-12">
+                                        <div class="input-block">
+                                            <label>Note
+                                                <div class="save_progress d-none">
+                                                    <i class="fas fa-spinner"></i>
+                                                </div>
+                                            </label>
+                                            <input type="text" class="form-control" name="note" id="note_field" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="head d-flex align-items-center">
+                                <button type="button" class="btn btn-primary btn-icon me-2" data-bs-toggle="offcanvas" data-bs-target="#select_walkin_offcanvas">
+                                    <i class="fas fa-luggage-cart"></i>
+                                </button>
+                                <div class="w-100">
+                                    <div id="walkin_details_container">
+                                        @if(!empty($ssn_walkin) && isset($ssn_walkin['name']) && isset($ssn_walkin['balance']))
+                                            <h6 class="mb-0">{{ $ssn_walkin['name'] }}</h6>
+                                            <div>৳{{ $ssn_walkin['balance'] }}</div>
+                                        @else
+                                            <p class="placeholder-glow d-inline">
+                                                <span class="placeholder w-50"></span>
+                                            </p>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-gird">
+                                <button type="button" class="btn btn-light border btn-icon me-2 mb-2" data-bs-toggle="popover" data-bs-title="Barcode" data-bs-content="
+                            <input type='text' class='form-control' placeholder='e.g. 1234567890'>
+                            " id="popover_barcode">
+                                    <i class="fas fa-barcode"></i>
+                                </button>
+                                <button type="button" class="btn btn-light border btn-icon me-2 mb-2" data-bs-toggle="popover" data-bs-title="Hertz" data-bs-content="
+                            <input type='text' class='form-control' placeholder='e.g. 125Hz'>
+                            " id="popover_hertz">
+                                    <i class="fas fa-wave-square"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="product-added block-section mb-3">
+                            <div class="head-text d-flex align-items-center justify-content-between mb-3">
+                                <h6 class="d-flex align-items-center mb-0">Product Added<span class="count" id="product_len_counter">{{ count($ssn_products) }}</span></h6>
+                                <a href="javascript:void(0);" class="d-flex align-items-center text-danger" id="clear_all_btn">
+                             <span class="me-1">
+                                <i class="fas fa-times"></i>
+                             </span>
+                                    Clear all
+                                </a>
+                            </div>
+                            <div class="product-wrap">
+                                <table class="table table-border text-center">
+                                    <thead>
                                     <tr>
-                                        <td colspan="5" class="text-center">there are no products selected</td>
+                                        <th><i class="fas fa-boxes"></i></th>
+                                        <th>Serial</th>
+                                        <th>Qty</th>
+                                        <th>Cost</th>
+                                        <th>SubTotal</th>
+                                        <th><i class="fas fa-trash-alt"></i></th>
                                     </tr>
-                                @endif
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody id="product_list_tbody">
+                                    @if(count($ssn_products) > 0)
+                                        @foreach($ssn_products as $key=> $product)
+                                            <tr>
+                                                <td class="py-1">
+                                                    <a href="javascript:void(0);" class="product_offcanvas_btn cursor_pointer" role="button" data-bs-toggle="offcanvas" data-bs-target="#product_offcanvas" data-id="{{ $product['id'] }}">{{ $product['name'] }}</a>
+                                                </td>
+                                                <td class="py-1">
+                                                    <div class="d-flex">
+                                                        <input type="radio" name="serial{{ $product['id'] }}" class="me-1 serial-radio" id="serial_auto{{ $product['id'] }}" value="{{ $product['id'] }}" data-serial-method="auto" {{ $product['serial_method'] === 'auto' ? 'checked' : '' }}>
+                                                        <label for="serial_auto{{ $product['id'] }}" class="cursor_pointer"><small>Auto</small></label>
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <input type="radio" name="serial{{ $product['id'] }}" class="me-1 serial-radio manual-radio" id="serial_manual{{ $product['id'] }}" value="{{ $product['id'] }}" data-serial-method="manual" {{ $product['serial_method'] === 'manual' ? 'checked' : '' }}>
+                                                        <label for="serial_manual{{ $product['id'] }}" class="cursor_pointer" data-bs-toggle="modal" data-bs-target="#product_serial_modal" role="button"><small>Manual</small></label>
+                                                    </div>
+                                                </td>
+                                                <td class="py-1">
+                                                    <div class="d-flex justify-content-center">
+                                                        <div class="qty-item text-center">
+                                                            <a class="dec d-flex justify-content-center align-items-center" data-id="{{ $product['id'] }}"><i class="far fa-minus-square"></i></a>
+                                                            <input type="text" class="form-control text-center qty-input" id="product_qty" data-id="{{ $product['id'] }}" name="qty" value="{{ $product['quantity'] }}" >
+                                                            <a class="inc d-flex justify-content-center align-items-center" data-id="{{ $product['id'] }}"><i class="far fa-plus-square"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="py-1">
+                                                    <input type="tel" class="product_cost_field" value="{{ $product['price'] }}" data-id="{{ $product['id'] }}">
+                                                    <div class="save_progress d-none">
+                                                        <i class="fas fa-spinner"></i>
+                                                    </div>
+                                                </td>
+                                                <td class="py-1">{{ $product['price'] * $product['quantity'] }}</td>
+                                                <td class="py-1">
+                                                    <a href="javascript:void(0);" class="btn-icon dlt_pd_ssn" data-id="{{ $product['id'] }}">
+                                                        <i class="fas fa-times-circle text-danger"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <td colspan="5" class="text-center">there are no products selected</td>
+                                        </tr>
+                                    @endif
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-                    @php
-                        $ssn_additional=session()->get('purchase_additional');
+                        @php
+                            $ssn_additional=session()->get('purchase_additional');
+                        @endphp
+                        <div class="block-section">
+                            <div class="order-total">
 
-                    @endphp
-                    <div class="block-section">
-                        <div class="selling-info">
-                            <div class="row">
-                                <div class="col-sm-4 col-12 mb-2">
-                                    <div class="input-block">
-                                        <label>Reference
-                                            <div class="save_progress d-none">
-                                                <i class="fas fa-spinner"></i>
-                                            </div>
-                                        </label>
-                                        <input type="text" class="form-control" id="reference_field" value="{{ isset($ssn_additional) && isset($ssn_additional['reference']) ? $ssn_additional['reference'] : '' }}">
+                                <div class="row">
+                                    <div class="col-6 d-flex align-items-center mb-2">SubTotal
+                                        <div class="save_progress d-none ms-1">
+                                            <i class="fas fa-spinner"></i>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-8 col-12">
-                                    <div class="input-block">
-                                        <label>Note
-                                            <div class="save_progress d-none">
-                                                <i class="fas fa-spinner"></i>
-                                            </div>
-                                        </label>
-                                        <input type="text" class="form-control" id="note_field" value="{{ isset($ssn_additional) && isset($ssn_additional['note']) ? $ssn_additional['note'] : '' }}">
+                                    <div class="col-6 mb-2">
+                                        <input type="tel" class="form-control text-center" name="all_subtotal" id="sub_total_field" value="{{ isset($ssn_additional) ? $ssn_additional['subtotal'] : 0 }}">
+                                    </div>
+                                    <div class="col-6 d-flex align-items-center mb-2">Discount
+                                        <div class="save_progress d-none ms-1">
+                                            <i class="fas fa-spinner"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <input type="tel" class="form-control text-center" name="all_discount" id="discount_field" value="{{ isset($ssn_additional) ? $ssn_additional['discount'] : 0 }}">
+                                    </div>
+                                    <div class="col-6 d-flex align-items-center mb-2">Vat
+                                        <div class="save_progress d-none ms-1">
+                                            <i class="fas fa-spinner"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <input type="tel" class="form-control text-center" name="all_vat" id="vat_field" value="{{ isset($ssn_additional) ? $ssn_additional['vat'] : 0 }}">
+                                    </div>
+                                    <div class="col-6 d-flex align-items-center mb-2">Tax
+                                        <div class="save_progress d-none ms-1">
+                                            <i class="fas fa-spinner"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <input type="tel" class="form-control text-center" name="all_tax" id="tax_field" value="{{ isset($ssn_additional) ? $ssn_additional['tax'] : 0 }}">
+                                    </div>
+                                    <div class="col-6 d-flex align-items-center mb-2">Speed Money
+                                        <div class="save_progress d-none ms-1">
+                                            <i class="fas fa-spinner"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <input type="tel" class="form-control text-center" name="all_speedmoney" id="speed_money_field" value="{{ isset($ssn_additional) && isset($ssn_additional['speed_money']) ? $ssn_additional['speed_money'] : 0 }}">
+                                    </div>
+                                    <div class="col-6 d-flex align-items-center mb-2">Freight
+                                        <div class="save_progress d-none ms-1">
+                                            <i class="fas fa-spinner"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <input type="tel" class="form-control text-center" name="all_freight" id="freight_field" value="{{ isset($ssn_additional) && isset($ssn_additional['freight']) ? $ssn_additional['freight'] : 0 }}">
+                                    </div>
+                                    <div class="col-6 d-flex align-items-center">Fractional Discount
+                                        <div class="save_progress d-none ms-1">
+                                            <i class="fas fa-spinner"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="tel" class="form-control text-center" name="fractional_dis" id="fractional_discount_field" value="{{ isset($ssn_additional) && isset($ssn_additional['fractional_discount']) ? $ssn_additional['fractional_discount'] : 0 }}">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="order-total">
+                        <div class="d-grid btn-block mb-3">
+                            <h6 class="text-dark mb-0"><strong>Grand Total: </strong>৳<span id="grand_total">{{ isset($ssn_additional) ? $ssn_additional['grand_total'] : 0 }}</span></h6>
+{{--                            <h6 class="text-dark mb-0"><strong>Grand Total: </strong>৳<span id="grand_total"><input type="text" value="{{ isset($ssn_additional) ? $ssn_additional['grand_total'] : 0 }}" ></span></h6>--}}
 
-                            <div class="row">
-                                <div class="col-6 d-flex align-items-center mb-2">SubTotal
-                                    <div class="save_progress d-none ms-1">
-                                        <i class="fas fa-spinner"></i>
-                                    </div>
-                                </div>
-                                <div class="col-6 mb-2">
-                                    <input type="tel" class="form-control text-center" id="sub_total_field" value="{{ isset($ssn_additional) ? $ssn_additional['subtotal'] : 0 }}">
-                                </div>
-                                <div class="col-6 d-flex align-items-center mb-2">Discount
-                                    <div class="save_progress d-none ms-1">
-                                        <i class="fas fa-spinner"></i>
-                                    </div>
-                                </div>
-                                <div class="col-6 mb-2">
-                                    <input type="tel" class="form-control text-center" id="discount_field" value="{{ isset($ssn_additional) ? $ssn_additional['discount'] : 0 }}">
-                                </div>
-                                <div class="col-6 d-flex align-items-center mb-2">Vat
-                                    <div class="save_progress d-none ms-1">
-                                        <i class="fas fa-spinner"></i>
-                                    </div>
-                                </div>
-                                <div class="col-6 mb-2">
-                                    <input type="tel" class="form-control text-center" id="vat_field" value="{{ isset($ssn_additional) ? $ssn_additional['vat'] : 0 }}">
-                                </div>
-                                <div class="col-6 d-flex align-items-center mb-2">Tax
-                                    <div class="save_progress d-none ms-1">
-                                        <i class="fas fa-spinner"></i>
-                                    </div>
-                                </div>
-                                <div class="col-6 mb-2">
-                                    <input type="tel" class="form-control text-center" id="tax_field" value="{{ isset($ssn_additional) ? $ssn_additional['tax'] : 0 }}">
-                                </div>
-                                <div class="col-6 d-flex align-items-center mb-2">Speed Money
-                                    <div class="save_progress d-none ms-1">
-                                        <i class="fas fa-spinner"></i>
-                                    </div>
-                                </div>
-                                <div class="col-6 mb-2">
-                                    <input type="tel" class="form-control text-center" id="speed_money_field" value="{{ isset($ssn_additional) && isset($ssn_additional['speed_money']) ? $ssn_additional['speed_money'] : 0 }}">
-                                </div>
-                                <div class="col-6 d-flex align-items-center mb-2">Freight
-                                    <div class="save_progress d-none ms-1">
-                                        <i class="fas fa-spinner"></i>
-                                    </div>
-                                </div>
-                                <div class="col-6 mb-2">
-                                    <input type="tel" class="form-control text-center" id="freight_field" value="{{ isset($ssn_additional) && isset($ssn_additional['freight']) ? $ssn_additional['freight'] : 0 }}">
-                                </div>
-                                <div class="col-6 d-flex align-items-center">Fractional Discount
-                                    <div class="save_progress d-none ms-1">
-                                        <i class="fas fa-spinner"></i>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <input type="tel" class="form-control text-center" id="fractional_discount_field" value="{{ isset($ssn_additional) && isset($ssn_additional['fractional_discount']) ? $ssn_additional['fractional_discount'] : 0 }}">
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                    <div class="d-grid btn-block mb-3">
-                        <h6 class="text-dark mb-0"><strong>Grand Total: </strong>৳<span id="grand_total">{{ isset($ssn_additional) ? $ssn_additional['grand_total'] : 0 }}</span></h6>
-                    </div>
-                    <div class="head text-center">
-                        <h6 class="text-muted mb-0">No IMEI/Serial Information!</h6>
-                    </div>
-                    <div class="btn-row d-flex align-items-center justify-content-between mt-3">
-                        <button type="button" class="btn btn-danger btn-lg flex-fill" id="destroy_all_ssn_btn"><i class="fas fa-trash-alt"></i> Empty</button>
-                        <button type="button" class="btn btn-success btn-lg flex-fill"><i class="fas fa-credit-card"></i> Checkout</button>
-                    </div>
+                        <div class="head text-center">
+                            <h6 class="text-muted mb-0">No IMEI/Serial Information!</h6>
+                        </div>
+                        <div class="btn-row d-flex align-items-center justify-content-between mt-3">
+                            <button type="button" class="btn btn-danger btn-lg flex-fill" id="destroy_all_ssn_btn"><i class="fas fa-trash-alt"></i> Empty</button>
+                            <button type="submit" class="btn btn-success btn-lg flex-fill"><i class="fas fa-credit-card"></i> Checkout</button>
+                        </div>
+                    </form>
                 </aside>
             </div>
         </div>

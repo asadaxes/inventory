@@ -56,9 +56,23 @@ class PurchasController extends Controller
     public function store(Request $request)
     {
 //                return $request;
-        abort_if(!auth()->user()->can('create category'),403,__('User does not have the right permissions.'));
-        $store=Product::createOrUpdateUser($request);
-//        return $store;
+//        abort_if(!auth()->user()->can('create category'),403,__('User does not have the right permissions.'));
+        $amounts = session()->get('purchase_additional');
+//        return $sessionProducts;
+        $request['total']=$amounts['grand_total'];
+
+        $store=Purchas::createOrUpdateUser($request);
+        $sessionProducts = session()->get('purchase_products', []);
+        foreach ($sessionProducts as $key=>$product){
+            $data['product_id']=$product['id'];
+            $data['color_id']=$product['color'];
+            $data['size_id']=$product['size'];
+//            $data['unit_id']=$product['id'];
+            return $data;
+        }
+        return $sessionProducts;
+        $tranjection=ProductTransection::createOrUpdateUser($request,'pur',$store->id);
+        return $store;
 
         return redirect()->route('product.index')->with('success','Product create successfully');
     }
