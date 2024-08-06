@@ -38,6 +38,7 @@ use App\Http\Controllers\Admin\Bank\BankMobileController;
 use App\Http\Controllers\Admin\Bank\BankTransactionsController;
 use App\Http\Controllers\Admin\Bank\BankTransferController;
 use App\Http\Controllers\Admin\Bank\BankChequeController;
+use App\Http\Controllers\Admin\Purchas\PurchasController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -201,6 +202,31 @@ Route::group(['middleware' => ['admin_access']], function() {
     Route::resource('bank_cheque', BankChequeController::class);
 
 //================================================ Bank module end===================================================
+
+    //================================================ Purchas module start=================================================
+    Route::resource('purchases',PurchasController::class);
+    Route::get('/purchasOrderCreate',[PurchasController::class,'purchasOrderCreate'])->name('purchasOrderCreate');
+    Route::post('/product/pur_filter_products',[PurchasController::class,'filter_products'])->name('pur_filter_products');
+    Route::post('/product/get_product_data',[PurchasController::class,'get_product_data'])->name('get_product_data');
+    Route::post('/product/delete_product_data',[PurchasController::class,'delete_product_data'])->name('delete_product_data');
+    Route::post('/product/update_quantity',[PurchasController::class,'update_quantity'])->name('update_quantity');
+    Route::post('/product/update_product_price',[PurchasController::class,'update_product_price'])->name('pur_update_product_price');
+    Route::post('/product/update_pdata',[PurchasController::class,'update_pdata'])->name('pur_update_pdata');
+    Route::post('/product/fetch_pdata',[PurchasController::class,'fetch_product_data'])->name('pur_fetch_product_data');
+    Route::post('/product/walkin_search_api',[PurchasController::class, 'walkin_search_api'])->name('walkin_search_api');
+    Route::post('/product/store-walkin-id', [PurchasController::class, 'store_walkin_into_session'])->name('store_walkin_into_session');
+    Route::post('/product/calculate_summary',[PurchasController::class,'calculate_summary'])->name('pur_calculate_summary');
+    Route::post('/product/update_summary',[PurchasController::class,'update_summary'])->name('pur_update_summary');
+
+    Route::post('/product/update_serial_method',[PurchasController::class,'update_serial_method'])->name('pur_update_serial_method');
+
+    Route::post('/product/clear_all',[PurchasController::class,'product_clear_all'])->name('product_clear_all');
+    Route::post('/product/destroy_all_ssn',[PurchasController::class,'destroy_all_ssn'])->name('pur_destroy_all_ssn');
+
+    Route::delete('delete_select_product/{id}',[PurchasController::class,'delete_select_product'])->name('delete_select_product');
+    Route::get('pro_qty_change/{id}',[PurchasController::class,'pro_qty_change'])->name('pro_qty_change');
+
+//================================================ Purchas module end===================================================
 
 
 

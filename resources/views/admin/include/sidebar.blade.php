@@ -174,7 +174,7 @@
                                 </a>
                                 <ul>
                                     @can('view product')
-                                        <li><a href="{{ route('customers.index') }}" class="{{request()->is('customers*') ? 'active':''}}"><i data-feather="shopping-bag"></i><span>Purchases</span></a></li>
+                                        <li><a href="{{ route('purchasOrderCreate') }}" class="{{request()->is('purchases*') ? 'active':''}}"><i data-feather="shopping-bag"></i><span>Purchases</span></a></li>
                                     @endcan
                                     @can('view brand')
                                         <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="minimize-2"></i><span>Import Purchases</span></a></li>
