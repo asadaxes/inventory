@@ -719,7 +719,7 @@
                                     <h6>5.00$</h6>
                                 </li>
                                 <li class="total-value">
-                                    <h5>Total  </h5>
+                                    <h5>Total</h5>
                                     <h6>60.00$</h6>
                                 </li>
                             </ul>

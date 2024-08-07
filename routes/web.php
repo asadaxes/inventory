@@ -213,8 +213,8 @@ Route::group(['middleware' => ['admin_access']], function() {
     Route::post('/product/update_product_price',[PurchasController::class,'update_product_price'])->name('pur_update_product_price');
     Route::post('/product/update_pdata',[PurchasController::class,'update_pdata'])->name('pur_update_pdata');
     Route::post('/product/fetch_pdata',[PurchasController::class,'fetch_product_data'])->name('pur_fetch_product_data');
-    Route::post('/product/walkin_search_api',[PurchasController::class, 'walkin_search_api'])->name('walkin_search_api');
-    Route::post('/product/store-walkin-id', [PurchasController::class, 'store_walkin_into_session'])->name('store_walkin_into_session');
+//    Route::post('/product/walkin_search_api',[PurchasController::class, 'walkin_search_api'])->name('walkin_search_api');
+//    Route::post('/product/store-walkin-id', [PurchasController::class, 'store_walkin_into_session'])->name('store_walkin_into_session');
     Route::post('/product/calculate_summary',[PurchasController::class,'calculate_summary'])->name('pur_calculate_summary');
     Route::post('/product/update_summary',[PurchasController::class,'update_summary'])->name('pur_update_summary');
 
@@ -225,6 +225,12 @@ Route::group(['middleware' => ['admin_access']], function() {
 
     Route::delete('delete_select_product/{id}',[PurchasController::class,'delete_select_product'])->name('delete_select_product');
     Route::get('pro_qty_change/{id}',[PurchasController::class,'pro_qty_change'])->name('pro_qty_change');
+
+    Route::get('/get_vendor/{str}',[PurchasController::class,'get_vendor'])->name('get_vendor');
+
+    Route::post('/product/update_serial_method',[PurchasController::class,'update_serial_method'])->name('pur_update_serial_method');
+    Route::post('/product/store_product_serials', [PurchasController::class, 'store_serials'])->name('pur_store_product_serials');
+
 
 //================================================ Purchas module end===================================================
 
