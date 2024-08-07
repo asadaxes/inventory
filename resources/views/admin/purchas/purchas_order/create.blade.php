@@ -360,12 +360,21 @@
                                     </div>
                                     <div class=" col-sm-5 col-12 mb-2">
                                         <div class="input-block">
-                                            <label>vendor
-                                                <div class="save_progress d-none">
-                                                    <i class="fas fa-spinner"></i>
-                                                </div>
-                                            </label>
-                                            <input type="text" name="vendor" class="form-control" id="vendor" value="">
+                                            <div class="form-group">
+                                                <label>{{__('vendor')}}</label>
+                                                <select class="form-select" name="vendor" id="select_vendor" >
+                                                    <option>Select</option>
+{{--                                                    @foreach($companies as $company)--}}
+                                                        <option value="">select</option>
+{{--                                                    @endforeach--}}
+                                                </select>
+                                            </div>
+{{--                                            <label>vendor--}}
+{{--                                                <div class="save_progress d-none">--}}
+{{--                                                    <i class="fas fa-spinner"></i>--}}
+{{--                                                </div>--}}
+{{--                                            </label>--}}
+{{--                                            <input type="text" name="vendor" class="form-control" id="vendor" value="">--}}
                                         </div>
                                     </div>
                                 </div>
@@ -394,23 +403,23 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="head d-flex align-items-center">
-                                <button type="button" class="btn btn-primary btn-icon me-2" data-bs-toggle="offcanvas" data-bs-target="#select_walkin_offcanvas">
-                                    <i class="fas fa-luggage-cart"></i>
-                                </button>
-                                <div class="w-100">
-                                    <div id="walkin_details_container">
-                                        @if(!empty($ssn_walkin) && isset($ssn_walkin['name']) && isset($ssn_walkin['balance']))
-                                            <h6 class="mb-0">{{ $ssn_walkin['name'] }}</h6>
-                                            <div>৳{{ $ssn_walkin['balance'] }}</div>
-                                        @else
-                                            <p class="placeholder-glow d-inline">
-                                                <span class="placeholder w-50"></span>
-                                            </p>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
+{{--                            <div class="head d-flex align-items-center">--}}
+{{--                                <button type="button" class="btn btn-primary btn-icon me-2" data-bs-toggle="offcanvas" data-bs-target="#select_walkin_offcanvas">--}}
+{{--                                    <i class="fas fa-luggage-cart"></i>--}}
+{{--                                </button>--}}
+{{--                                <div class="w-100">--}}
+{{--                                    <div id="walkin_details_container">--}}
+{{--                                        @if(!empty($ssn_walkin) && isset($ssn_walkin['name']) && isset($ssn_walkin['balance']))--}}
+{{--                                            <h6 class="mb-0">{{ $ssn_walkin['name'] }}</h6>--}}
+{{--                                            <div>৳{{ $ssn_walkin['balance'] }}</div>--}}
+{{--                                        @else--}}
+{{--                                            <p class="placeholder-glow d-inline">--}}
+{{--                                                <span class="placeholder w-50"></span>--}}
+{{--                                            </p>--}}
+{{--                                        @endif--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="d-gird">
                                 <button type="button" class="btn btn-light border btn-icon me-2 mb-2" data-bs-toggle="popover" data-bs-title="Barcode" data-bs-content="
                             <input type='text' class='form-control' placeholder='e.g. 1234567890'>
@@ -434,8 +443,8 @@
                                     Clear all
                                 </a>
                             </div>
-                            <div class="product-wrap">
-                                <table class="table table-border text-center">
+                            <div class="product-wrap" style="height: 400px">
+                                <table class="table table-border text-center" >
                                     <thead>
                                     <tr>
                                         <th><i class="fas fa-boxes"></i></th>
@@ -555,8 +564,28 @@
                                             <i class="fas fa-spinner"></i>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-6 mb-2">
                                         <input type="tel" class="form-control text-center" name="fractional_dis" id="fractional_discount_field" value="{{ isset($ssn_additional) && isset($ssn_additional['fractional_discount']) ? $ssn_additional['fractional_discount'] : 0 }}">
+                                    </div>
+                                    <div class="col-6 d-flex align-items-center">Payment Method
+                                        <div class="save_progress d-none ms-1">
+                                            <i class="fas fa-spinner"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <select class="form-select" name="payment_type">
+                                            <option selected disabled>-- select one --</option>
+                                            <option value="cash">Cash</option>
+                                            <option value="bank">Bank</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6 d-flex align-items-center">Payment Amount
+                                        <div class="save_progress d-none ms-1">
+                                            <i class="fas fa-spinner"></i>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <input type="tel" class="form-control text-center" name="fractional_dis" id="fractional_discount_field" value="">
                                     </div>
                                 </div>
                             </div>
@@ -565,6 +594,29 @@
                             <h6 class="text-dark mb-0"><strong>Grand Total: </strong>৳<span id="grand_total">{{ isset($ssn_additional) ? $ssn_additional['grand_total'] : 0 }}</span></h6>
 {{--                            <h6 class="text-dark mb-0"><strong>Grand Total: </strong>৳<span id="grand_total"><input type="text" value="{{ isset($ssn_additional) ? $ssn_additional['grand_total'] : 0 }}" ></span></h6>--}}
 
+                        </div>
+                        <div class="setvaluecash">
+                            <ul>
+                                <li>
+                                    <a href="javascript:void(0);" class="paymentmethod" data-bs-toggle="modal" data-bs-target="#payment_modal">
+
+                                        <img src="{{asset('/')}}admin/assets/img/icons/cash.svg" alt="img" class="me-2">
+                                        Payment
+                                    </a>
+                                </li>
+{{--                                <li>--}}
+{{--                                    <a href="javascript:void(0);" class="paymentmethod">--}}
+{{--                                        <img src="{{asset('/')}}admin/assets/img/icons/debitcard.svg" alt="img" class="me-2">--}}
+{{--                                        Debit--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li>--}}
+{{--                                    <a href="javascript:void(0);" class="paymentmethod">--}}
+{{--                                        <img src="{{asset('/')}}admin/assets/img/icons/scan.svg" alt="img" class="me-2">--}}
+{{--                                        Scan--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+                            </ul>
                         </div>
                         <div class="head text-center">
                             <h6 class="text-muted mb-0">No IMEI/Serial Information!</h6>
@@ -581,30 +633,30 @@
     </div>
 
     <!-- walk-in selector offcanvas -->
-    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="select_walkin_offcanvas">
-        <div class="offcanvas-header border-bottom pb-2">
-            <h5 class="offcanvas-title"><i class="fas fa-search"></i> Find Customer/Supplier</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body bg-light">
-            <div class="input-blocks mb-2">
-                <div class="form-check form-check-inline">
-                    <input type="radio" class="form-check-input" name="walk_in" id="customer" value="customer" checked>
-                    <label class="form-check-label" for="customer">Customer</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input type="radio" class="form-check-input" name="walk_in" id="supplier" value="supplier">
-                    <label class="form-check-label" for="supplier">Supplier</label>
-                </div>
-                <input type="text" class="form-control" id="walkin_search_field" placeholder="search by name, email, mobile or nid">
-            </div>
-            <ul class="list-group" id="walkin_list">
-                <li class="list-item">
-                    <img src="{{ asset('admin/assets/img/search_placeholder.webp') }}">
-                </li>
-            </ul>
-        </div>
-    </div>
+{{--    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="select_walkin_offcanvas">--}}
+{{--        <div class="offcanvas-header border-bottom pb-2">--}}
+{{--            <h5 class="offcanvas-title"><i class="fas fa-search"></i> Find Customer/Supplier</h5>--}}
+{{--            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>--}}
+{{--        </div>--}}
+{{--        <div class="offcanvas-body bg-light">--}}
+{{--            <div class="input-blocks mb-2">--}}
+{{--                <div class="form-check form-check-inline">--}}
+{{--                    <input type="radio" class="form-check-input" name="walk_in" id="customer" value="customer" checked>--}}
+{{--                    <label class="form-check-label" for="customer">Customer</label>--}}
+{{--                </div>--}}
+{{--                <div class="form-check form-check-inline">--}}
+{{--                    <input type="radio" class="form-check-input" name="walk_in" id="supplier" value="supplier">--}}
+{{--                    <label class="form-check-label" for="supplier">Supplier</label>--}}
+{{--                </div>--}}
+{{--                <input type="text" class="form-control" id="walkin_search_field" placeholder="search by name, email, mobile or nid">--}}
+{{--            </div>--}}
+{{--            <ul class="list-group" id="walkin_list">--}}
+{{--                <li class="list-item">--}}
+{{--                    <img src="{{ asset('admin/assets/img/search_placeholder.webp') }}">--}}
+{{--                </li>--}}
+{{--            </ul>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <!-- product editor offcanvas -->
     <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="product_offcanvas">
@@ -631,40 +683,24 @@
                     <label>Vat Type</label>
                     <select class="form-select" name="vat_type">
                         <option selected disabled>-- select one --</option>
-                        <option value="standard">Standard VAT</option>
-                        <option value="reduced">Reduced VAT</option>
-                        <option value="zero-rated">Zero-Rated VAT</option>
-                        <option value="exempt">Exempt VAT</option>
-                        <option value="differentiated">Differentiated VAT</option>
-                        <option value="luxury">Luxury VAT</option>
-                        <option value="destination-based">Destination-Based VAT</option>
-                        <option value="origin-based">Origin-Based VAT</option>
-                        <option value="digital-services">Digital Services VAT</option>
-                        <option value="split-payment">Split Payment VAT</option>
+                        <option value="percent">Percentage</option>
+                        <option value="fixed">Fixed</option>
                     </select>
                 </div>
                 <div class="col-6 mb-3">
-                    <label>Vat (%)</label>
+                    <label>Vat</label>
                     <input type="number" class="form-control" name="vat">
                 </div>
                 <div class="col-6 mb-3">
                     <label>Tax Type</label>
                     <select class="form-select" name="tax_type">
                         <option selected disabled>-- select one --</option>
-                        <option value="income">Income Tax</option>
-                        <option value="corporate">Corporate Tax</option>
-                        <option value="sales">Sales Tax</option>
-                        <option value="property">Property Tax</option>
-                        <option value="excise">Excise Tax</option>
-                        <option value="value-added">Value-Added Tax (VAT)</option>
-                        <option value="inheritance">Inheritance Tax</option>
-                        <option value="payroll">Payroll Tax</option>
-                        <option value="capital-gains">Capital Gains Tax</option>
-                        <option value="customs">Customs Duty</option>
+                        <option value="percent">Percentage</option>
+                        <option value="fixed">Fixed</option>
                     </select>
                 </div>
                 <div class="col-6 mb-3">
-                    <label>Tax (%)</label>
+                    <label>Tax</label>
                     <input type="number" class="form-control" name="tax">
                 </div>
                 <div class="col-sm-6 mb-2">
@@ -703,6 +739,7 @@
         </div>
     </div>
 
+
     <!-- product serial modal -->
     <div class="modal fade modal-default" role="dialog" id="product_serial_modal">
         <div class="modal-dialog modal-dialog-centered">
@@ -717,13 +754,79 @@
                 </div>
                 <div class="modal-footer border d-flex justify-content-between p-1">
                     <button type="button" class="btn btn-secondary py-2" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary py-2">Save Changes</button>
+                    <button type="button" class="btn btn-primary py-2" id="save_serial_numbers">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- product serial modal -->
+    <div class="modal fade modal-default" role="dialog" id="payment_modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5></h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                </div>
+                <div class="modal-body bg-light pb-0">
+                    <div class="col-6 d-flex align-items-center">Payment Method
+                        <div class="save_progress d-none ms-1">
+                            <i class="fas fa-spinner"></i>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <select class="form-select" name="payment_type">
+                            <option selected disabled>-- select one --</option>
+                            <option value="cash">Cash</option>
+                            <option value="bank">Bank</option>
+                        </select>
+                    </div>
+                    <div class="col-6 d-flex align-items-center">Payment Amount
+                        <div class="save_progress d-none ms-1">
+                            <i class="fas fa-spinner"></i>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <input type="text" class="form-control text-center" name="" id="payment_amount" value="">
+                    </div>
+                    <div class="col-6 d-flex align-items-center">Due Amount
+                        <div class="save_progress d-none ms-1">
+                            <i class="fas fa-spinner"></i>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <input type="text" class="form-control text-center" name="due_amount" id="fractional_discount_field" value="">
+                    </div>
+                    <div class="col-6 d-flex align-items-center">Due Date
+                        <div class="save_progress d-none ms-1">
+                            <i class="fas fa-spinner"></i>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <input type="date" class="form-control text-center" name="" id="fractional_discount_field" value="">
+                    </div>
+                </div>
+                <div class="modal-footer border d-flex justify-content-between p-1">
+                    <button type="button" class="btn btn-secondary py-2" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary py-2" id="save_serial_numbers">Save Changes</button>
                 </div>
             </div>
         </div>
     </div>
 @endsection
 @section('js')
+    <script>
+        $(document).ready(function(){
+            console.log('sarowar');
+            $(document).on('input','#payment_amount',function (){
+                let $amount= $(this).val();
+                console.log($amount);
+            })
+
+
+        });
+    </script>
     <script>
         if ($('body').hasClass('mini-sidebar')) {
             $('body').removeClass('mini-sidebar');
@@ -914,9 +1017,9 @@
                     $('#freight_field').val(response.data.freight);
                     $('#fractional_discount_field').val(response.data.fractional_discount);
                     $('#grand_total').text(response.data.grand_total);
-
+                    // console.log(response.data.subtotal);
                 } catch (error) {
-                    console.error('Error:', error.message);
+                    // console.error('Error:', error.message);
                 }
             }
 
@@ -1090,6 +1193,7 @@
                     },
                     success: function(response) {
                         $('.save_progress').removeClass('d-inline').addClass('d-none');
+                        displayProducts(response.products);
                         calculateAndUpdateSummary();
                     }
                 });
@@ -1108,7 +1212,7 @@
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(response) {
-                        console.log("Fetched Product Data:", response);
+                        // console.log("Fetched Product Data:", response);
 
                         if (response.status) {
                             let productData = response.product;
@@ -1215,74 +1319,74 @@
 
             // get customer/supplier list
             // event listener for input changes
-            $('#walkin_search_field').on('input', function() {
-                const asset_path = "{{ asset('') }}";
-                let query = $(this).val().trim();
-                let walk_in_type = $('input[name="walk_in"]:checked').val();
-                if (query.length > 1) {
-                    $.ajax({
-                        url: "{{ route('walkin_search_api') }}",
-                        method: 'POST',
-                        data: { query: query, walk_in: walk_in_type, _token: '{{ csrf_token() }}' },
-                        success: function(response) {
-                            $('#walkin_list').empty();
-                            if (response.walkin.length > 0) {
-                                $.each(response.walkin, function(index, walkin) {
-                                    $('#walkin_list').append(`
-                                <li class="list-group-item d-flex align-items-center cursor_pointer" data-id="${walkin.id}" data-name="${walkin.name}" data-balance="${walkin.balance}" data-type="${walkin.type}">
-                                    <img src="${walkin.image ? asset_path+walkin.image : asset_path+'admin/assets/img/customer/customer1.jpg'}" class="img-fluid customer_img_circle">
-                                    <h6 class="mb-0">${walkin.name}</h6>
-                                </li>
-                            `);
-                                });
-                            } else {
-                                $('#walkin_list').append(`
-                            <li class="list-group-item text-center">no customers found</li>
-                        `);
-                            }
-                        }
-                    });
-                } else {
-                    $('#walkin_list').html(`<li class="list-item"><img src="{{ asset('admin/assets/img/search_placeholder.webp') }}"></li>`);
-                }
-            });
+            {{--$('#walkin_search_field').on('input', function() {--}}
+            {{--    const asset_path = "{{ asset('') }}";--}}
+            {{--    let query = $(this).val().trim();--}}
+            {{--    let walk_in_type = $('input[name="walk_in"]:checked').val();--}}
+            {{--    if (query.length > 1) {--}}
+            {{--        $.ajax({--}}
+            {{--            url: "{{ route('walkin_search_api') }}",--}}
+            {{--            method: 'POST',--}}
+            {{--            data: { query: query, walk_in: walk_in_type, _token: '{{ csrf_token() }}' },--}}
+            {{--            success: function(response) {--}}
+            {{--                $('#walkin_list').empty();--}}
+            {{--                if (response.walkin.length > 0) {--}}
+            {{--                    $.each(response.walkin, function(index, walkin) {--}}
+            {{--                        $('#walkin_list').append(`--}}
+            {{--                    <li class="list-group-item d-flex align-items-center cursor_pointer" data-id="${walkin.id}" data-name="${walkin.name}" data-balance="${walkin.balance}" data-type="${walkin.type}">--}}
+            {{--                        <img src="${walkin.image ? asset_path+walkin.image : asset_path+'admin/assets/img/customer/customer1.jpg'}" class="img-fluid customer_img_circle">--}}
+            {{--                        <h6 class="mb-0">${walkin.name}</h6>--}}
+            {{--                    </li>--}}
+            {{--                `);--}}
+            {{--                    });--}}
+            {{--                } else {--}}
+            {{--                    $('#walkin_list').append(`--}}
+            {{--                <li class="list-group-item text-center">no customers found</li>--}}
+            {{--            `);--}}
+            {{--                }--}}
+            {{--            }--}}
+            {{--        });--}}
+            {{--    } else {--}}
+            {{--        $('#walkin_list').html(`<li class="list-item"><img src="{{ asset('admin/assets/img/search_placeholder.webp') }}"></li>`);--}}
+            {{--    }--}}
+            {{--});--}}
 
             // on change walk-in type, make search field empty
-            $('input[name="walk_in"]').on('change', function() {
-                $('#walkin_search_field').val('').focus();
-                $('#walkin_list').empty();
-            });
+            // $('input[name="walk_in"]').on('change', function() {
+            //     $('#walkin_search_field').val('').focus();
+            //     $('#walkin_list').empty();
+            // });
 
             // on click any list item from customer/supplier search result, it will store that customer/supplier id into the session
-            $(document).on('click', '#walkin_list .list-group-item', function() {
-                let id = $(this).data('id');
-                let name = $(this).data('name');
-                let balance = $(this).data('balance');
-                let type = $(this).data('type');
-                $.ajax({
-                    url: "{{ route('store_walkin_into_session') }}",
-                    method: 'POST',
-                    data: {
-                        id: id,
-                        name: name,
-                        balance: balance,
-                        type: type,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        $("#walkin_details_container").addClass("d-flex flex-column justify-content-center").html(`
-                    <h6 class="mb-0">${name}</h6>
-                    <div>৳${balance}</div>
-                `);
+            {{--$(document).on('click', '#walkin_list .list-group-item', function() {--}}
+            {{--    let id = $(this).data('id');--}}
+            {{--    let name = $(this).data('name');--}}
+            {{--    let balance = $(this).data('balance');--}}
+            {{--    let type = $(this).data('type');--}}
+            {{--    $.ajax({--}}
+            {{--        url: "{{ route('store_walkin_into_session') }}",--}}
+            {{--        method: 'POST',--}}
+            {{--        data: {--}}
+            {{--            id: id,--}}
+            {{--            name: name,--}}
+            {{--            balance: balance,--}}
+            {{--            type: type,--}}
+            {{--            _token: '{{ csrf_token() }}'--}}
+            {{--        },--}}
+            {{--        success: function(response) {--}}
+            {{--            $("#walkin_details_container").addClass("d-flex flex-column justify-content-center").html(`--}}
+            {{--        <h6 class="mb-0">${name}</h6>--}}
+            {{--        <div>৳${balance}</div>--}}
+            {{--    `);--}}
 
-                        // Hide the offcanvas
-                        let offcanvas = bootstrap.Offcanvas.getInstance($('#select_walkin_offcanvas'));
-                        if (offcanvas) {
-                            offcanvas.hide();
-                        }
-                    }
-                });
-            });
+            {{--            // Hide the offcanvas--}}
+            {{--            let offcanvas = bootstrap.Offcanvas.getInstance($('#select_walkin_offcanvas'));--}}
+            {{--            if (offcanvas) {--}}
+            {{--                offcanvas.hide();--}}
+            {{--            }--}}
+            {{--        }--}}
+            {{--    });--}}
+            {{--});--}}
 
             $('#clear_all_btn').on('click', function() {
                 $.ajax({
@@ -1320,6 +1424,7 @@
             });
 
 
+
             $('#popover_color_selector').popover({
                 placement: 'bottom',
                 html: true,
@@ -1340,6 +1445,60 @@
                 content: $('#popover_hertz').data('bs-content')
             });
 
+            $(document).on('click', '#save_serial_numbers', function() {
+                let productId = $('input[type=radio].manual-radio:checked').val();
+                let serialNumbers = [];
+
+                $('#product_serial_modal').find('.modal-body input').each(function() {
+                    serialNumbers.push($(this).val());
+                });
+
+                $.ajax({
+                    url: "{{ route('pur_store_product_serials') }}",
+                    method: 'POST',
+                    data: {
+                        id: productId,
+                        serials: serialNumbers,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        $('#product_serial_modal').modal('hide');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX Error:', status, error);
+                    }
+                });
+            });
+
+
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("input[type='radio']").click(function(){
+                var radioValue = $("input[name='vendor_type']:checked").val();
+                $.ajax({
+                    url:base_url+'/get_vendor/'+radioValue,
+                    type:'get',
+                    dataType:'json',
+                    success: function(success) {
+                        // console.log(success.data);
+
+                        var options = ''; // Initialize options variable
+
+                        $.each(success.data, function(index, vendor) {
+                            // Set the value attribute to vendor.id or another unique identifier
+                            options += `<option value="${vendor.id}">${vendor.name}</option>`;
+                        });
+
+                        $('#select_vendor').html(options); // Update the select element with new options
+                    },
+                })
+                // alert(radioValue)
+                // if(radioValue){
+                //     alert("Your are a - " + radioValue);
+                // }
+            });
         });
     </script>
 @endsection

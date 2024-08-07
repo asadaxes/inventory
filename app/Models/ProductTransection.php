@@ -42,8 +42,9 @@ class ProductTransection extends Model
 
     protected  static $transection;
 
-    public static function createOrUpdateUser ($request, $trans_type=null, $trans_id=null, $id = null)
+    public static function createOrUpdateUser ($data, $trans_type=null, $trans_id=null, $id = null)
     {
+//return $data['product_id'];
 //        $lastdata=Product::orderBy('sku','DESC')->first();
         if (isset($id))
         {
@@ -53,23 +54,23 @@ class ProductTransection extends Model
         }
         self::$transection->trans_type                      = $trans_type ?? '';
         self::$transection->trans_id                        = $trans_id ?? '';
-        self::$transection->product_id                      = $request->product_id ?? '';
-        self::$transection->color_id                        = $request->color_id ?? '';
-        self::$transection->size_id                         = $request->size_id ?? '';
-        self::$transection->unit_id                         = $request->unit_id ?? '';
-        self::$transection->qty                             = $request->qty ?? '';
-        self::$transection->price                           = $request->price ?? '';
-        self::$transection->total_price                     = $request->total_price ?? '';
-        self::$transection->dis_type                        = $request->dis_type ?? '';
-        self::$transection->dis                             = $request->dis ?? '';
-        self::$transection->tax_type                        = $request->tax_type ?? '';
-        self::$transection->tax                             = $request->tax ?? '';
-        self::$transection->vat_type                        = $request->vat_type ?? '';
-        self::$transection->vat                             = $request->vat ?? '';
-        self::$transection->pro_in                          = $request->pro_in ?? '';
-        self::$transection->pro_out                         = $request->pro_out ?? '';
-        self::$transection->pro_sell                        = $request->pro_sell ?? '';
-        self::$transection->pro_loc                         = $request->pro_loc ?? '';
+        self::$transection->product_id                      = $data['product_id'] ?? '';
+        self::$transection->color_id                        = $data['color_id'] ?? '';
+        self::$transection->size_id                         = $data['size_id'] ?? '';
+        self::$transection->unit_id                         = $data['unit_id'] ?? '';
+        self::$transection->qty                             = $data['qty'] ?? '';
+        self::$transection->price                           = $data['price'] ?? '';
+        self::$transection->total_price                     = $data['total_price'] ?? '';
+        self::$transection->dis_type                        = $data['dis_type'] ?? '';
+        self::$transection->dis                             = $data['dis'] ?? '';
+        self::$transection->tax_type                        = $data['tax_type'] ?? '';
+        self::$transection->tax                             = $data['tax'] ?? '';
+        self::$transection->vat_type                        = $data['vat_type'] ?? '';
+        self::$transection->vat                             = $data['vat'] ?? '';
+        self::$transection->pro_in                          =  '';
+        self::$transection->pro_out                         =  '';
+        self::$transection->pro_sell                        =  '';
+        self::$transection->pro_loc                         =  '';
 
 //        self::$transection->purchas_id                = $request->date ?? '';
 //        self::$transection->due_date                = $request->due_date ?? '';

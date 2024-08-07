@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin\Purchas;
 use App\Http\Controllers\Admin\Product\SizeController;
 use App\Http\Controllers\Controller;
 use App\Models\Color;
+use App\Models\Customer;
 use App\Models\Product;
 use App\Models\ProductTransection;
 use App\Models\Purchas;
 use App\Models\Size;
 use App\Models\Stock;
+use App\Models\Supplier;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use function PHPUnit\Framework\isNan;
@@ -62,17 +64,38 @@ class PurchasController extends Controller
         $request['total']=$amounts['grand_total'];
 
         $store=Purchas::createOrUpdateUser($request);
+
         $sessionProducts = session()->get('purchase_products', []);
+//        return $sessionProducts;
         foreach ($sessionProducts as $key=>$product){
             $data['product_id']=$product['id'];
             $data['color_id']=$product['color'];
             $data['size_id']=$product['size'];
 //            $data['unit_id']=$product['id'];
-            return $data;
+            $data['qty']=$product['quantity'];
+            $data['price']=$product['price'];
+            $data['total_price']=$product['price'] * $product['quantity'];
+            $data['dis_type']=$product['discount_type'];
+            $data['dis']=$product['discount'];
+            $data['tax_type']=$product['tax_type'];
+            $data['tax']=$product['tax'];
+            $data['vat_type']=$product['vat_type'];
+            $data['vat']=$product['vat'];
+//            $data['pro_in']=$product['id'];
+//            $data['pro_out']=$product['id'];
+//            $data['pro_sell']=$product['id'];
+//            $data['pro_loc']=$product['id'];
+            $tranjection=ProductTransection::createOrUpdateUser($data,'pur',$store->id);
+            $stock=Stock::createOrUpdateUser($data);
+//            return $tranjection;
+//            return $stock;
         }
-        return $sessionProducts;
-        $tranjection=ProductTransection::createOrUpdateUser($request,'pur',$store->id);
-        return $store;
+        session()->forget('purchase_walkin');
+        session()->forget('purchase_additional');
+        session()->forget('purchase_products');
+//        return $sessionProducts;
+//        $tranjection=ProductTransection::createOrUpdateUser($request,'pur',$store->id);
+//        return $store;
 
         return redirect()->route('product.index')->with('success','Product create successfully');
     }
@@ -210,7 +233,7 @@ class PurchasController extends Controller
                 'discount_type' => $product->discount_type,
                 'discount' => number_format($product->discount, 0, '.', ''),
                 'vat_type' => '',
-                'vat' => '',
+                'vat' => 0,
                 'tax_type' => '',
                 'tax' => $product->tax,
                 'size' => $product->size->name,
@@ -292,7 +315,9 @@ class PurchasController extends Controller
         if (isset($sessionProduct[$productId])) {
             $sessionProduct[$productId]['price'] = $newPrice;
             session()->put('purchase_products', $sessionProduct);
-            return response()->json(['status' => true]);
+            $sessionProducts = session()->get('purchase_products', []);
+            return response()->json(['status' => true, 'products' => array_reverse($sessionProducts)]);
+//            return response()->json(['status' => true]);
         }
 
         return response()->json(['status' => false, 'message' => 'Product not found.']);
@@ -300,6 +325,7 @@ class PurchasController extends Controller
 
     public function update_pdata(Request $request)
     {
+//        return $request;
         $productId = $request->input('product_id');
         $discountType = $request->input('discount_type');
         $discount = $request->input('discount');
@@ -352,70 +378,90 @@ class PurchasController extends Controller
     public function calculate_summary()
     {
         $products = session()->get('purchase_products', []);
+//        return $products;
         $grand_total=0;
         $all_subtotal=0;
         $all_vat=0;
         $all_tax=0;
         $all_dis=0;
         foreach ($products as $product){
-            $all_subtotal = $all_subtotal + ($product['price'] * $product['quantity']);
-//            $all_vat=$all_vat+
+            $subt=floatval($product['price']) * floatval($product['quantity']);
+            $all_subtotal = $all_subtotal + $subt;
+            if (isset($product['discount_type']) && $product['discount_type'] == 'percent'){
+                $dis=($subt / 100 )* floatval($product['discount']) ?:0;
+                $all_dis=$all_dis+$dis;
+            }else{
+                $all_dis=$all_dis+$product['discount'];
+            }
+            if ($product['vat'] > 0 && $product['vat_type'] == 'percent'){
+                $vat=($subt / 100 )* floatval($product['vat']) ?:0;
+                $all_vat=$all_vat+$vat;
+            }else{
+                $all_vat=$all_vat+$product['vat'];
+            }
+            if ($product['tax'] > 0 && $product['tax_type'] == 'percent'){
+                $vat=($subt / 100 )* floatval($product['tax']) ?:0;
+                $all_tax=$all_tax+$vat;
+            }else{
+                $all_tax=$all_tax+$product['tax'];
+            }
 
         }
-        $grand_total=($grand_total+($all_vat + $all_tax)+$all_subtotal) - $all_dis;
-        $sessionData['subtotal'] = intval($all_subtotal);
-        $sessionData['discount'] =0;
-        $sessionData['vat'] = 0;
-        $sessionData['tax'] = 0;
+//        return '$all_subtotal';
+
+        $sessionData['subtotal'] = $all_subtotal;
+        $sessionData['discount'] =$all_dis;
+        $sessionData['vat'] = $all_vat;
+        $sessionData['tax'] = $all_tax;
         $sessionData['speed_money'] = 0;
         $sessionData['freight'] = 0;
         $sessionData['fractional_discount'] = 0;
-
-        $sessionData['grand_total'] = intval($grand_total);
+        $grand_total=($grand_total+($all_vat + $all_tax)+$all_subtotal) - $all_dis;
+        $sessionData['grand_total'] = floatval($grand_total);
 
         session()->put('purchase_additional', $sessionData);
-        $sessionData = session()->get('purchase_additional');
-        return response()->json(['status' => true, 'data' => $sessionData]);
-        return $sessionData;
+        $all_amount =session()->get('purchase_additional', []);
+        return response()->json(['status' => true, 'data' => $all_amount]);
+//        return $all_amount;
 //return $products;
-        $totals = array_reduce($products, function ($acc, $product) {
-            $price = intval($product['price']);
-            $quantity = intval($product['quantity']);
-            $subtotal = $price * $quantity;
-
-            $acc['subtotal'] += $subtotal;
-            $acc['totalVat'] += ($subtotal * (intval($product['vat']) / 100)) ?: 0;
-            $acc['totalTax'] += ($subtotal * (intval($product['tax']) / 100)) ?: 0;
-
-            if ($product['discount_type'] === 'percent') {
-                $acc['totalDiscount'] += $subtotal * (intval($product['discount']) / 100);
-            } else {
-                $acc['totalDiscount'] += intval($product['discount']);
-            }
-
-            return $acc;
-        }, ['subtotal' => 0, 'totalDiscount' => 0, 'totalVat' => 0, 'totalTax' => 0]);
-
-        $finalSubtotal = $totals['subtotal'] - $totals['totalDiscount'];
-
-        $sessionData = session()->get('purchase_additional', []);
-        $speed_money = $sessionData['speed_money'] ?? 0;
-        $freight = $sessionData['freight'] ?? 0;
-        $fractional_discount = $sessionData['fractional_discount'] ?? 0;
-
-        $sessionData['subtotal'] = intval($finalSubtotal);
-        $sessionData['discount'] = intval($totals['totalDiscount']);
-        $sessionData['vat'] = intval($totals['totalVat']);
-        $sessionData['tax'] = intval($totals['totalTax']);
-        $sessionData['speed_money'] = intval($speed_money);
-        $sessionData['freight'] = intval($freight);
-        $sessionData['fractional_discount'] = intval($fractional_discount);
-
-        $sessionData['grand_total'] = intval(($finalSubtotal + $totals['totalVat'] + $totals['totalTax'] + $speed_money + $freight) - $fractional_discount);
-
-        session()->put('purchase_additional', $sessionData);
-
-        return response()->json(['status' => true, 'data' => $sessionData]);
+//        $totals = array_reduce($products, function ($acc, $product) {
+//            $price = intval($product['price']);
+//            $quantity = intval($product['quantity']);
+//            $subtotal = $price * $quantity;
+//
+//            $acc['subtotal'] += $subtotal;
+//            $acc['totalVat'] += ($subtotal * (intval($product['vat']) / 100)) ?: 0;
+//            $acc['totalTax'] += ($subtotal * (intval($product['tax']) / 100)) ?: 0;
+//
+//            if ($product['discount_type'] === 'percent') {
+//                $acc['totalDiscount'] += $subtotal * (intval($product['discount']) / 100);
+//            } else {
+//                $acc['totalDiscount'] += intval($product['discount']);
+//            }
+//
+//            return $acc;
+//        }, ['subtotal' => 0, 'totalDiscount' => 0, 'totalVat' => 0, 'totalTax' => 0]);
+//
+//        $finalSubtotal = $totals['subtotal'] - $totals['totalDiscount'];
+//
+//        $sessionData = session()->get('purchase_additional', []);
+//        $speed_money = $sessionData['speed_money'] ?? 0;
+//        $freight = $sessionData['freight'] ?? 0;
+//        $fractional_discount = $sessionData['fractional_discount'] ?? 0;
+//
+//        $sessionData['subtotal'] = intval($finalSubtotal);
+//        $sessionData['discount'] = intval($totals['totalDiscount']);
+//        $sessionData['vat'] = intval($totals['totalVat']);
+//        $sessionData['tax'] = intval($totals['totalTax']);
+//        $sessionData['speed_money'] = intval($speed_money);
+//        $sessionData['freight'] = intval($freight);
+//        $sessionData['fractional_discount'] = intval($fractional_discount);
+//
+//        $sessionData['grand_total'] = intval(($finalSubtotal + $totals['totalVat'] + $totals['totalTax'] + $speed_money + $freight) - $fractional_discount);
+//
+//        session()->put('purchase_additional', $sessionData);
+//
+//        return response()->json(['status' => true, 'data' => $sessionData]);
     }
 
     public function update_summary(Request $request)
@@ -490,6 +536,7 @@ class PurchasController extends Controller
         return response()->json(['status' => true]);
     }
 
+
     public function update_serial_method(Request $request)
     {
         $productId = $request->input('product_id');
@@ -500,6 +547,32 @@ class PurchasController extends Controller
         return response()->json(['status' => true]);
     }
 
+    public function store_serials(Request $request)
+    {
+        $productId = $request->input('id');
+        $serialNumbers = $request->input('serials', []);
+        $sessionProducts = session()->get('purchase_products', []);
+
+        if (isset($sessionProducts[$productId])) {
+            $sessionProducts[$productId]['serial'] = $serialNumbers;
+            session()->put('purchase_products', $sessionProducts);
+            return response()->json(['success' => true]);
+        }
+
+        return response()->json(['success' => false, 'message' => 'Product not found.'], 404);
+    }
+
+
+
+    public function get_vendor(string $str)
+    {
+        if ($str == 'cus'){
+            $vendor=Customer::get();
+        }elseif ($str == 'sup'){
+            $vendor=Supplier::get();
+        }
+        return response()->json(['status' => true, 'data' => $vendor]);
+    }
     public function product_clear_all()
     {
         session()->forget('purchase_products');

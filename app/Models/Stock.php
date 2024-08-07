@@ -35,14 +35,21 @@ class Stock extends Model
 
     public static function createOrUpdateUser ($request, $id = null)
     {
+//        return $request['product_id'];
         if (isset($id))
         {
             self::$stock = Stock::find($id);
         } else {
-            self::$stock = new Stock();
+            $exiest=Stock::where('product_id',$request['product_id'])->first();
+            if (empty($exiest)){
+                self::$stock = new Stock();
+            }else{
+                self::$stock = Stock::find($exiest->id);
+            }
+
         }
-        self::$stock->product_id                  = $request->product_id ?? '';
-        self::$stock->sotck_qty                   = $request->sotck_qty ?? '';
+        self::$stock->product_id                  = $request['product_id'] ;
+        self::$stock->sotck_qty                   = floatval(self::$stock->sotck_qty) + floatval($request['qty']);
         self::$stock->purches_qty                 = $request->purches_qty ?? '';
         self::$stock->sell_qty                    = $request->sell_qty ?? '';
         self::$stock->purches_ret                 = $request->purches_ret ?? '';
