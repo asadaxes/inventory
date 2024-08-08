@@ -30,7 +30,7 @@ class BankCheque extends Model
 
     protected $searchableFields = ['*'];
 
-    protected $table = 'bank_cheque';
+    protected $table = 'bank_cheques';
 
     protected static $transfer;
 

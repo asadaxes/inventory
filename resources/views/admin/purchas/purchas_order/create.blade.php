@@ -332,73 +332,80 @@
                 <aside class="product-order-list">
                     <form action="{{route('purchases.store')}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="customer-info block-section mb-3">
-                            <h6>Walk-in Information</h6>
-                            <div class="selling-info">
-                                <div class="row">
-                                    <div class="col-sm-7 col-12">
-                                        <div class="input-block">
-                                            <label>Choice
-                                                <div class="save_progress d-none">
-                                                    <i class="fas fa-spinner"></i>
+                        <div class="customer-info block-section mb-2">
+{{--                            <h6>Walk-in Information</h6>--}}
+
+                            <div>
+                                <p>
+                                    <button type="button" class="btn btn-primary btn-icon me-2" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        <i class="fas fa-luggage-cart"></i>  Walk-in Information
+                                    </button>
+
+                                </p>
+                                <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+                                        <div class="selling-info">
+                                            <div class="row">
+                                                <div class="col-sm-7 col-12">
+                                                    <div class="input-block">
+                                                        <label>Choice
+                                                            <div class="save_progress d-none">
+                                                                <i class="fas fa-spinner"></i>
+                                                            </div>
+                                                        </label>
+                                                        <div class="col-md-10">
+                                                            <div class="radio" id="vendor_type">
+                                                                <label>
+                                                                    <input type="radio" value="cus" name="vendor_type"> Customer
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" value="sup" name="vendor_type"> Supplier
+                                                                </label>
+                                                                <label>
+                                                                    <input type="radio" value="org" name="vendor_type"> Organization
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </label>
-                                            <div class="col-md-10">
-                                                <div class="radio" id="vendor_type">
-                                                    <label>
-                                                        <input type="radio" value="cus" name="vendor_type"> Customer
-                                                    </label>
-                                                    <label>
-                                                        <input type="radio" value="sup" name="vendor_type"> Supplier
-                                                    </label>
-                                                    <label>
-                                                        <input type="radio" value="org" name="vendor_type"> Organization
-                                                    </label>
+                                                <div class=" col-sm-5 col-12 mb-2">
+                                                    <div class="input-block">
+                                                        <div class="form-group">
+                                                            <label>{{__('vendor')}}</label>
+                                                            <select class="form-select" name="vendor" id="select_vendor" >
+                                                                <option>Select</option>
+                                                                {{--                                                    @foreach($companies as $company)--}}
+                                                                <option value="">select</option>
+                                                                {{--                                                    @endforeach--}}
+                                                            </select>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class=" col-sm-5 col-12 mb-2">
-                                        <div class="input-block">
-                                            <div class="form-group">
-                                                <label>{{__('vendor')}}</label>
-                                                <select class="form-select" name="vendor" id="select_vendor" >
-                                                    <option>Select</option>
-{{--                                                    @foreach($companies as $company)--}}
-                                                        <option value="">select</option>
-{{--                                                    @endforeach--}}
-                                                </select>
+                                        <div class="selling-info">
+                                            <div class="row">
+                                                <div class="col-sm-4 col-12 mb-2">
+                                                    <div class="input-block">
+                                                        <label>Reference
+                                                            <div class="save_progress d-none">
+                                                                <i class="fas fa-spinner"></i>
+                                                            </div>
+                                                        </label>
+                                                        <input type="text" class="form-control" name="ref" id="reference_field" value="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-8 col-12">
+                                                    <div class="input-block">
+                                                        <label>Note
+                                                            <div class="save_progress d-none">
+                                                                <i class="fas fa-spinner"></i>
+                                                            </div>
+                                                        </label>
+                                                        <input type="text" class="form-control" name="note" id="note_field" value="">
+                                                    </div>
+                                                </div>
                                             </div>
-{{--                                            <label>vendor--}}
-{{--                                                <div class="save_progress d-none">--}}
-{{--                                                    <i class="fas fa-spinner"></i>--}}
-{{--                                                </div>--}}
-{{--                                            </label>--}}
-{{--                                            <input type="text" name="vendor" class="form-control" id="vendor" value="">--}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="selling-info">
-                                <div class="row">
-                                    <div class="col-sm-4 col-12 mb-2">
-                                        <div class="input-block">
-                                            <label>Reference
-                                                <div class="save_progress d-none">
-                                                    <i class="fas fa-spinner"></i>
-                                                </div>
-                                            </label>
-                                            <input type="text" class="form-control" name="ref" id="reference_field" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-8 col-12">
-                                        <div class="input-block">
-                                            <label>Note
-                                                <div class="save_progress d-none">
-                                                    <i class="fas fa-spinner"></i>
-                                                </div>
-                                            </label>
-                                            <input type="text" class="form-control" name="note" id="note_field" value="">
                                         </div>
                                     </div>
                                 </div>
@@ -407,6 +414,10 @@
 {{--                                <button type="button" class="btn btn-primary btn-icon me-2" data-bs-toggle="offcanvas" data-bs-target="#select_walkin_offcanvas">--}}
 {{--                                    <i class="fas fa-luggage-cart"></i>--}}
 {{--                                </button>--}}
+{{--                                <button type="button" class="btn btn-primary btn-icon me-2" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">--}}
+{{--                                    <i class="fas fa-luggage-cart"></i>--}}
+{{--                                </button>--}}
+
 {{--                                <div class="w-100">--}}
 {{--                                    <div id="walkin_details_container">--}}
 {{--                                        @if(!empty($ssn_walkin) && isset($ssn_walkin['name']) && isset($ssn_walkin['balance']))--}}
@@ -433,7 +444,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="product-added block-section mb-3">
+                        <div class="product-added block-section mb-2">
                             <div class="head-text d-flex align-items-center justify-content-between mb-3">
                                 <h6 class="d-flex align-items-center mb-0">Product Added<span class="count" id="product_len_counter">{{ count($ssn_products) }}</span></h6>
                                 <a href="javascript:void(0);" class="d-flex align-items-center text-danger" id="clear_all_btn">
@@ -443,7 +454,7 @@
                                     Clear all
                                 </a>
                             </div>
-                            <div class="product-wrap" style="height: 400px">
+                            <div class="product-wrap" >
                                 <table class="table table-border text-center" >
                                     <thead>
                                     <tr>
@@ -509,120 +520,147 @@
                         @endphp
                         <div class="block-section">
                             <div class="order-total">
-
                                 <div class="row">
-                                    <div class="col-6 d-flex align-items-center mb-2">SubTotal
-                                        <div class="save_progress d-none ms-1">
-                                            <i class="fas fa-spinner"></i>
-                                        </div>
-                                    </div>
+{{--                                    <div class="col-6 d-flex align-items-center mb-2">SubTotal--}}
+{{--                                        <div class="save_progress d-none ms-1">--}}
+{{--                                            <i class="fas fa-spinner"></i>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                     <div class="col-6 mb-2">
+                                        <label>SubTotal</label>
                                         <input type="tel" class="form-control text-center" name="all_subtotal" id="sub_total_field" value="{{ isset($ssn_additional) ? $ssn_additional['subtotal'] : 0 }}">
                                     </div>
-                                    <div class="col-6 d-flex align-items-center mb-2">Discount
-                                        <div class="save_progress d-none ms-1">
-                                            <i class="fas fa-spinner"></i>
-                                        </div>
-                                    </div>
                                     <div class="col-6 mb-2">
+                                        <label>Discount</label>
                                         <input type="tel" class="form-control text-center" name="all_discount" id="discount_field" value="{{ isset($ssn_additional) ? $ssn_additional['discount'] : 0 }}">
                                     </div>
-                                    <div class="col-6 d-flex align-items-center mb-2">Vat
-                                        <div class="save_progress d-none ms-1">
-                                            <i class="fas fa-spinner"></i>
-                                        </div>
-                                    </div>
                                     <div class="col-6 mb-2">
+                                        <label>Vat</label>
                                         <input type="tel" class="form-control text-center" name="all_vat" id="vat_field" value="{{ isset($ssn_additional) ? $ssn_additional['vat'] : 0 }}">
                                     </div>
-                                    <div class="col-6 d-flex align-items-center mb-2">Tax
-                                        <div class="save_progress d-none ms-1">
-                                            <i class="fas fa-spinner"></i>
-                                        </div>
-                                    </div>
                                     <div class="col-6 mb-2">
+                                        <label>Tax</label>
                                         <input type="tel" class="form-control text-center" name="all_tax" id="tax_field" value="{{ isset($ssn_additional) ? $ssn_additional['tax'] : 0 }}">
                                     </div>
-                                    <div class="col-6 d-flex align-items-center mb-2">Speed Money
-                                        <div class="save_progress d-none ms-1">
-                                            <i class="fas fa-spinner"></i>
-                                        </div>
-                                    </div>
                                     <div class="col-6 mb-2">
+                                        <label>Speed Money</label>
                                         <input type="tel" class="form-control text-center" name="all_speedmoney" id="speed_money_field" value="{{ isset($ssn_additional) && isset($ssn_additional['speed_money']) ? $ssn_additional['speed_money'] : 0 }}">
                                     </div>
-                                    <div class="col-6 d-flex align-items-center mb-2">Freight
-                                        <div class="save_progress d-none ms-1">
-                                            <i class="fas fa-spinner"></i>
-                                        </div>
-                                    </div>
                                     <div class="col-6 mb-2">
+                                        <label>Freight</label>
                                         <input type="tel" class="form-control text-center" name="all_freight" id="freight_field" value="{{ isset($ssn_additional) && isset($ssn_additional['freight']) ? $ssn_additional['freight'] : 0 }}">
                                     </div>
-                                    <div class="col-6 d-flex align-items-center">Fractional Discount
-                                        <div class="save_progress d-none ms-1">
-                                            <i class="fas fa-spinner"></i>
-                                        </div>
-                                    </div>
                                     <div class="col-6 mb-2">
+                                        <label>Fractional Discount</label>
                                         <input type="tel" class="form-control text-center" name="fractional_dis" id="fractional_discount_field" value="{{ isset($ssn_additional) && isset($ssn_additional['fractional_discount']) ? $ssn_additional['fractional_discount'] : 0 }}">
                                     </div>
-                                    <div class="col-6 d-flex align-items-center">Payment Method
-                                        <div class="save_progress d-none ms-1">
-                                            <i class="fas fa-spinner"></i>
-                                        </div>
-                                    </div>
                                     <div class="col-6 mb-2">
-                                        <select class="form-select" name="payment_type">
+                                        <label>Payment Method</label>
+                                        <select class="form-select" name="payment_type" id="payment_type">
                                             <option selected disabled>-- select one --</option>
                                             <option value="cash">Cash</option>
                                             <option value="bank">Bank</option>
                                         </select>
                                     </div>
-                                    <div class="col-6 d-flex align-items-center">Payment Amount
+                                    <div class="col-6 mb-2">
+                                        <label>Payment Amount</label>
+                                        <input type="text" class="form-control text-center" name="payment_amount" id="payment_amount" value="">
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <label>Due Amount</label>
+                                        <input type="text" class="form-control text-center" name="due_amount" id="due_amount" value="{{ isset($ssn_additional) ? $ssn_additional['grand_total'] : 0 }}" readonly>
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <label>Issue Date</label>
+                                        <input type="date" class="form-control text-center" name="issue_date" id="" value="">
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <label>Due Date</label>
+                                        <input type="date" class="form-control text-center" name="due_date" id="" value="">
+                                    </div>
+{{--                                    <div class="col-6 d-flex align-items-center mb-2">Discount--}}
+{{--                                        <div class="save_progress d-none ms-1">--}}
+{{--                                            <i class="fas fa-spinner"></i>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-6 mb-2">--}}
+{{--                                        <input type="tel" class="form-control text-center" name="all_discount" id="discount_field" value="{{ isset($ssn_additional) ? $ssn_additional['discount'] : 0 }}">--}}
+{{--                                    </div>--}}
+{{--                                    </div>--}}
+{{--                                <div class="row">--}}
+{{--                                    <div class="col-6 d-flex align-items-center mb-2">Vat--}}
+{{--                                        <div class="save_progress d-none ms-1">--}}
+{{--                                            <i class="fas fa-spinner"></i>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-6 mb-2">--}}
+{{--                                        <input type="tel" class="form-control text-center" name="all_vat" id="vat_field" value="{{ isset($ssn_additional) ? $ssn_additional['vat'] : 0 }}">--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-6 d-flex align-items-center mb-2">Tax--}}
+{{--                                        <div class="save_progress d-none ms-1">--}}
+{{--                                            <i class="fas fa-spinner"></i>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-6 mb-2">--}}
+{{--                                        <input type="tel" class="form-control text-center" name="all_tax" id="tax_field" value="{{ isset($ssn_additional) ? $ssn_additional['tax'] : 0 }}">--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-6 d-flex align-items-center mb-2">Speed Money--}}
+{{--                                        <div class="save_progress d-none ms-1">--}}
+{{--                                            <i class="fas fa-spinner"></i>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-6 mb-2">--}}
+{{--                                        <input type="tel" class="form-control text-center" name="all_speedmoney" id="speed_money_field" value="{{ isset($ssn_additional) && isset($ssn_additional['speed_money']) ? $ssn_additional['speed_money'] : 0 }}">--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-6 d-flex align-items-center mb-2">Freight--}}
+{{--                                        <div class="save_progress d-none ms-1">--}}
+{{--                                            <i class="fas fa-spinner"></i>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-6 mb-2">--}}
+{{--                                        <input type="tel" class="form-control text-center" name="all_freight" id="freight_field" value="{{ isset($ssn_additional) && isset($ssn_additional['freight']) ? $ssn_additional['freight'] : 0 }}">--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-6 d-flex align-items-center">Fractional Discount--}}
+{{--                                        <div class="save_progress d-none ms-1">--}}
+{{--                                            <i class="fas fa-spinner"></i>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-6 mb-2">--}}
+{{--                                        <input type="tel" class="form-control text-center" name="fractional_dis" id="fractional_discount_field" value="{{ isset($ssn_additional) && isset($ssn_additional['fractional_discount']) ? $ssn_additional['fractional_discount'] : 0 }}">--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-6 d-flex align-items-center">Due Amount--}}
+{{--                                        <div class="save_progress d-none ms-1">--}}
+{{--                                            <i class="fas fa-spinner"></i>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="col-6 mb-2">--}}
+{{--                                        <input type="text" class="form-control text-center" name="due_amount" id="due_amount" value="{{ isset($ssn_additional) ? $ssn_additional['grand_total'] : 0 }}" readonly>--}}
+{{--                                    </div>--}}
+
+                                    <div class="col-6 d-flex align-items-center">Grand Total
                                         <div class="save_progress d-none ms-1">
                                             <i class="fas fa-spinner"></i>
                                         </div>
                                     </div>
                                     <div class="col-6 mb-2">
-                                        <input type="tel" class="form-control text-center" name="fractional_dis" id="fractional_discount_field" value="">
+                                        <input type="tel" class="form-control text-center" name="fractional_dis" id="grand_total" value="{{ isset($ssn_additional) ? $ssn_additional['grand_total'] : 0 }}">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="d-grid btn-block mb-3">
-                            <h6 class="text-dark mb-0"><strong>Grand Total: </strong>৳<span id="grand_total">{{ isset($ssn_additional) ? $ssn_additional['grand_total'] : 0 }}</span></h6>
+{{--                        <div class="d-grid btn-block mb-2">--}}
+{{--                            <h6 class="text-dark mb-0"><strong>Grand Total: </strong>৳<span id="grand_total">{{ isset($ssn_additional) ? $ssn_additional['grand_total'] : 0 }}</span></h6>--}}
 {{--                            <h6 class="text-dark mb-0"><strong>Grand Total: </strong>৳<span id="grand_total"><input type="text" value="{{ isset($ssn_additional) ? $ssn_additional['grand_total'] : 0 }}" ></span></h6>--}}
 
-                        </div>
-                        <div class="setvaluecash">
-                            <ul>
-                                <li>
-                                    <a href="javascript:void(0);" class="paymentmethod" data-bs-toggle="modal" data-bs-target="#payment_modal">
-
-                                        <img src="{{asset('/')}}admin/assets/img/icons/cash.svg" alt="img" class="me-2">
-                                        Payment
-                                    </a>
-                                </li>
-{{--                                <li>--}}
-{{--                                    <a href="javascript:void(0);" class="paymentmethod">--}}
-{{--                                        <img src="{{asset('/')}}admin/assets/img/icons/debitcard.svg" alt="img" class="me-2">--}}
-{{--                                        Debit--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                                <li>--}}
-{{--                                    <a href="javascript:void(0);" class="paymentmethod">--}}
-{{--                                        <img src="{{asset('/')}}admin/assets/img/icons/scan.svg" alt="img" class="me-2">--}}
-{{--                                        Scan--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-                            </ul>
-                        </div>
+{{--                        </div>--}}
                         <div class="head text-center">
+{{--                            <button type="button" class="btn btn-success btn-lg flex-fill" data-bs-toggle="offcanvas" data-bs-target="#payment_offcanvas"><i class="fas fa-credit"></i> Payment</button>--}}
                             <h6 class="text-muted mb-0">No IMEI/Serial Information!</h6>
                         </div>
-                        <div class="btn-row d-flex align-items-center justify-content-between mt-3">
+{{--                        </div>--}}
+                        <div class="btn-row d-flex align-items-center justify-content-between mt-2">
                             <button type="button" class="btn btn-danger btn-lg flex-fill" id="destroy_all_ssn_btn"><i class="fas fa-trash-alt"></i> Empty</button>
+{{--                            <button type="button" class="btn btn-success btn-lg flex-fill" data-bs-toggle="offcanvas" data-bs-target="#payment_offcanvas"><i class="fas fa-credit"></i> Payment</button>--}}
                             <button type="submit" class="btn btn-success btn-lg flex-fill"><i class="fas fa-credit-card"></i> Checkout</button>
                         </div>
                     </form>
@@ -632,13 +670,14 @@
         <!-- /add -->
     </div>
 
-    <!-- walk-in selector offcanvas -->
-{{--    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="select_walkin_offcanvas">--}}
-{{--        <div class="offcanvas-header border-bottom pb-2">--}}
-{{--            <h5 class="offcanvas-title"><i class="fas fa-search"></i> Find Customer/Supplier</h5>--}}
-{{--            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>--}}
-{{--        </div>--}}
-{{--        <div class="offcanvas-body bg-light">--}}
+{{--    <!-- walk-in selector offcanvas -->--}}
+    <div class="offcanvas offcanvas-end w-50" data-bs-scroll="true" tabindex="-1" id="payment_offcanvas" >
+        <div class="offcanvas-header border-bottom pb-2">
+            <h5 class="offcanvas-title"><i class="fas fa-search"></i> Bank Details</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+        </div>
+
+        <div class="offcanvas-body bg-light">
 {{--            <div class="input-blocks mb-2">--}}
 {{--                <div class="form-check form-check-inline">--}}
 {{--                    <input type="radio" class="form-check-input" name="walk_in" id="customer" value="customer" checked>--}}
@@ -655,8 +694,62 @@
 {{--                    <img src="{{ asset('admin/assets/img/search_placeholder.webp') }}">--}}
 {{--                </li>--}}
 {{--            </ul>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+            <div class="col-6 d-flex align-items-center">Bank Type
+                <div class="save_progress d-none ms-1">
+                    <i class="fas fa-spinner"></i>
+                </div>
+            </div>
+            <div class="col-6 mb-2">
+                <select class="form-select" name="bank_type" id="bank_type">
+                    <option selected disabled>-- select one --</option>
+                    <option value="bank">Bank</option>
+                    <option value="mobile">Mobile_bank</option>
+                    <option value="cheque">Cheque</option>
+                </select>
+            </div>
+{{--            </div>--}}
+            <div class="col-6 d-flex align-items-center">Payment Amount
+                <div class="save_progress d-none ms-1">
+                    <i class="fas fa-spinner"></i>
+                </div>
+            </div>
+            <div class="col-6 mb-2">
+                <select class="form-select" name="bank" id="bank">
+                    <option selected disabled>-- select one --</option>
+                </select>
+            </div>
+            <div class="col-6 d-flex align-items-center">Due Amount
+                <div class="save_progress d-none ms-1">
+                    <i class="fas fa-spinner"></i>
+                </div>
+            </div>
+            <div class="col-6 mb-2">
+                <input type="text" class="form-control text-center" name="due_amount" id="due_amount" value="{{ isset($ssn_additional) ? $ssn_additional['grand_total'] : 0 }}" readonly>
+            </div>
+            <div class="col-6 d-flex align-items-center">Issue Date
+                <div class="save_progress d-none ms-1">
+                    <i class="fas fa-spinner"></i>
+                </div>
+            </div>
+            <div class="col-6 mb-2">
+                <input type="date" class="form-control text-center" name="issue_date" id="" value="">
+            </div>
+            <div class="col-6 d-flex align-items-center">Due Date
+                <div class="save_progress d-none ms-1">
+                    <i class="fas fa-spinner"></i>
+                </div>
+            </div>
+            <div class="col-6 mb-2">
+                <input type="date" class="form-control text-center" name="due_date" id="" value="">
+            </div>
+            <div class="col-6 d-flex align-items-center">Grand Total
+                <div class="save_progress d-none ms-1">
+                    <i class="fas fa-spinner"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <!-- product editor offcanvas -->
     <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="product_offcanvas">
@@ -817,14 +910,93 @@
 @endsection
 @section('js')
     <script>
+        $(document).ready(function() {
+            $('#bank_type').select2();
+        });
+    </script>
+    <!-- Select2 JS -->
+{{--    <script src="{{asset('/')}}assets/plugins/select2/js/select2.min.js"></script>--}}
+{{--    <script src="{{asset('/')}}assets/plugins/select2/js/custom-select.js"></script>--}}
+    <script>
+
         $(document).ready(function(){
-            console.log('sarowar');
+            // console.log('sarowar');
             $(document).on('input','#payment_amount',function (){
+                let $total=$('#grand_total').val();
                 let $amount= $(this).val();
-                console.log($amount);
+                let $due= $total - $amount;
+                $('#due_amount').val($due);
+                // console.log($total);
             })
 
+            $(document).on('change','#payment_type',function(){
+                var optionSelected = this.value;
+                if(optionSelected != 'cash'){
+                    // Show the offcanvas
+                    var offcanvas = new bootstrap.Offcanvas(document.getElementById('payment_offcanvas'));
+                    offcanvas.show();
+                    // $('#payment_offcanvas').show();
+                    console.log(optionSelected);
+                }
 
+            });
+            $(document).on('change','#bank_type',function(){
+                var bankvalue = this.value;
+                $.ajax({
+                    url:base_url+'/bank_type/'+bankvalue,
+                    type:'get',
+                    dataType:'json',
+                    success: function(success) {
+                        // console.log(success.data);
+
+                        var options = ''; // Initialize options variable
+
+                      if(bankvalue == 'bank')
+                          {
+                              $.each(success.data, function(index, bank) {
+                                  // Set the value attribute to vendor.id or another unique identifier
+                                  options += `<option value="${bank.id}">${bank.branch_name}</option>`;
+                              });
+                          }
+                      else if(bankvalue == 'mobile')
+                        {
+                            $.each(success.data, function(index, bank) {
+                                // Set the value attribute to vendor.id or another unique identifier
+                                options += `<option value="${bank.id}">${bank.mfs_provider}</option>`;
+                            });
+                        }
+                      else if(bankvalue == 'cheque')
+                        {
+                            $.each(success.data, function(index, bank) {
+                                // Set the value attribute to vendor.id or another unique identifier
+                                options += `<option value="${bank.id}">${bank.cheque_bank}</option>`;
+                            });
+                        }
+
+                        $('#bank').html(options); // Update the select element with new options
+                        // Reinitialize Select2 after updating options
+                        $('#bank').select2();
+                    },
+                })
+            });
+
+            $(document).on('change','#bank',function (){
+                $bankdata=this.value;
+                console.log($bankdata);
+                {{--$.ajax({--}}
+                {{--    url: "{{ route('get_product_data') }}",--}}
+                {{--    method: 'POST',--}}
+                {{--    data: {--}}
+                {{--        _token: '{{ csrf_token() }}',--}}
+                {{--        product_id: productId--}}
+                {{--    },--}}
+                {{--    success: function(response) {--}}
+                {{--        displayProducts(response.products);--}}
+                {{--        updateCheckMark(response.products);--}}
+                {{--        calculateAndUpdateSummary();--}}
+                {{--    }--}}
+                {{--});--}}
+            });
         });
     </script>
     <script>
@@ -1016,7 +1188,7 @@
                     $('#speed_money_field').val(response.data.speed_money);
                     $('#freight_field').val(response.data.freight);
                     $('#fractional_discount_field').val(response.data.fractional_discount);
-                    $('#grand_total').text(response.data.grand_total);
+                    $('#grand_total').val(response.data.grand_total);
                     // console.log(response.data.subtotal);
                 } catch (error) {
                     // console.error('Error:', error.message);
@@ -1049,7 +1221,7 @@
                             $('#speed_money_field').val(response.data.speed_money);
                             $('#freight_field').val(response.data.freight);
                             $('#fractional_discount_field').val(response.data.fractional_discount);
-                            $('#grand_total').text(response.data.grand_total);
+                            $('#grand_total').val(response.data.grand_total);
                             $('.save_progress').removeClass('d-inline').addClass('d-none');
                         } else {
                             console.error('Invalid response data');
@@ -1319,74 +1491,74 @@
 
             // get customer/supplier list
             // event listener for input changes
-            {{--$('#walkin_search_field').on('input', function() {--}}
-            {{--    const asset_path = "{{ asset('') }}";--}}
-            {{--    let query = $(this).val().trim();--}}
-            {{--    let walk_in_type = $('input[name="walk_in"]:checked').val();--}}
-            {{--    if (query.length > 1) {--}}
-            {{--        $.ajax({--}}
-            {{--            url: "{{ route('walkin_search_api') }}",--}}
-            {{--            method: 'POST',--}}
-            {{--            data: { query: query, walk_in: walk_in_type, _token: '{{ csrf_token() }}' },--}}
-            {{--            success: function(response) {--}}
-            {{--                $('#walkin_list').empty();--}}
-            {{--                if (response.walkin.length > 0) {--}}
-            {{--                    $.each(response.walkin, function(index, walkin) {--}}
-            {{--                        $('#walkin_list').append(`--}}
-            {{--                    <li class="list-group-item d-flex align-items-center cursor_pointer" data-id="${walkin.id}" data-name="${walkin.name}" data-balance="${walkin.balance}" data-type="${walkin.type}">--}}
-            {{--                        <img src="${walkin.image ? asset_path+walkin.image : asset_path+'admin/assets/img/customer/customer1.jpg'}" class="img-fluid customer_img_circle">--}}
-            {{--                        <h6 class="mb-0">${walkin.name}</h6>--}}
-            {{--                    </li>--}}
-            {{--                `);--}}
-            {{--                    });--}}
-            {{--                } else {--}}
-            {{--                    $('#walkin_list').append(`--}}
-            {{--                <li class="list-group-item text-center">no customers found</li>--}}
-            {{--            `);--}}
-            {{--                }--}}
-            {{--            }--}}
-            {{--        });--}}
-            {{--    } else {--}}
-            {{--        $('#walkin_list').html(`<li class="list-item"><img src="{{ asset('admin/assets/img/search_placeholder.webp') }}"></li>`);--}}
-            {{--    }--}}
-            {{--});--}}
+            $('#walkin_search_field').on('input', function() {
+                const asset_path = "{{ asset('') }}";
+                let query = $(this).val().trim();
+                let walk_in_type = $('input[name="walk_in"]:checked').val();
+                if (query.length > 1) {
+                    $.ajax({
+                        url: "{{ route('walkin_search_api') }}",
+                        method: 'POST',
+                        data: { query: query, walk_in: walk_in_type, _token: '{{ csrf_token() }}' },
+                        success: function(response) {
+                            $('#walkin_list').empty();
+                            if (response.walkin.length > 0) {
+                                $.each(response.walkin, function(index, walkin) {
+                                    $('#walkin_list').append(`
+                                <li class="list-group-item d-flex align-items-center cursor_pointer" data-id="${walkin.id}" data-name="${walkin.name}" data-balance="${walkin.balance}" data-type="${walkin.type}">
+                                    <img src="${walkin.image ? asset_path+walkin.image : asset_path+'admin/assets/img/customer/customer1.jpg'}" class="img-fluid customer_img_circle">
+                                    <h6 class="mb-0">${walkin.name}</h6>
+                                </li>
+                            `);
+                                });
+                            } else {
+                                $('#walkin_list').append(`
+                            <li class="list-group-item text-center">no customers found</li>
+                        `);
+                            }
+                        }
+                    });
+                } else {
+                    $('#walkin_list').html(`<li class="list-item"><img src="{{ asset('admin/assets/img/search_placeholder.webp') }}"></li>`);
+                }
+            });
 
             // on change walk-in type, make search field empty
-            // $('input[name="walk_in"]').on('change', function() {
-            //     $('#walkin_search_field').val('').focus();
-            //     $('#walkin_list').empty();
-            // });
+            $('input[name="walk_in"]').on('change', function() {
+                $('#walkin_search_field').val('').focus();
+                $('#walkin_list').empty();
+            });
 
             // on click any list item from customer/supplier search result, it will store that customer/supplier id into the session
-            {{--$(document).on('click', '#walkin_list .list-group-item', function() {--}}
-            {{--    let id = $(this).data('id');--}}
-            {{--    let name = $(this).data('name');--}}
-            {{--    let balance = $(this).data('balance');--}}
-            {{--    let type = $(this).data('type');--}}
-            {{--    $.ajax({--}}
-            {{--        url: "{{ route('store_walkin_into_session') }}",--}}
-            {{--        method: 'POST',--}}
-            {{--        data: {--}}
-            {{--            id: id,--}}
-            {{--            name: name,--}}
-            {{--            balance: balance,--}}
-            {{--            type: type,--}}
-            {{--            _token: '{{ csrf_token() }}'--}}
-            {{--        },--}}
-            {{--        success: function(response) {--}}
-            {{--            $("#walkin_details_container").addClass("d-flex flex-column justify-content-center").html(`--}}
-            {{--        <h6 class="mb-0">${name}</h6>--}}
-            {{--        <div>৳${balance}</div>--}}
-            {{--    `);--}}
+            $(document).on('click', '#walkin_list .list-group-item', function() {
+                let id = $(this).data('id');
+                let name = $(this).data('name');
+                let balance = $(this).data('balance');
+                let type = $(this).data('type');
+                $.ajax({
+                    url: "{{ route('store_walkin_into_session') }}",
+                    method: 'POST',
+                    data: {
+                        id: id,
+                        name: name,
+                        balance: balance,
+                        type: type,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        $("#walkin_details_container").addClass("d-flex flex-column justify-content-center").html(`
+                    <h6 class="mb-0">${name}</h6>
+                    <div>৳${balance}</div>
+                `);
 
-            {{--            // Hide the offcanvas--}}
-            {{--            let offcanvas = bootstrap.Offcanvas.getInstance($('#select_walkin_offcanvas'));--}}
-            {{--            if (offcanvas) {--}}
-            {{--                offcanvas.hide();--}}
-            {{--            }--}}
-            {{--        }--}}
-            {{--    });--}}
-            {{--});--}}
+                        // Hide the offcanvas
+                        let offcanvas = bootstrap.Offcanvas.getInstance($('#payment_offcanvas'));
+                        if (offcanvas) {
+                            offcanvas.hide();
+                        }
+                    }
+                });
+            });
 
             $('#clear_all_btn').on('click', function() {
                 $.ajax({
@@ -1492,6 +1664,8 @@
                         });
 
                         $('#select_vendor').html(options); // Update the select element with new options
+
+                        $('#select_vendor').select2();
                     },
                 })
                 // alert(radioValue)

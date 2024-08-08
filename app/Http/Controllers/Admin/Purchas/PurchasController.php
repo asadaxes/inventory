@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin\Purchas;
 
 use App\Http\Controllers\Admin\Product\SizeController;
 use App\Http\Controllers\Controller;
+use App\Models\Bank;
+use App\Models\BankAccount;
+use App\Models\BankCheque;
+use App\Models\BankMobile;
 use App\Models\Color;
 use App\Models\Customer;
 use App\Models\Product;
@@ -57,7 +61,7 @@ class PurchasController extends Controller
      */
     public function store(Request $request)
     {
-//                return $request;
+                return $request;
 //        abort_if(!auth()->user()->can('create category'),403,__('User does not have the right permissions.'));
         $amounts = session()->get('purchase_additional');
 //        return $sessionProducts;
@@ -572,6 +576,21 @@ class PurchasController extends Controller
             $vendor=Supplier::get();
         }
         return response()->json(['status' => true, 'data' => $vendor]);
+    }
+
+    public function bank_type(string $str)
+    {
+//        return $str;
+        if ($str == 'bank'){
+            $bank=BankAccount::get();
+        }elseif ($str == 'mobile'){
+            $bank=BankMobile::get();
+        }elseif ($str == 'cheque'){
+//            return 'sarowar';
+            $bank=BankCheque::all();
+//            return $bank;
+        }
+        return response()->json(['status' => true, 'data' => $bank]);
     }
     public function product_clear_all()
     {
