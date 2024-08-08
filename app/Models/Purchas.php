@@ -74,7 +74,7 @@ class Purchas extends Model
         self::$purchas->note                    = $request->note ?? '';
         self::$purchas->date                    = $request->date ?? '';
         self::$purchas->due_date                = $request->due_date ?? '';
-        self::$purchas->due                     = $request->due ?? '';
+        self::$purchas->due                     = $request->due_amount ?? '';
         self::$purchas->sub_total               = $request->all_subtotal ?? '';
         self::$purchas->total                   = $request->total ?? '';
 //        self::$purchas->company_id                   = 1;
