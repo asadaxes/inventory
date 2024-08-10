@@ -57,8 +57,8 @@ class Stock extends Model
         self::$stock->transfer                    = $request->transfer ?? '';
         self::$stock->available                   = $request->available ?? '';
         self::$stock->unit_id                     = $data['unit_id'] ?? '';
-        self::$transection->size_id               = $data['size_id'] ?? '';
-        self::$transection->unit_id               = $data['color_id'] ?? '';
+        self::$stock->size_id                     = $data['size_id'] ?? '';
+        self::$stock->unit_id                     = $data['color_id'] ?? '';
         self::$stock->status                      = $request->status ?? '';
         self::$stock->save();
         return self::$stock;

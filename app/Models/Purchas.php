@@ -13,7 +13,7 @@ class Purchas extends Model
 //    use Searchable;
 
     protected $fillable = [
-        'bil_no',
+        'inv_id',
         'vendor_type',
         'vendor',
         'dis_type',
@@ -45,7 +45,7 @@ class Purchas extends Model
     protected $searchableFields = ['*'];
     protected  static $purchas;
 
-    public static function createOrUpdateUser ($request, $id = null)
+    public static function createOrUpdateUser ($request,$inv=null, $id = null)
     {
         if (isset($id))
         {
@@ -53,7 +53,7 @@ class Purchas extends Model
         } else {
             self::$purchas = new Purchas();
         }
-        self::$purchas->bil_no                  = $request->bil_no ?? '';
+        self::$purchas->inv_id                  = $inv ?? '';
         self::$purchas->vendor_type             = $request->vendor_type ?? '';
         self::$purchas->vendor                  = $request->vendor ?? '';
         self::$purchas->dis_type                = $request->dis_type ?? '';

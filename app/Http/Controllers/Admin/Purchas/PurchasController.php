@@ -8,8 +8,10 @@ use App\Models\Bank;
 use App\Models\BankAccount;
 use App\Models\BankCheque;
 use App\Models\BankMobile;
+use App\Models\BankTransaction;
 use App\Models\Color;
 use App\Models\Customer;
+use App\Models\Invoice;
 use App\Models\Product;
 use App\Models\ProductTransection;
 use App\Models\Purchas;
@@ -61,14 +63,54 @@ class PurchasController extends Controller
      */
     public function store(Request $request)
     {
-                return $request;
+//                return $request;
 //        abort_if(!auth()->user()->can('create category'),403,__('User does not have the right permissions.'));
         $amounts = session()->get('purchase_additional');
-//        return $sessionProducts;
         $request['total']=$amounts['grand_total'];
 
-        $store=Purchas::createOrUpdateUser($request);
+        $bank_amount = session()->get('bank_info');
 
+        $amount['type']='payment';
+        $amount['vendor_type']=$request->vendor_type;
+        $amount['name']=$request->vendor;
+        $amount['date']=$request->issue_date;
+        $amount['due_date']=$request->due_date;
+        $amount['amount']=$request->due_amount + $request->payment_amount;
+        $amount['paid_amount']=$request->payment_amount;
+        $amount['due_amount']=$request->due_amount;
+       if ($request->payment_amount == $request->due_amount + $request->payment_amount){
+            $amount['status']='paid';
+        }elseif ($request->payment_amount == 0){
+           $amount['status']='unpaid';
+       }elseif ($request->payment_amount < $request->due_amount + $request->payment_amount){
+           $amount['status']='partial';
+       }
+
+       if ($bank_amount['bank_type']=='bank'){
+           $bank=BankAccount::where('id',$bank_amount['bank_id'])->first();
+           $bank_name=Bank::where('id',$bank->bank_id)->first();
+
+           $bank->balance=$bank->balance - $bank_amount['payment_amount'];
+           $bank->update();
+       }elseif ($bank_amount['bank_type']=='mobile'){
+           $bank=BankMobile::where('id',$bank_amount['bank_id'])->first();
+
+           $bank->balance=$bank->balance - $bank_amount['payment_amount'];
+           $bank->update();
+       }
+//       elseif ($bank_amount['bank_type']=='cheque'){
+//
+//       }
+
+
+
+
+
+//        $amount['user_id']=
+//        $amount['branch_id']=
+//        $amount['company_id']=
+        $invoice=Invoice::createOrUpdateUser($amount);
+        $store=Purchas::createOrUpdateUser($request,$invoice->id);
         $sessionProducts = session()->get('purchase_products', []);
 //        return $sessionProducts;
         foreach ($sessionProducts as $key=>$product){
@@ -97,11 +139,12 @@ class PurchasController extends Controller
         session()->forget('purchase_walkin');
         session()->forget('purchase_additional');
         session()->forget('purchase_products');
+        session()->forget('bank_info');
 //        return $sessionProducts;
 //        $tranjection=ProductTransection::createOrUpdateUser($request,'pur',$store->id);
 //        return $store;
 
-        return redirect()->route('product.index')->with('success','Product create successfully');
+        return redirect()->route('purchasOrderCreate')->with('success','Purchas create successfully');
     }
 
     /**
@@ -591,6 +634,67 @@ class PurchasController extends Controller
 //            return $bank;
         }
         return response()->json(['status' => true, 'data' => $bank]);
+    }
+
+    public function get_bank_details(Request $request)
+    {
+        if ($request->bank_type == 'bank'){
+            $bank=BankAccount::where('id',$request->id)->first();
+            $bank_name='';
+        }elseif ($request->bank_type == 'mobile'){
+            $bank=BankMobile::where('id',$request->id)->first();
+            $bank_name='';
+        }elseif ($request->bank_type == 'cheque'){
+            $bank=BankCheque::where('id',$request->id)->first();
+            $bank_name=Bank::where('id',$bank->bank_account_id)->first();
+        }
+        return response()->json(['status' => true, 'data' => $bank,'bank_name'=>$bank_name]);
+    }
+
+    public function submit_bank_amount(Request $request)
+    {
+//        if ($request->bank_type == 'bank'){
+
+            $info=session()->get('bank_info');
+            $info['bank_type']=$request->bank_type;
+            $info['bank_id']=$request->bank_id;
+            $info['bank_name']=$request->bank_name;
+            $info['bank_amount']=$request->bank_amount;
+            $info['payment_amount']=$request->payment_amount;
+//            $info['due']=$request->payment_amount;
+            session()->put('bank_info',$info);
+//            return session()->get('bank_info');
+//            $bank=BankAccount::where('id',$request->bank_id)->first();
+//            $bank_name=Bank::where('id',$bank->bank_id)->first();
+//
+//
+//            $bank->balance=$bank->balance - $request->payment_amount;
+//            $bank->update();
+//
+//            $data['account_no']=$bank->account_no;
+//            $data['account_name']=$bank->account_holder;
+//            $data['bank_name']=$bank_name->name;
+//            $data['branch_name']=$bank->branch_name;
+//            $data['amount']=$request->payment_amount;
+//            $data['currency']='BDT';
+//            $data['transaction_date']=today();
+//            $data['status']='payment';
+////            $data['note']=$bank->account_no;
+//            $data['user_id']=$bank->user_id;
+//            $data['branch_id']=$bank->branch_id;
+//            $data['company_id']=$bank->company_id;
+////            return $data;
+//            $bank_data=BankTransaction::createOrUpdateBankTransaction($data);
+//            return $bank_name;
+
+//
+//        }elseif ($request->bank_type == 'mobile'){
+//            $bank=BankMobile::where('id',$request->bank_id)->first();
+//            $bank_name='';
+//        }elseif ($request->bank_type == 'cheque'){
+//            $bank=BankCheque::where('id',$request->bank_id)->first();
+//        }
+        return response()->json(['status' => true]);
     }
     public function product_clear_all()
     {

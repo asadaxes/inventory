@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('purchas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('bil_no')->nullable();
+            $table->string('inv_id')->nullable();
             $table->string('vendor_type')->nullable();
             $table->string('vendor')->nullable();
             $table->string('dis_type')->nullable();

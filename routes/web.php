@@ -228,6 +228,8 @@ Route::group(['middleware' => ['admin_access']], function() {
 
     Route::get('/get_vendor/{str}',[PurchasController::class,'get_vendor'])->name('get_vendor');
     Route::get('/bank_type/{str}',[PurchasController::class,'bank_type'])->name('bank_type');
+    Route::post('get_bank_details',[PurchasController::class,'get_bank_details'])->name('get_bank_details');
+    Route::post('submit_bank_amount',[PurchasController::class,'submit_bank_amount'])->name('submit_bank_amount');
 
     Route::post('/product/update_serial_method',[PurchasController::class,'update_serial_method'])->name('pur_update_serial_method');
     Route::post('/product/store_product_serials', [PurchasController::class, 'store_serials'])->name('pur_store_product_serials');

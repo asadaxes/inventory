@@ -40,18 +40,18 @@ class BankTransaction extends Model
         } else {
             self::$transaction = new BankTransaction();
         }
-        self::$transaction->account_no                 = $request->account_no ?? '';
-        self::$transaction->account_name               = $request->account_name ?? '';
-        self::$transaction->bank_name                  = $request->bank_name ?? '';
-        self::$transaction->branch_name                = $request->branch_name ?? '';
-        self::$transaction->amount                     = $request->amount ?? null;
-        self::$transaction->currency                   = $request->currency ?? '';
-        self::$transaction->transaction_date           = $request->transaction_date ?? null;
-        self::$transaction->status                     = $request->status ?? '';
+        self::$transaction->account_no                 = $request['account_no'] ?? '';
+        self::$transaction->account_name               = $request['account_name'] ?? '';
+        self::$transaction->bank_name                  = $request['bank_name'] ?? '';
+        self::$transaction->branch_name                = $request['branch_name'] ?? '';
+        self::$transaction->amount                     = $request['amount'] ?? null;
+        self::$transaction->currency                   = $request['currency'] ?? '';
+        self::$transaction->transaction_date           = $request['transaction_date'] ?? null;
+        self::$transaction->status                     = $request['status'] ?? '';
         self::$transaction->note                       = $request->note ?? '';
-        self::$transaction->user_id                    = $request->user_id ?? null;
-        self::$transaction->branch_id                  = $request->branch_id ?? null;
-        self::$transaction->company_id                 = $request->company_id ?? null;
+        self::$transaction->user_id                    = $request['user_id'] ?? null;
+        self::$transaction->branch_id                  = $request['branch_id'] ?? null;
+        self::$transaction->company_id                 = $request['company_id'] ?? null;
         self::$transaction->save();
         return self::$transaction;
     }
