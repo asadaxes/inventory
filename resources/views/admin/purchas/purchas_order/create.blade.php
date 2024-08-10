@@ -348,7 +348,7 @@
                                             <div class="row">
                                                 <div class="col-sm-7 col-12">
                                                     <div class="input-block">
-                                                        <label>Choice
+                                                        <label>Select Vendor
                                                             <div class="save_progress d-none">
                                                                 <i class="fas fa-spinner"></i>
                                                             </div>
@@ -362,7 +362,7 @@
                                                                     <input type="radio" value="sup" name="vendor_type"> Supplier
                                                                 </label>
                                                                 <label>
-                                                                    <input type="radio" value="org" name="vendor_type"> Organization
+                                                                    <input type="radio" value="other" name="vendor_type"> Walk-in customer
                                                                 </label>
                                                             </div>
                                                         </div>
@@ -370,7 +370,7 @@
                                                 </div>
                                                 <div class=" col-sm-5 col-12 mb-2">
                                                     <div class="input-block">
-                                                        <div class="form-group">
+                                                        <div class="form-group" id="vendor_select_field">
                                                             <label>{{__('vendor')}}</label>
                                                             <select class="form-select" name="vendor" id="select_vendor" >
                                                                 <option>Select</option>
@@ -378,6 +378,10 @@
                                                                 <option value="">select</option>
                                                                 {{--                                                    @endforeach--}}
                                                             </select>
+                                                        </div>
+                                                        <div class="form-group" id="vendor_input_field">
+                                                            <label>{{__('vendor')}}</label>
+                                                            <input type="text" class="form-control" name="vendor" id="" value="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -517,6 +521,7 @@
                         </div>
                         @php
                             $ssn_additional=session()->get('purchase_additional');
+                            $bank_pay=session()->get('bank_info');
                         @endphp
                         <div class="block-section">
                             <div class="order-total">
@@ -559,16 +564,16 @@
                                         <select class="form-select" name="payment_type" id="payment_type">
                                             <option selected disabled>-- select one --</option>
                                             <option value="cash">Cash</option>
-                                            <option value="bank">Bank</option>
+                                            <option value="bank" {{isset($bank_pay)? 'selected':''}}>Online</option>
                                         </select>
                                     </div>
                                     <div class="col-6 mb-2">
                                         <label>Payment Amount</label>
-                                        <input type="text" class="form-control text-center" name="payment_amount" id="payment_amount" value="">
+                                        <input type="text" class="form-control text-center" name="payment_amount" id="payment_amount" value="{{ isset($bank_pay) ? $bank_pay['payment_amount'] : 0 }}">
                                     </div>
                                     <div class="col-6 mb-2">
                                         <label>Due Amount</label>
-                                        <input type="text" class="form-control text-center" name="due_amount" id="due_amount" value="{{ isset($ssn_additional) ? $ssn_additional['grand_total'] : 0 }}" readonly>
+                                        <input type="text" class="form-control text-center" name="due_amount" id="due_amount" value="{{(isset($ssn_additional) ? $ssn_additional['grand_total'] : 0) - (isset($bank_pay) ? $bank_pay['payment_amount'] : 0) }}" readonly>
                                     </div>
                                     <div class="col-6 mb-2">
                                         <label>Issue Date</label>
@@ -671,82 +676,67 @@
     </div>
 
 {{--    <!-- walk-in selector offcanvas -->--}}
-    <div class="offcanvas offcanvas-end w-50" data-bs-scroll="true" tabindex="-1" id="payment_offcanvas" >
+    <div class="offcanvas offcanvas-end w-50 h-auto" data-bs-scroll="true" tabindex="-1" id="payment_offcanvas" >
         <div class="offcanvas-header border-bottom pb-2">
             <h5 class="offcanvas-title"><i class="fas fa-search"></i> Bank Details</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
         </div>
 
         <div class="offcanvas-body bg-light">
-{{--            <div class="input-blocks mb-2">--}}
-{{--                <div class="form-check form-check-inline">--}}
-{{--                    <input type="radio" class="form-check-input" name="walk_in" id="customer" value="customer" checked>--}}
-{{--                    <label class="form-check-label" for="customer">Customer</label>--}}
-{{--                </div>--}}
-{{--                <div class="form-check form-check-inline">--}}
-{{--                    <input type="radio" class="form-check-input" name="walk_in" id="supplier" value="supplier">--}}
-{{--                    <label class="form-check-label" for="supplier">Supplier</label>--}}
-{{--                </div>--}}
-{{--                <input type="text" class="form-control" id="walkin_search_field" placeholder="search by name, email, mobile or nid">--}}
-{{--            </div>--}}
-{{--            <ul class="list-group" id="walkin_list">--}}
-{{--                <li class="list-item">--}}
-{{--                    <img src="{{ asset('admin/assets/img/search_placeholder.webp') }}">--}}
-{{--                </li>--}}
-{{--            </ul>--}}
-            <div class="col-6 d-flex align-items-center">Bank Type
-                <div class="save_progress d-none ms-1">
-                    <i class="fas fa-spinner"></i>
+            <form action="" id="payment_form">
+                <div class="col-6 d-flex align-items-center">Bank Type
+                    <div class="save_progress d-none ms-1">
+                        <i class="fas fa-spinner"></i>
+                    </div>
                 </div>
-            </div>
-            <div class="col-6 mb-2">
-                <select class="form-select" name="bank_type" id="bank_type">
-                    <option selected disabled>-- select one --</option>
-                    <option value="bank">Bank</option>
-                    <option value="mobile">Mobile_bank</option>
-                    <option value="cheque">Cheque</option>
-                </select>
-            </div>
-{{--            </div>--}}
-            <div class="col-6 d-flex align-items-center">Payment Amount
-                <div class="save_progress d-none ms-1">
-                    <i class="fas fa-spinner"></i>
+                <div class="col-6 mb-2">
+                    <select class="form-select" name="bank_type" id="bank_type">
+                        <option selected disabled>-- select one --</option>
+                        <option value="bank">Bank</option>
+                        <option value="mobile">Mobile_bank</option>
+                        <option value="cheque">Cheque</option>
+                    </select>
                 </div>
-            </div>
-            <div class="col-6 mb-2">
-                <select class="form-select" name="bank" id="bank">
-                    <option selected disabled>-- select one --</option>
-                </select>
-            </div>
-            <div class="col-6 d-flex align-items-center">Due Amount
-                <div class="save_progress d-none ms-1">
-                    <i class="fas fa-spinner"></i>
+                <div class="col-6 d-flex align-items-center">vendor
+                    <div class="save_progress d-none ms-1">
+                        <i class="fas fa-spinner"></i>
+                    </div>
                 </div>
-            </div>
-            <div class="col-6 mb-2">
-                <input type="text" class="form-control text-center" name="due_amount" id="due_amount" value="{{ isset($ssn_additional) ? $ssn_additional['grand_total'] : 0 }}" readonly>
-            </div>
-            <div class="col-6 d-flex align-items-center">Issue Date
-                <div class="save_progress d-none ms-1">
-                    <i class="fas fa-spinner"></i>
+                <div class="col-6 mb-2">
+                    <select class="form-select" name="bank" id="bank">
+                        <option selected disabled>-- select one --</option>
+                    </select>
                 </div>
-            </div>
-            <div class="col-6 mb-2">
-                <input type="date" class="form-control text-center" name="issue_date" id="" value="">
-            </div>
-            <div class="col-6 d-flex align-items-center">Due Date
-                <div class="save_progress d-none ms-1">
-                    <i class="fas fa-spinner"></i>
+                <div class="col-6 d-flex align-items-center">{{__('Name')}}
+                    <div class="save_progress d-none ms-1">
+                        <i class="fas fa-spinner"></i>
+                    </div>
                 </div>
-            </div>
-            <div class="col-6 mb-2">
-                <input type="date" class="form-control text-center" name="due_date" id="" value="">
-            </div>
-            <div class="col-6 d-flex align-items-center">Grand Total
-                <div class="save_progress d-none ms-1">
-                    <i class="fas fa-spinner"></i>
+                <div class="col-6 mb-2">
+                    <input type="text" class="form-control text-center" name="bank_name" id="bank_name" value="" readonly>
                 </div>
-            </div>
+                <div class="col-6 d-flex align-items-center">{{__('Amount')}}
+                    <div class="save_progress d-none ms-1">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                </div>
+                <div class="col-6 mb-2">
+                    <input type="text" class="form-control text-center" name="bank_amount" id="bank_amount" value="" readonly>
+                </div>
+                <div class="col-6 d-flex align-items-center">{{__('Payment Amount')}}
+                    <div class="save_progress d-none ms-1">
+                        <i class="fas fa-spinner"></i>
+                    </div>
+                </div>
+                <div class="col-6 mb-2">
+{{--                    <input type="text" class="form-control text-center" name="" id="payment_amount" value="" >--}}
+                    <input type="text" class="form-control text-center" name="bank_payment" id="bank_payment" value="">
+
+                </div>
+
+                <input type="submit" id="pay" class="form-control btn btn-outline-primary" value="pay">
+            </form>
+
         </div>
 
     </div>
@@ -935,6 +925,7 @@
                     // Show the offcanvas
                     var offcanvas = new bootstrap.Offcanvas(document.getElementById('payment_offcanvas'));
                     offcanvas.show();
+                    // $('#offcanvas').toggleClass('is-open');
                     // $('#payment_offcanvas').show();
                     console.log(optionSelected);
                 }
@@ -949,7 +940,7 @@
                     success: function(success) {
                         // console.log(success.data);
 
-                        var options = ''; // Initialize options variable
+                        var options = ' <option selected disabled>-- select one --</option>'; // Initialize options variable
 
                       if(bankvalue == 'bank')
                           {
@@ -980,23 +971,110 @@
                 })
             });
 
-            $(document).on('change','#bank',function (){
-                $bankdata=this.value;
-                console.log($bankdata);
-                {{--$.ajax({--}}
-                {{--    url: "{{ route('get_product_data') }}",--}}
-                {{--    method: 'POST',--}}
-                {{--    data: {--}}
-                {{--        _token: '{{ csrf_token() }}',--}}
-                {{--        product_id: productId--}}
-                {{--    },--}}
-                {{--    success: function(response) {--}}
-                {{--        displayProducts(response.products);--}}
-                {{--        updateCheckMark(response.products);--}}
-                {{--        calculateAndUpdateSummary();--}}
-                {{--    }--}}
-                {{--});--}}
+          $(document).on('change', '#bank', function() {
+            var bankId = this.value;
+            var bankType = $('#bank_type').val();
+            // console.log(bankType);
+            // Perform POST request
+            $.ajax({
+                url: '{{route('get_bank_details')}}',
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                     id: bankId,
+                    bank_type: bankType
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if(bankType == 'bank')
+                    {
+                        $('#bank_name').val(response.data.branch_name)
+                        $('#bank_amount').val(response.data.balance)
+                    }
+                    else if(bankType == 'mobile')
+                    {
+                        $('#bank_name').val(response.data.mfs_provider)
+                        $('#bank_amount').val(response.data.balance)
+                    }
+                    else if(bankType == 'cheque')
+                    {
+                        // $.each(success.data, function(index, bank) {
+                        //     // Set the value attribute to vendor.id or another unique identifier
+                        //     options += `<option value="${bank.id}">${bank.cheque_bank}</option>`;
+                        // });
+                    }
+
+                    // console.log('Post request successful:', response);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Post request failed:', status, error);
+                }
+             });
+          });
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
             });
+            // $(document).ready(function() {
+                // Handle form submission
+            $('#payment_form').on('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                var amount = $('#bank_payment').val();
+
+                // Gather form data
+                var formData = {
+                    bank_type: $('#bank_type').val(),
+                    bank_id: $('#bank').val(),
+                    bank_name: $('#bank_name').val(),
+                    bank_amount: $('#bank_amount').val(),
+                    payment_amount: amount,
+                };
+
+                // Initialize Offcanvas instance
+                var offcanvasElement = document.getElementById('payment_offcanvas');
+                var offcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement); // Check if Offcanvas is already initialized
+                if (!offcanvas) {
+                    offcanvas = new bootstrap.Offcanvas(offcanvasElement);
+                }
+
+                // Display a spinner or some kind of loading indication
+                $('.save_progress').removeClass('d-none');
+
+                // Perform the AJAX request
+                $.ajax({
+                    url: '{{route('submit_bank_amount')}}',
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    success: function(response) {
+                        // Handle successful response
+                        // console.log('Attempting to hide Offcanvas');
+                        offcanvas.hide(); // Hide the Offcanvas
+                        // console.log('Offcanvas hide method called');
+                        // console.log('Form submission successful:', response);
+
+                        // Optionally, you can reset the form or display a success message
+                        $('form')[0].reset(); // Reset the form fields
+                        $('.save_progress').addClass('d-none'); // Hide the spinner
+                        $('#payment_amount').val(amount);
+
+                        let $total=$('#grand_total').val();
+                        // let $amount= $(this).val();
+                        let $due= $total - amount;
+                        $('#due_amount').val($due);
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors
+                        console.error('Form submission failed:', status, error);
+                        $('.save_progress').addClass('d-none'); // Hide the spinner
+                    }
+                });
+            });
+            // });
         });
     </script>
     <script>
@@ -1647,27 +1725,38 @@
     </script>
     <script>
         $(document).ready(function(){
+            $('#vendor_select_field').hide();
+            $('#vendor_input_field').hide();
+
             $("input[type='radio']").click(function(){
                 var radioValue = $("input[name='vendor_type']:checked").val();
-                $.ajax({
-                    url:base_url+'/get_vendor/'+radioValue,
-                    type:'get',
-                    dataType:'json',
-                    success: function(success) {
-                        // console.log(success.data);
+                console.log('sarowar');
+               if(radioValue != 'other'){
+                   $('#vendor_input_field').hide();
+                   $('#vendor_select_field').show();
+                   $.ajax({
+                       url:base_url+'/get_vendor/'+radioValue,
+                       type:'get',
+                       dataType:'json',
+                       success: function(success) {
+                           // console.log(success.data);
 
-                        var options = ''; // Initialize options variable
+                           var options = ''; // Initialize options variable
 
-                        $.each(success.data, function(index, vendor) {
-                            // Set the value attribute to vendor.id or another unique identifier
-                            options += `<option value="${vendor.id}">${vendor.name}</option>`;
-                        });
+                           $.each(success.data, function(index, vendor) {
+                               // Set the value attribute to vendor.id or another unique identifier
+                               options += `<option value="${vendor.id}">${vendor.name}</option>`;
+                           });
 
-                        $('#select_vendor').html(options); // Update the select element with new options
+                           $('#select_vendor').html(options); // Update the select element with new options
 
-                        $('#select_vendor').select2();
-                    },
-                })
+                           $('#select_vendor').select2();
+                       },
+                   })
+               }else {
+                   $('#vendor_select_field').hide();
+                   $('#vendor_input_field').show();
+               }
                 // alert(radioValue)
                 // if(radioValue){
                 //     alert("Your are a - " + radioValue);
