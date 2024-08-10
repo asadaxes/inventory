@@ -380,8 +380,12 @@
                                                             </select>
                                                         </div>
                                                         <div class="form-group" id="vendor_input_field">
-                                                            <label>{{__('vendor')}}</label>
-                                                            <input type="text" class="form-control" name="vendor" id="" value="">
+                                                            <label>{{__('vendor name')}}</label>
+                                                            <input type="text" class="form-control" name="vendor_name" id="" value="">
+                                                            <label>{{__('Phone')}}</label>
+                                                            <input type="text" class="form-control" name="phone" id="" value="">
+                                                            <label>{{__('Email')}}</label>
+                                                            <input type="text" class="form-control" name="Email" id="" value="">
                                                         </div>
                                                     </div>
                                                 </div>

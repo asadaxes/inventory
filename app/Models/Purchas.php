@@ -55,7 +55,11 @@ class Purchas extends Model
         }
         self::$purchas->inv_id                  = $inv ?? '';
         self::$purchas->vendor_type             = $request->vendor_type ?? '';
-        self::$purchas->vendor                  = $request->vendor ?? '';
+        if ($request->vendor_type == 'other'){
+            self::$purchas->vendor                  = $request->vendor_name ?? '';
+        }else{
+            self::$purchas->vendor                  = $request->vendor ?? '';
+        }
         self::$purchas->dis_type                = $request->dis_type ?? '';
         self::$purchas->discount                = $request->all_discount ?? '';
         self::$purchas->vat_type                = $request->vat_type ?? '';
