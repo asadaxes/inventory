@@ -72,43 +72,39 @@ class PurchasController extends Controller
 
         $amount['type']='payment';
         $amount['vendor_type']=$request->vendor_type;
-        $amount['name']=$request->vendor;
+        if ($request->vendor_type == 'other'){
+            $amount['name']=$request->vendor_name;
+        }else{
+            $amount['name']=$request->vendor;
+        }
         $amount['date']=$request->issue_date;
         $amount['due_date']=$request->due_date;
         $amount['amount']=$request->due_amount + $request->payment_amount;
         $amount['paid_amount']=$request->payment_amount;
         $amount['due_amount']=$request->due_amount;
+//        $amount['user_id']=
+//        $amount['branch_id']=
+//        $amount['company_id']=
        if ($request->payment_amount == $request->due_amount + $request->payment_amount){
             $amount['status']='paid';
-        }elseif ($request->payment_amount == 0){
-           $amount['status']='unpaid';
-       }elseif ($request->payment_amount < $request->due_amount + $request->payment_amount){
+        }elseif ($request->payment_amount < $request->due_amount + $request->payment_amount){
            $amount['status']='partial';
+       }elseif ($request->payment_amount == 0){
+           $amount['status']='unpaid';
        }
 
-       if ($bank_amount['bank_type']=='bank'){
+       if (isset($bank_amount['bank_type'])&& $bank_amount['bank_type']=='bank'){
            $bank=BankAccount::where('id',$bank_amount['bank_id'])->first();
            $bank_name=Bank::where('id',$bank->bank_id)->first();
 
            $bank->balance=$bank->balance - $bank_amount['payment_amount'];
            $bank->update();
-       }elseif ($bank_amount['bank_type']=='mobile'){
+       }elseif (isset($bank_amount['bank_type']) && $bank_amount['bank_type']=='mobile'){
            $bank=BankMobile::where('id',$bank_amount['bank_id'])->first();
-
            $bank->balance=$bank->balance - $bank_amount['payment_amount'];
            $bank->update();
        }
-//       elseif ($bank_amount['bank_type']=='cheque'){
-//
-//       }
 
-
-
-
-
-//        $amount['user_id']=
-//        $amount['branch_id']=
-//        $amount['company_id']=
         $invoice=Invoice::createOrUpdateUser($amount);
         $store=Purchas::createOrUpdateUser($request,$invoice->id);
         $sessionProducts = session()->get('purchase_products', []);
