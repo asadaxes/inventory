@@ -23,7 +23,6 @@ return new class extends Migration {
             $table->string('discount_type')->nullable();
             $table->decimal('discount')->nullable();
             $table->text('description')->nullable();
-            $table->tinyInteger('status')->nullable();
             $table->unsignedBigInteger('brand_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('size_id')->nullable();
@@ -32,7 +31,15 @@ return new class extends Migration {
             $table->unsignedBigInteger('child_category_id')->nullable();
             $table->unsignedBigInteger('unit_id')->nullable();
             $table->unsignedBigInteger('manufacture_id')->nullable();
-
+            $table->string('bname')->nullable();
+            $table->string('barcode')->nullable();
+            $table->string('certificate')->nullable();
+            $table->string('modelno')->nullable();
+            $table->string('cost')->nullable();
+            $table->string('wday')->nullable();
+            $table->string('pmod')->nullable();
+            $table->tinyInteger('status')->nullable();
+            $table->tinyInteger('is_serial')->nullable();
             $table->timestamps();
         });
     }

@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('invoices', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type')->nullable();
+            $table->string('bank_type')->nullable();
             $table->string('name')->nullable();
             $table->string('vendor_type')->nullable();
             $table->string('date')->nullable();

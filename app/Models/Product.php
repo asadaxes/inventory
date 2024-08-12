@@ -33,6 +33,7 @@ class Product extends Model
         'unit_id',
         'manufacture_id',
         'status',
+        'is_serial',
     ];
 
     protected $searchableFields = ['*'];
@@ -51,23 +52,24 @@ class Product extends Model
         }
         self::$product->name                       = $request->name ?? '';
         self::$product->created_by                       = $request->created_by ?? '';
-        self::$product->sku                = isset($id)? self::$product->sku : (isset($lastdata)? $lastdata->sku+1 : 1) ;
-        self::$product->price                = $request->price ?? '';
-        self::$product->quantity                = $request->quantity ?? '';
-        self::$product->manufacture_id                = $request->manufacture_id ?? '';
-        self::$product->unit_id                = $request->unit_id ?? '';
-        self::$product->child_category_id                = $request->child_category_id ?? '';
-        self::$product->color_id                = $request->color_id ?? '';
-        self::$product->sub_category_id                = $request->sub_category_id ?? '';
-        self::$product->size_id                = $request->size_id ?? '';
-        self::$product->category_id                = $request->category_id ?? '';
-        self::$product->brand_id                = $request->brand_id ?? '';
+        self::$product->sku                       = isset($id)? self::$product->sku : (isset($lastdata)? $lastdata->sku+1 : 1) ;
+        self::$product->price                     = $request->price ?? '';
+        self::$product->quantity                  = $request->quantity ?? '';
+        self::$product->manufacture_id            = $request->manufacture_id ?? '';
+        self::$product->unit_id                   = $request->unit_id ?? '';
+        self::$product->child_category_id         = $request->child_category_id ?? '';
+        self::$product->color_id                  = $request->color_id ?? '';
+        self::$product->sub_category_id           = $request->sub_category_id ?? '';
+        self::$product->size_id                   = $request->size_id ?? '';
+        self::$product->category_id               = $request->category_id ?? '';
+        self::$product->brand_id                   = $request->brand_id ?? '';
         self::$product->discount                = $request->discount ?? '';
         self::$product->discount_type                = $request->discount_type ?? '';
-        self::$product->tex                = $request->tex ?? '';
+        self::$product->tex                         = $request->tex ?? '';
         self::$product->min_quantity                = $request->min_quantity ?? '';
         self::$product->description                = $request->description ?? '';
         self::$product->status                     = $request->status ?? '';
+        self::$product->is_serial                    = $request->is_serial ?? '';
         self::$product->image                      = FileUpload::imageUpload($request->file('image'), 'admin/uploaded-files/product/products/', 'pro', '300', '200', isset($id)? self::$product->image:'') ;
         self::$product->save();
         return self::$product;
@@ -110,5 +112,9 @@ class Product extends Model
     public function manufacture()
     {
         return $this->belongsTo(Manufacture::class);
+    }
+    public function productSerials()
+    {
+        return $this->hasMany(ProductSerial::class);
     }
 }

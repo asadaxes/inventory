@@ -113,7 +113,7 @@
         <!-- /edit -->
     </div>
 @endsection
-@section('custom-script')
+@section('js')
 <script>
 $(document).ready(function() {
     // jQuery: Selecting DOM elements

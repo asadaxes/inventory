@@ -205,6 +205,8 @@ Route::group(['middleware' => ['admin_access']], function() {
 
     //================================================ Purchas module start=================================================
     Route::resource('purchases',PurchasController::class);
+    Route::get('/purchas_return/{id}',[PurchasController::class,'purchas_return'])->name('purchas_return');
+
     Route::get('/purchasOrderCreate',[PurchasController::class,'purchasOrderCreate'])->name('purchasOrderCreate');
     Route::post('/product/pur_filter_products',[PurchasController::class,'filter_products'])->name('pur_filter_products');
     Route::post('/product/get_product_data',[PurchasController::class,'get_product_data'])->name('get_product_data');

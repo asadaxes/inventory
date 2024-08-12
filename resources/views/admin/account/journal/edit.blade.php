@@ -138,7 +138,7 @@
         <!-- /edit -->
     </div>
 @endsection
-@section('custom-script')
+@section('js')
 <script>
 $(document).ready(function() {
     let journalDetailsArray = JSON.parse($('#journal_details').val()) || [];
