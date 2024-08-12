@@ -13,7 +13,7 @@
                 <a href="{{route('transaction_details.create')}}" class="btn btn-added"><img src="{{asset('/')}}admin/assets/img/icons/plus.svg"  class="me-2" alt="img">Add Transaction Details</a>
             </div>
         </div>
-        
+
         <!-- /product list -->
         <div class="card">
             <div class="card-body">
@@ -131,6 +131,6 @@
     </div>
 @endsection
 
-@section('custom-script')
+@section('js')
 {{--    @include('admin.include.plugin.datatable')--}}
 @endsection

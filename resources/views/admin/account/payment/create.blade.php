@@ -128,7 +128,7 @@
         <!-- /add -->
     </div>
 @endsection
-@section('custom-script')
+@section('js')
 <script>
 $(document).ready(function() {
     // Retrieve payment details array from cookies or initialize as empty array

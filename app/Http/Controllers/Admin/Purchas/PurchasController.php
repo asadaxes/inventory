@@ -21,6 +21,7 @@ use App\Models\Supplier;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use function PHPUnit\Framework\isNan;
+use function Symfony\Component\String\s;
 
 class PurchasController extends Controller
 {
@@ -31,11 +32,8 @@ class PurchasController extends Controller
     public function index()
     {
 //        abort_if(!auth()->user()->can('view product'),403,__('User does not have the right permissions.'));
-        return view('admin.product.product.select_product', [
-            'products' => Product::get(),
-            'colors' => Color::get(),
-            'sizes' => Size::get(),
-            'units' => Unit::get()
+        return view('admin.purchas.index', [
+            'purchases' => Purchas::latest()->get(),
         ]);
     }
 
@@ -68,42 +66,97 @@ class PurchasController extends Controller
         $amounts = session()->get('purchase_additional');
         $request['total']=$amounts['grand_total'];
 
+
         $bank_amount = session()->get('bank_info');
 
-        $amount['type']='payment';
-        $amount['vendor_type']=$request->vendor_type;
-        if ($request->vendor_type == 'other'){
-            $amount['name']=$request->vendor_name;
-        }else{
-            $amount['name']=$request->vendor;
-        }
-        $amount['date']=$request->issue_date;
-        $amount['due_date']=$request->due_date;
-        $amount['amount']=$request->due_amount + $request->payment_amount;
-        $amount['paid_amount']=$request->payment_amount;
-        $amount['due_amount']=$request->due_amount;
+     if ($request->payment_type == 'bank'){
+         $amount['type']='payment';
+         $amount['bank_type']=$bank_amount['bank_type'];
+         $amount['bank_id']=$bank_amount['bank_id'];
+         $amount['vendor_type']=$request->vendor_type;
+         if ($request->vendor_type == 'other'){
+             $amount['name']=$request->vendor_name;
+         }else{
+             $amount['name']=$request->vendor;
+         }
+         $amount['date']=$request->issue_date;
+         $amount['due_date']=$request->due_date;
+         $amount['amount']=$request->due_amount + $request->payment_amount;
+         $amount['paid_amount']=$request->payment_amount;
+         $amount['due_amount']=$request->due_amount;
 //        $amount['user_id']=
 //        $amount['branch_id']=
 //        $amount['company_id']=
-       if ($request->payment_amount == $request->due_amount + $request->payment_amount){
-            $amount['status']='paid';
-        }elseif ($request->payment_amount < $request->due_amount + $request->payment_amount){
-           $amount['status']='partial';
-       }elseif ($request->payment_amount == 0){
-           $amount['status']='unpaid';
-       }
+         if ($request->payment_amount == 0){
+             $amount['status']='unpaid';
+             $request['status']=0;
+         }
+         elseif($request->payment_amount == $request->due_amount + $request->payment_amount){
+             $amount['status']='paid';
+             $request['status']=1;
+         }elseif ($request->payment_amount < $request->due_amount + $request->payment_amount){
+             $amount['status']='partial';
+             $request['status']=2;
+         }
 
-       if (isset($bank_amount['bank_type'])&& $bank_amount['bank_type']=='bank'){
-           $bank=BankAccount::where('id',$bank_amount['bank_id'])->first();
-           $bank_name=Bank::where('id',$bank->bank_id)->first();
+         if (isset($bank_amount['bank_type']) && $bank_amount['bank_type']=='bank'){
+             $bank=BankAccount::where('id',$bank_amount['bank_id'])->first();
+             $bank_name=Bank::where('id',$bank->bank_id)->first();
 
-           $bank->balance=$bank->balance - $bank_amount['payment_amount'];
-           $bank->update();
-       }elseif (isset($bank_amount['bank_type']) && $bank_amount['bank_type']=='mobile'){
-           $bank=BankMobile::where('id',$bank_amount['bank_id'])->first();
-           $bank->balance=$bank->balance - $bank_amount['payment_amount'];
-           $bank->update();
-       }
+             $bank->balance=$bank->balance - $bank_amount['payment_amount'];
+             $bank->update();
+         }elseif (isset($bank_amount['bank_type']) && $bank_amount['bank_type']=='mobile'){
+             $bank=BankMobile::where('id',$bank_amount['bank_id'])->first();
+             $bank->balance=$bank->balance - $bank_amount['payment_amount'];
+             $bank->update();
+         }
+     }else{
+         $amount['type']='payment';
+         $amount['bank_type']='cash';
+         $amount['bank_id']='';
+         $amount['vendor_type']=$request->vendor_type;
+         if ($request->vendor_type == 'other'){
+             $amount['name']=$request->vendor_name;
+         }else{
+             $amount['name']=$request->vendor;
+         }
+         $amount['date']=$request->issue_date;
+         $amount['due_date']=$request->due_date;
+         $amount['amount']=$request->due_amount + $request->payment_amount;
+         $amount['paid_amount']=$request->payment_amount;
+         $amount['due_amount']=$request->due_amount;
+
+//        $amount['user_id']=
+//        $amount['branch_id']=
+//        $amount['company_id']=
+
+         if ($request->payment_amount == 0){
+             $amount['status']='unpaid';
+             $request['status']=0;
+         }
+         elseif($request->payment_amount == $request->due_amount + $request->payment_amount){
+             $amount['status']='paid';
+             $request['status']=1;
+         }elseif ($request->payment_amount < $request->due_amount + $request->payment_amount){
+             $amount['status']='partial';
+             $request['status']=2;
+         }
+
+//         if (isset($bank_amount['bank_type']) && $bank_amount['bank_type']=='bank'){
+//             $bank=BankAccount::where('id',$bank_amount['bank_id'])->first();
+//             $bank_name=Bank::where('id',$bank->bank_id)->first();
+//
+//             $bank->balance=$bank->balance - $bank_amount['payment_amount'];
+//             $bank->update();
+//         }elseif (isset($bank_amount['bank_type']) && $bank_amount['bank_type']=='mobile'){
+//             $bank=BankMobile::where('id',$bank_amount['bank_id'])->first();
+//             $bank->balance=$bank->balance - $bank_amount['payment_amount'];
+//             $bank->update();
+//         }
+
+     }
+
+
 
         $invoice=Invoice::createOrUpdateUser($amount);
         $store=Purchas::createOrUpdateUser($request,$invoice->id);
@@ -123,6 +176,7 @@ class PurchasController extends Controller
             $data['tax']=$product['tax'];
             $data['vat_type']=$product['vat_type'];
             $data['vat']=$product['vat'];
+            $data['pur_id']=$store->id;
 //            $data['pro_in']=$product['id'];
 //            $data['pro_out']=$product['id'];
 //            $data['pro_sell']=$product['id'];
@@ -159,20 +213,21 @@ class PurchasController extends Controller
      */
     public function edit(string $id)
     {
-        abort_if(!auth()->user()->can('update product'),403,__('User does not have the right permissions.'));
+//        abort_if(!auth()->user()->can('update product'),403,__('User does not have the right permissions.'));
 
-        $product=Product::find($id);
-        return view('admin.product.product.edit',[
-            'product'=>$product,
-            'brands' => Brand::all(),
-            'categories' => Category::all(),
-            'subCategories' => SubCategory::all(),
-            'childCategories' => ChildCategory::all(),
-            'colors' => Color::all(),
-            'sizes' => Size::all(),
-            'units'=> Unit::all(),
-            'manufacturers'=> Manufacture::all()
+//        $product=Product::find($id);
+        return view('admin.purchas.purchas_order.edit',[
+            'purchas'=>Purchas::find($id),
+            'products' => Product::get(),
+            'colors' => Color::get(),
+            'sizes' => Size::get(),
+            'units' => Unit::get()
         ]);
+    }
+
+    public function purchas_return(string $id)
+    {
+        return $id;
     }
 
     /**
@@ -192,17 +247,37 @@ class PurchasController extends Controller
      */
     public function destroy(string $id)
     {
-        {
 //        return $id;
-            abort_if(!auth()->user()->can('delete product'),403,__('User does not have the right permissions.'));
-            $delete=Product::find($id);
-            if (file_exists($delete->image)){
-                unlink(public_path($delete->image));
+//            abort_if(!auth()->user()->can('delete product'),403,__('User does not have the right permissions.'));
+            $delete=Purchas::find($id);
+            $pro_trns=ProductTransection::where('trans_type','pur')->where('trans_id',$id)->get();
+            foreach ($pro_trns as $product){
+                $stock=Stock::where('pur_id',$id)->where('product_id',$product->product_id)->first();
+                $stock->sotck_qty=$stock->sotck_qty - $product->qty;
+                $stock->update();
+                $product->delete();
             }
-
-            $delete->delete();
-            return redirect()->route('product.index')->with('error','Product delete successfully');
+            $invoice=Invoice::where('id',$delete->inv_id)->first();
+        if (isset($invoice->bank_type) && $invoice->bank_type =='bank'){
+            $bank=BankAccount::where('id',$invoice->bank_id)->first();
+            $bank->balance=$bank->balance + $invoice->paid_amount;
+            $bank->update();
+        }elseif (isset($invoice->bank_type) && $invoice->bank_type =='mobile'){
+            $bank=BankMobile::where('id',$invoice->bank_id)->first();
+            $bank->balance=$bank->balance + $invoice->paid_amount;
+            $bank->update();
         }
+
+        $invoice->delete();
+//        $pro_trns->delete();
+        $delete->delete();
+
+//            return $invoice;
+//            if (file_exists($delete->image)){
+//                unlink(public_path($delete->image));
+//            }
+//            $delete->delete();
+            return redirect()->route('purchases.index')->with('error','Product delete successfully');
     }
 
     public function get_sub_cat(string $id)

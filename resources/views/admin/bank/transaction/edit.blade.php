@@ -246,7 +246,7 @@
                                     <option value="YER">Yemen (YER)</option>
                                     <option value="ZMW">Zambia (ZMW)</option>
                                     <option value="ZWL">Zimbabwe (ZWL)</option>
-                                </select>                                
+                                </select>
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-6 col-12">
@@ -373,7 +373,7 @@
         <!-- /edit -->
     </div>
 @endsection
-@section('custom-script')
+@section('js')
 <script>
 $(document).ready(function() {
     let transactionDetailsArray = JSON.parse($('#transaction_details').val()) || [];

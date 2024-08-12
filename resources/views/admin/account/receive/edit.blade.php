@@ -138,7 +138,7 @@
         <!-- /receive voucher -->
     </div>
 @endsection
-@section('custom-script')
+@section('js')
 <script>
 $(document).ready(function() {
     let receiveDetailsArray = JSON.parse($('#receive_details').val()) || [];

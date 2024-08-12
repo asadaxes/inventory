@@ -83,7 +83,7 @@ class Purchas extends Model
         self::$purchas->total                   = $request->total ?? '';
 //        self::$purchas->company_id                   = 1;
 //        self::$purchas->branch_id                   = 1;
-//        self::$purchas->status                  = $request->status ?? '';
+        self::$purchas->status                  = $request->status ?? '';
         self::$purchas->save();
         return self::$purchas;
     }
@@ -107,6 +107,18 @@ class Purchas extends Model
     {
         return $this->belongsTo(Branch::class);
     }
+    public function invoice()
+    {
+        return $this->belongsTo(Invoice::class,'inv_id','id');
+    }
+    public function Customer()
+    {
+        return $this->belongsTo(Customer::class,'vendor','id');
+    }
+//    public function Supplier()
+//    {
+//        return $this->belongsTo(Supplier::class,'vendor','id');
+//    }
 
     public function productTransections()
     {

@@ -138,7 +138,7 @@
         <!-- /edit -->
     </div>
 @endsection
-@section('custom-script')
+@section('js')
 <script>
 $(document).ready(function() {
     let paymentDetailsArray = JSON.parse($('#payment_details').val()) || [];

@@ -155,7 +155,7 @@ button.selected_mfs{
         <!-- /edit -->
     </div>
 @endsection
-@section('custom-script')
+@section('js')
 <script>
 $(document).ready(function() {
     $('#mfs_btn_container button').click(function() {

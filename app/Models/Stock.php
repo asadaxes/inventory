@@ -14,7 +14,7 @@ class Stock extends Model
     protected $fillable = [
         'product_id',
         'sotck_qty',
-        'purches_qty',
+        'pur_id',
         'sell_qty',
         'purches_ret',
         'sell_ret',
@@ -50,15 +50,15 @@ class Stock extends Model
         }
         self::$stock->product_id                  = $request['product_id'] ;
         self::$stock->sotck_qty                   = floatval(self::$stock->sotck_qty) + floatval($request['qty']);
-        self::$stock->purches_qty                 = $request->purches_qty ?? '';
+        self::$stock->pur_id                 = $request['pur_id'] ?? '';
         self::$stock->sell_qty                    = $request->sell_qty ?? '';
         self::$stock->purches_ret                 = $request->purches_ret ?? '';
         self::$stock->sell_ret                    = $request->sell_ret ?? '';
         self::$stock->transfer                    = $request->transfer ?? '';
         self::$stock->available                   = $request->available ?? '';
-        self::$stock->unit_id                     = $data['unit_id'] ?? '';
-        self::$stock->size_id                     = $data['size_id'] ?? '';
-        self::$stock->unit_id                     = $data['color_id'] ?? '';
+        self::$stock->unit_id                     = $request['unit_id'] ?? '';
+        self::$stock->size_id                     = $request['size_id'] ?? '';
+        self::$stock->unit_id                     = $request['color_id'] ?? '';
         self::$stock->status                      = $request->status ?? '';
         self::$stock->save();
         return self::$stock;

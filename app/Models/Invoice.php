@@ -13,6 +13,8 @@ class Invoice extends Model
 
     protected $fillable = [
         'type',
+        'bank_type',
+        'bank_id',
         'name',
         'vendor_type',
         'date',
@@ -39,6 +41,8 @@ class Invoice extends Model
             self::$invoice = new Invoice();
         }
         self::$invoice->type                  = $request['type'] ?? '';
+        self::$invoice->bank_type                  = $request['bank_type'] ?? '';
+        self::$invoice->bank_id                  = $request['bank_id'] ?? '';
         self::$invoice->name             = $request['name']?? '';
         self::$invoice->vendor_type             = $request['vendor_type']?? '';
         self::$invoice->date                  = $request['date'] ?? '';

@@ -174,17 +174,17 @@
                                 </a>
                                 <ul>
                                     @can('view product')
-                                        <li><a href="{{ route('purchasOrderCreate') }}" class="{{request()->is('purchases*') ? 'active':''}}"><i data-feather="shopping-bag"></i><span>Purchases</span></a></li>
+                                        <li><a href="{{ route('purchases.index') }}" class="{{request()->is('purchases*') ? 'active':''}}"><i data-feather="shopping-bag"></i><span>Purchases</span></a></li>
                                     @endcan
+{{--                                    @can('view brand')--}}
+{{--                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="minimize-2"></i><span>Import Purchases</span></a></li>--}}
+{{--                                    @endcan--}}
                                     @can('view brand')
-                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="minimize-2"></i><span>Import Purchases</span></a></li>
+                                        <li><a href="{{route('purchasOrderCreate')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="file-minus"></i><span>Purchase Order</span></a></li>
                                     @endcan
-                                    @can('view brand')
-                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="file-minus"></i><span>Purchase Order</span></a></li>
-                                    @endcan
-                                    @can('view brand')
-                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="refresh-cw"></i><span>Purchase Return</span></a></li>
-                                    @endcan
+{{--                                    @can('view brand')--}}
+{{--                                        <li><a href="{{route('suppliers.index')}}" class="{{request()->is('suppliers*') ? 'active':''}}" ><i data-feather="refresh-cw"></i><span>Purchase Return</span></a></li>--}}
+{{--                                    @endcan--}}
                                 </ul>
                                 {{-- @endcan --}}
                             </li>

@@ -128,7 +128,7 @@
         <!-- /add -->
     </div>
 @endsection
-@section('custom-script')
+@section('js')
 <script>
 $(document).ready(function() {
     // Retrieve journal details array from localStorage or initialize as empty array
